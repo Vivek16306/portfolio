@@ -41,21 +41,22 @@ main{max-width:1000px;margin:0 auto;padding:44px 20px 80px}
 .stat-box{background:#f9f8f6;border-radius:10px;padding:16px 20px;text-align:center}
 .stat-num{font-size:28px;font-weight:700;color:#CC0033}
 .stat-label{font-size:12px;color:#888;margin-top:4px}
-.hamburger{display:none;background:transparent;border:none;cursor:pointer;padding:8px;flex-shrink:0}
-.hamburger span{display:block;width:22px;height:2px;background:#CC0033;margin:5px 0;border-radius:2px;transition:0.2s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mobile-menu{display:none;flex-direction:column;background:#fff;border-bottom:1px solid #e5e5e5;box-shadow:0 4px 10px rgba(0,0,0,0.06)}
-.mobile-menu.open{display:flex}
-.mobile-menu .nav-btn{text-align:left;padding:14px 20px;border-radius:0;border-bottom:1px solid #f3f3f3;font-size:14px}
+.page-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:48px;padding-top:24px;border-top:1px solid #e5e5e5;flex-wrap:wrap}
+.page-nav-btn{background:#fff;color:#CC0033;border:1.5px solid #CC0033;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.page-nav-btn:hover{background:#fff0f3}
+.page-nav-btn.home{background:#CC0033;color:#fff;border-color:#CC0033}
+.page-nav-btn.home:hover{background:#a80028}
+.page-nav-btn:disabled{opacity:0.35;cursor:default;pointer-events:none}
 footer{background:#111;color:#888;text-align:center;padding:28px 20px;font-size:13px;margin-top:0}
 footer strong{color:#fff;display:block;margin-bottom:4px}
 @media(max-width:680px){
   .grid2,.grid3,.grid4{grid-template-columns:1fr}
   h1{font-size:30px !important}
-  .nav-links{display:none}
-  .hamburger{display:block}
+  .nav-links{flex-wrap:wrap;gap:4px;justify-content:flex-end}
+  .nav-btn{font-size:10.5px;padding:5px 7px}
+  .nav-name{display:none}
+  .page-nav{flex-direction:column;align-items:stretch}
+  .page-nav-btn{width:100%;text-align:center}
 }
 </style>
 </head>
@@ -68,11 +69,7 @@ footer strong{color:#fff;display:block;margin-bottom:4px}
       <span class="nav-name">Vivek V. Patel</span>
     </div>
     <div class="nav-links" id="navLinks"></div>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </div>
-  <div class="mobile-menu" id="mobileMenu"></div>
 </nav>
 
 <main>
@@ -417,14 +414,6 @@ footer strong{color:#fff;display:block;margin-bottom:4px}
 const pages = ["Home","Career Goals","Resume","Honors","Resources","Community","Work Sample","References"];
 const navLabels = {"References":"Professional References"};
 const nav = document.getElementById("navLinks");
-const mobileMenu = document.getElementById("mobileMenu");
-const hamburgerBtn = document.getElementById("hamburgerBtn");
-
-function closeMobileMenu() {
-  mobileMenu.classList.remove("open");
-  hamburgerBtn.classList.remove("open");
-  hamburgerBtn.setAttribute("aria-expanded", "false");
-}
 
 function showSection(name) {
   document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
@@ -433,7 +422,6 @@ function showSection(name) {
   if(s) s.classList.add("visible");
   document.querySelectorAll(".nav-btn").forEach(b => { if(b.dataset.name === name) b.classList.add("active"); });
   window.scrollTo(0,0);
-  closeMobileMenu();
 }
 
 function buildButton(name, container) {
@@ -445,15 +433,42 @@ function buildButton(name, container) {
   container.appendChild(b);
 }
 
-pages.forEach(name => {
-  buildButton(name, nav);
-  buildButton(name, mobileMenu);
-});
+pages.forEach(name => buildButton(name, nav));
 
-hamburgerBtn.addEventListener("click", () => {
-  const isOpen = mobileMenu.classList.toggle("open");
-  hamburgerBtn.classList.toggle("open", isOpen);
-  hamburgerBtn.setAttribute("aria-expanded", String(isOpen));
+function buildPageNav(name) {
+  const idx = pages.indexOf(name);
+  const prevName = idx > 0 ? pages[idx - 1] : null;
+  const nextName = idx < pages.length - 1 ? pages[idx + 1] : null;
+
+  const row = document.createElement("div");
+  row.className = "page-nav";
+
+  const backBtn = document.createElement("button");
+  backBtn.className = "page-nav-btn";
+  backBtn.textContent = prevName ? "← " + (navLabels[prevName] || prevName) : "← Back";
+  if (prevName) { backBtn.onclick = () => showSection(prevName); }
+  else { backBtn.disabled = true; }
+  row.appendChild(backBtn);
+
+  const homeBtn = document.createElement("button");
+  homeBtn.className = "page-nav-btn home";
+  homeBtn.textContent = "Home / Quick Links";
+  homeBtn.onclick = () => showSection("Home");
+  row.appendChild(homeBtn);
+
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "page-nav-btn";
+  nextBtn.textContent = nextName ? (navLabels[nextName] || nextName) + " →" : "Next →";
+  if (nextName) { nextBtn.onclick = () => showSection(nextName); }
+  else { nextBtn.disabled = true; }
+  row.appendChild(nextBtn);
+
+  return row;
+}
+
+pages.forEach(name => {
+  const section = document.getElementById("sec-" + name);
+  if (section) section.appendChild(buildPageNav(name));
 });
 </script>
 </body>

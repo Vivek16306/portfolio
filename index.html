@@ -261,9 +261,51 @@ body::after{
 .game-title{font-family:'Graduate',serif;color:var(--card);font-size:14px;letter-spacing:0.06em}
 .game-hint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#F5C6CF;text-transform:uppercase}
 #knightGame{display:block;width:100%;height:auto;touch-action:none;cursor:pointer}
+#questGame{display:block;width:100%;height:auto;touch-action:none}
+
+/* ── GAME BUTTONS & TOUCH CONTROLS ───── */
+.game-controls{display:flex;gap:8px;align-items:center}
+.game-btn{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.08em;
+  background:var(--card);color:var(--scarlet-dark);border:2px solid var(--ink);
+  padding:6px 12px;cursor:pointer;box-shadow:2px 2px 0 rgba(0,0,0,0.35);
+}
+.game-btn:hover{background:var(--scarlet-wash)}
+.game-btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 rgba(0,0,0,0.35)}
+.touch-row{display:none;gap:10px;padding:12px;background:#1D130C;border-top:2px solid var(--scarlet)}
+.touch-btn{
+  flex:1;font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;letter-spacing:0.08em;
+  background:var(--card);color:var(--ink);border:2px solid var(--scarlet);padding:14px 0;cursor:pointer;
+  box-shadow:0 3px 0 var(--scarlet);user-select:none;-webkit-user-select:none;touch-action:none;
+}
+.touch-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--scarlet)}
+.touch-jump{flex:1.4;background:var(--scarlet);color:var(--card);border-color:var(--ink);box-shadow:0 3px 0 var(--ink)}
+@media (pointer:coarse){.touch-row{display:flex}}
+
+/* ── FALLING LEAVES ON TAB CHANGE ────── */
+#leafLayer{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden}
+.leaf{
+  position:fixed;top:-8vh;will-change:transform;
+  animation-name:leafFall;animation-timing-function:linear;animation-fill-mode:forwards;
+}
+@keyframes leafFall{
+  0%{transform:translate3d(0,-8vh,0) rotate(0deg)}
+  25%{transform:translate3d(6vw,25vh,0) rotate(100deg)}
+  50%{transform:translate3d(-4vw,52vh,0) rotate(200deg)}
+  75%{transform:translate3d(5vw,78vh,0) rotate(310deg)}
+  100%{transform:translate3d(-2vw,112vh,0) rotate(430deg)}
+}
+@media (prefers-reduced-motion:reduce){.leaf{display:none}}
 
 @media(max-width:720px){
   .grid2,.grid3,.grid4{grid-template-columns:1fr}
+  /* give the games the full screen width on phones */
+  .game-frame{margin-left:-20px;margin-right:-20px;border-left:none;border-right:none;box-shadow:none}
+  .touch-row{display:flex}
+  .touch-btn{padding:16px 0;font-size:15px}
+  .game-head{padding:8px 12px}
+  .game-title{font-size:12px}
+  .game-hint{display:none}
   h1.hero-name{font-size:34px}
   .nav-name{display:none}
   .nav-links{gap:2px}
@@ -277,6 +319,8 @@ body::after{
 </style>
 </head>
 <body>
+
+<div id="leafLayer" aria-hidden="true"></div>
 
 <!-- Reusable Old Queens gate spiral ornament -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -387,7 +431,11 @@ body::after{
   <div class="game-frame">
     <div class="game-head">
       <span class="game-title">⚔ THE SCARLET KNIGHT RUN</span>
-      <span class="game-hint">Space / tap to jump · Clear the gates &amp; cones</span>
+      <span style="display:flex;gap:8px;align-items:center">
+        <span class="game-hint">Space / tap to jump</span>
+        <button class="game-btn" id="bgStart">▶ START</button>
+        <button class="game-btn" id="bgPause">❚❚ PAUSE</button>
+      </span>
     </div>
     <canvas id="knightGame" width="720" height="230" aria-label="The Scarlet Knight Run: a mini jumping game featuring a knight on a white horse. Press space or tap to jump over obstacles."></canvas>
   </div>
@@ -401,7 +449,7 @@ body::after{
       <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
     </svg>
     <h2 class="display" style="font-size:20px;font-weight:400">QUICK LINKS</h2>
-    <p class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:4px">SEVEN STOPS ON THE TOUR</p>
+    <p class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:4px">EIGHT STOPS ON THE TOUR</p>
   </div>
   <div class="grid4">
     <button class="ql-card" onclick="showSection('Career Goals')"><div class="ql-num">№ 01</div><div class="ql-name">CAREER GOALS</div></button>
@@ -411,6 +459,7 @@ body::after{
     <button class="ql-card" onclick="showSection('Community')"><div class="ql-num">№ 05</div><div class="ql-name">COMMUNITY</div></button>
     <button class="ql-card" onclick="showSection('Work Sample')"><div class="ql-num">№ 06</div><div class="ql-name">WORK SAMPLE</div></button>
     <button class="ql-card" onclick="showSection('References')"><div class="ql-num">№ 07</div><div class="ql-name">REFERENCES</div></button>
+    <button class="ql-card" onclick="showSection('Arcade')"><div class="ql-num">№ 08</div><div class="ql-name">🎃 ARCADE</div></button>
   </div>
 </div>
 
@@ -740,6 +789,48 @@ body::after{
   </div>
 </div>
 
+<!-- ═══════════════════════════════ ARCADE ═══════════════════════════════ -->
+<div class="section" id="sec-Arcade">
+  <div class="sec-header">
+    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
+      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
+      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
+      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
+      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
+    </svg>
+    <h2>THE ARCADE</h2><p>SCARLET QUEST — AN ORIGINAL RUTGERS HALLOWEEN PLATFORMER · BUILT WITH HTML CANVAS + JS</p>
+  </div>
+
+  <div class="game-frame">
+    <div class="game-head">
+      <span class="game-title">🎃 SCARLET QUEST</span>
+      <span class="game-controls">
+        <button class="game-btn" id="aqStart">▶ START</button>
+        <button class="game-btn" id="aqPause">❚❚ PAUSE</button>
+      </span>
+    </div>
+    <canvas id="questGame" width="720" height="400" aria-label="Scarlet Quest: an original side-scrolling platformer. Guide the Scarlet Knight through a Halloween autumn night — collect pumpkins, stomp jack-o'-lanterns, dodge bats, and reach the Old Queens gate. Arrow keys or A and D to move, space to jump."></canvas>
+    <div class="touch-row">
+      <button class="touch-btn" id="btnL">◀ LEFT</button>
+      <button class="touch-btn touch-jump" id="btnJ">⤒ JUMP</button>
+      <button class="touch-btn" id="btnR">RIGHT ▶</button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="display" style="font-size:14px;color:var(--ink);margin-bottom:14px">HOW TO PLAY</div>
+    <div class="grid3" style="gap:8px">
+      <div class="tag">⌨️ Move — arrow keys or A / D</div>
+      <div class="tag">⤒ Jump — space, W, or ↑</div>
+      <div class="tag">🎃 Collect pumpkins — 50 pts</div>
+      <div class="tag">👞 Stomp jack-o'-lanterns — 100 pts</div>
+      <div class="tag">🦇 Dodge the bats — they bite</div>
+      <div class="tag">🏛️ Goal — reach the Old Queens gate</div>
+    </div>
+    <p class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:14px">A CHECKPOINT FLAG WAITS AT THE HALFWAY MARK · 3 LIVES · WATCH FOR PITS. DESIGNED &amp; CODED FOR THIS PORTFOLIO — NO GAME ENGINES, JUST CANVAS.</p>
+  </div>
+</div>
+
 </main>
 
 <footer>
@@ -755,9 +846,28 @@ body::after{
 </footer>
 
 <script>
-const pages = ["Home","Career Goals","Resume","Honors","Resources","Community","Work Sample","References"];
-const navLabels = {"References":"References"};
+const pages = ["Home","Career Goals","Resume","Honors","Resources","Community","Work Sample","References","Arcade"];
+const navLabels = {"References":"References","Arcade":"🎃 Arcade"};
 const nav = document.getElementById("navLinks");
+
+/* falling leaves burst on tab change */
+function leafBurst(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const layer=document.getElementById('leafLayer');
+  if(!layer) return;
+  const glyphs=['🍂','🍁','🍃'];
+  for(let i=0;i<14;i++){
+    const s=document.createElement('span');
+    s.className='leaf';
+    s.textContent=glyphs[(Math.random()*glyphs.length)|0];
+    s.style.left=(Math.random()*96)+'vw';
+    s.style.fontSize=(14+Math.random()*18)+'px';
+    s.style.animationDuration=(3+Math.random()*3)+'s';
+    s.style.animationDelay=(Math.random()*0.6)+'s';
+    s.addEventListener('animationend',()=>s.remove());
+    layer.appendChild(s);
+  }
+}
 
 function showSection(name) {
   document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
@@ -766,6 +876,7 @@ function showSection(name) {
   if(s) s.classList.add("visible");
   document.querySelectorAll(".nav-btn").forEach(b => { if(b.dataset.name === name) b.classList.add("active"); });
   window.scrollTo(0,0);
+  leafBurst();
 }
 
 function buildButton(name, container) {
@@ -832,16 +943,18 @@ const INK='#1D130C', PAPER='#F5EDDF', CARD='#FFFDF6',
 const groundY = H - 30;
 const GRAV = 0.62, JUMP_V = -11.8;
 
-let started=false, over=false, frame=0, speed=4.4, score=0, best=0, spawnIn=70;
+let started=false, over=false, paused=false, frame=0, speed=4.4, score=0, best=0, spawnIn=70;
 const kn = { x:64, foot:groundY, vy:0, air:false };
 let obs = [];
 const clouds = [{x:110,y:36,s:0.22},{x:390,y:60,s:0.16},{x:620,y:28,s:0.28}];
 
 function reset(){
-  obs=[]; speed=4.4; score=0; over=false; started=true;
+  obs=[]; speed=4.4; score=0; over=false; started=true; paused=false;
   kn.foot=groundY; kn.vy=0; kn.air=false; spawnIn=70;
+  bgPause.textContent='❚❚ PAUSE';
 }
 function jump(){
+  if(paused) return;
   if(over){ reset(); return; }
   if(!started){ started=true; }
   if(!kn.air){ kn.vy=JUMP_V; kn.air=true; }
@@ -857,6 +970,13 @@ window.addEventListener('keydown', e=>{
   if((e.code==='Space'||e.code==='ArrowUp') && gameOnScreen()){
     e.preventDefault(); jump();
   }
+});
+const bgStart=document.getElementById('bgStart'), bgPause=document.getElementById('bgPause');
+bgStart.addEventListener('click', ()=>{ reset(); });
+bgPause.addEventListener('click', ()=>{
+  if(!started || over) return;
+  paused=!paused;
+  bgPause.textContent = paused ? '▶ RESUME' : '❚❚ PAUSE';
 });
 
 function px(x,y,w,h,c){ ctx.fillStyle=c; ctx.fillRect(Math.round(x),Math.round(y),w,h); }
@@ -903,11 +1023,17 @@ function drawKnight(x,foot,f){
 }
 
 function spawnObs(){
-  if(Math.random()<0.6){
+  const roll = Math.random();
+  if(roll < 0.35){
     const bars = 2 + ((Math.random()*2)|0);
     obs.push({x:W+20, w:bars*12+6, h:30, type:'fence'});
-  }else{
+  }else if(roll < 0.55){
     obs.push({x:W+20, w:22, h:24, type:'cone'});
+  }else if(roll < 0.78){
+    obs.push({x:W+20, w:24, h:34, type:'cactus'});
+  }else{
+    const high = Math.random() < 0.5;
+    obs.push({x:W+20, w:30, h:16, type:'bat', y:groundY-(high?80:24)});
   }
 }
 function drawObs(o){
@@ -921,17 +1047,37 @@ function drawObs(o){
       ctx.moveTo(bx-2,y-o.h); ctx.lineTo(bx+2,y-o.h-8); ctx.lineTo(bx+6,y-o.h);
       ctx.closePath(); ctx.fill();
     }
-  }else{
+  }else if(o.type==='cone'){
     ctx.fillStyle=SCARLET; ctx.beginPath();
     ctx.moveTo(o.x+11,y-o.h); ctx.lineTo(o.x+22,y); ctx.lineTo(o.x,y);
     ctx.closePath(); ctx.fill();
     px(o.x+4,y-9,14,4,CARD);                       // stripe
+  }else if(o.type==='cactus'){
+    px(o.x+9,y-o.h,7,o.h,PAPER);                   // trunk
+    px(o.x+2,y-22,7,5,PAPER);  px(o.x+2,y-30,5,8,PAPER);   // left arm
+    px(o.x+16,y-18,7,5,PAPER); px(o.x+18,y-26,5,8,PAPER);  // right arm
+    px(o.x+11,y-o.h+6,1,4,INK); px(o.x+13,y-o.h+14,1,4,INK); // spines
+  }else if(o.type==='bat'){
+    const flap = (frame>>3)&1;
+    const bx=o.x, by=o.y;
+    px(bx+11,by-5,8,10,SCARLET);                   // body
+    px(bx+12,by-8,2,3,SCARLET); px(bx+16,by-8,2,3,SCARLET); // ears
+    ctx.fillStyle=SCARLET;
+    ctx.beginPath();                                // left wing
+    if(flap){ ctx.moveTo(bx+11,by); ctx.lineTo(bx-2,by-9); ctx.lineTo(bx+7,by+2); }
+    else    { ctx.moveTo(bx+11,by); ctx.lineTo(bx-2,by+9); ctx.lineTo(bx+7,by-2); }
+    ctx.closePath(); ctx.fill();
+    ctx.beginPath();                                // right wing
+    if(flap){ ctx.moveTo(bx+19,by); ctx.lineTo(bx+32,by-9); ctx.lineTo(bx+23,by+2); }
+    else    { ctx.moveTo(bx+19,by); ctx.lineTo(bx+32,by+9); ctx.lineTo(bx+23,by-2); }
+    ctx.closePath(); ctx.fill();
+    px(bx+13,by-3,2,2,CARD); px(bx+16,by-3,2,2,CARD); // eyes
   }
 }
 
 function loop(){
   frame++;
-  const live = started && !over;
+  const live = started && !over && !paused;
 
   // night sky
   ctx.fillStyle=INK; ctx.fillRect(0,0,W,H);
@@ -967,13 +1113,20 @@ function loop(){
     if(spawnIn<=0){ spawnObs(); spawnIn=60+Math.random()*70-Math.min(30,speed*3); }
     speed+=0.0009;
     score+=speed*0.05;
-    obs.forEach(o=>o.x-=speed);
+    obs.forEach(o=>o.x -= speed + (o.type==='bat' ? 1.6 : 0));
     obs=obs.filter(o=>o.x+o.w>-30);
     // collision (forgiving AABB)
-    const kl=kn.x+10, kr=kn.x+50;
+    const kl=kn.x+10, kr=kn.x+50, ktop=kn.foot-56;
     for(const o of obs){
-      const ol=o.x+3, or2=o.x+o.w-3, ot=groundY-o.h+4;
-      if(kr>ol && kl<or2 && kn.foot>ot){ over=true; best=Math.max(best,score); break; }
+      const ol=o.x+3, or2=o.x+o.w-3;
+      if(kr>ol && kl<or2){
+        if(o.type==='bat'){
+          if(kn.foot>o.y-8 && ktop<o.y+8){ over=true; best=Math.max(best,score); break; }
+        }else{
+          const ot=groundY-o.h+4;
+          if(kn.foot>ot){ over=true; best=Math.max(best,score); break; }
+        }
+      }
     }
   }
 
@@ -995,10 +1148,393 @@ function loop(){
     ctx.fillText('UNHORSED!', W/2, H/2-26);
     ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
     ctx.fillText('TAP OR PRESS SPACE TO RIDE AGAIN', W/2, H/2);
+  }else if(paused){
+    ctx.fillStyle=PAPER; ctx.font='18px Graduate, serif';
+    ctx.fillText('PAUSED', W/2, H/2-26);
+    ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
+    ctx.fillText('HIT RESUME TO KEEP RIDING', W/2, H/2);
   }
   requestAnimationFrame(loop);
 }
 loop();
+})();
+</script>
+
+<script>
+/* ═══ SCARLET QUEST — original Rutgers Halloween platformer (canvas, no engine) ═══ */
+(function(){
+const cv=document.getElementById('questGame');
+if(!cv) return;
+const ctx=cv.getContext('2d');
+const W=cv.width, H=cv.height;
+
+const T=24, ROWS=16, COLS=190;
+const INK='#1D130C', PAPER='#F5EDDF', CARD='#FFFDF6',
+      SCARLET='#CC0033', SCARLET_D='#8F0024', SCARLET_LT='#E4325B',
+      BRASS='#B78A3C', PUMPKIN='#D97D2E', PUMPKIN_D='#B5651F',
+      SOIL='#54331F', DUSK_TOP='#120A06', DUSK_BOT='#4A1E2A';
+const GROUND_TOP=14*T;
+
+/* ── level build ── */
+const solid=[]; for(let r=0;r<ROWS;r++) solid.push(new Array(COLS).fill(false));
+const gaps=[[22,24],[48,50],[90,92],[130,132],[160,161]];
+const inGap=c=>gaps.some(g=>c>=g[0]&&c<=g[1]);
+for(let c=0;c<COLS;c++){ if(!inGap(c)){ solid[14][c]=true; solid[15][c]=true; } }
+const plats=[[16,10,4],[30,11,3],[36,8,3],[49,11,3],[55,10,5],[64,11,3],[70,9,3],
+             [91,10,3],[98,11,4],[102,9,2],[105,8,4],[120,10,3],[126,10,2],[131,9,3],
+             [140,11,5],[146,9,2],[150,8,3],[161,11,2],[168,10,4]];
+plats.forEach(([c,r,l])=>{ for(let i=0;i<l;i++) solid[r][c+i]=true; });
+
+const pumpkinList=[[10,12],[17,8],[23,9],[31,9],[37,6],[44,12],[50,9],[57,8],[65,9],[71,7],
+                   [83,12],[91,8],[99,9],[103,7],[107,6],[115,12],[121,8],[127,8],[132,7],
+                   [136,12],[142,9],[147,7],[151,6],[157,12],[163,9],[169,8],[176,12]];
+const enemyList=[{c:34,r:14},{c:60,r:14},{c:80,r:14},{c:56,r:10},{c:110,r:14},
+                 {c:141,r:11},{c:145,r:14},{c:172,r:14}];
+const batList=[{c:66,y:190,amp:45,ph:0},{c:96,y:150,amp:55,ph:2},{c:117,y:200,amp:40,ph:4},
+               {c:137,y:160,amp:50,ph:1},{c:158,y:200,amp:45,ph:3}];
+const treeCols=[8,20,33,47,63,77,92,108,123,138,153,166,179];
+const stars=[]; for(let i=0;i<26;i++) stars.push({x:Math.random()*W,y:Math.random()*140,tw:Math.random()*6});
+const GOAL_X=183*T, CHECK_X=94*T;
+
+/* ── state ── */
+let mode='title', frame=0, score=0, lives=3, pumpCount=0, checkpoint=false, winBurst=false;
+let pumps=[], foes=[], bats=[];
+const P={x:2*T,y:11*T,w:16,h:28,vx:0,vy:0,onG:false,face:1,inv:0};
+const k={l:false,r:false,j:false}; let jHeld=false;
+
+function resetQ(){
+  mode='play'; score=0; lives=3; pumpCount=0; checkpoint=false; winBurst=false;
+  P.x=2*T; P.y=11*T; P.vx=0; P.vy=0; P.onG=false; P.face=1; P.inv=0;
+  pumps=pumpkinList.map(([c,r])=>({x:c*T+T/2,y:r*T+T/2,got:false}));
+  foes=enemyList.map(e=>({x:e.c*T+2,y:e.r*T-20,w:20,h:20,vx:0.7,dead:false,deadT:0}));
+  bats=batList.map(b=>({x:b.c*T,cy:b.y,amp:b.amp,ph:b.ph,y:b.y}));
+  aqPause.textContent='❚❚ PAUSE';
+}
+function respawn(){
+  P.x = checkpoint ? CHECK_X : 2*T;
+  P.y=10*T; P.vx=0; P.vy=0; P.inv=80;
+}
+function hurt(){
+  if(P.inv>0) return;
+  lives--;
+  if(lives<=0){ mode='over'; return; }
+  P.inv=100; P.vy=-6; P.vx=-P.face*3.5;
+}
+
+/* ── input ── */
+function arcadeVisible(){
+  const s=document.getElementById('sec-Arcade');
+  return s && s.classList.contains('visible');
+}
+window.addEventListener('keydown',e=>{
+  if(!arcadeVisible()) return;
+  const c=e.code;
+  if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Space','KeyA','KeyD','KeyW'].includes(c)) e.preventDefault();
+  if(c==='ArrowLeft'||c==='KeyA') k.l=true;
+  if(c==='ArrowRight'||c==='KeyD') k.r=true;
+  if(c==='Space'||c==='ArrowUp'||c==='KeyW') k.j=true;
+});
+window.addEventListener('keyup',e=>{
+  const c=e.code;
+  if(c==='ArrowLeft'||c==='KeyA') k.l=false;
+  if(c==='ArrowRight'||c==='KeyD') k.r=false;
+  if(c==='Space'||c==='ArrowUp'||c==='KeyW') k.j=false;
+});
+function bindHold(el,on,off){
+  if(!el) return;
+  el.addEventListener('pointerdown',e=>{e.preventDefault();on();});
+  ['pointerup','pointerleave','pointercancel'].forEach(ev=>el.addEventListener(ev,off));
+}
+bindHold(document.getElementById('btnL'),()=>k.l=true,()=>k.l=false);
+bindHold(document.getElementById('btnR'),()=>k.r=true,()=>k.r=false);
+bindHold(document.getElementById('btnJ'),()=>k.j=true,()=>k.j=false);
+/* tap the canvas itself = jump (and start from title / game over / win screens) */
+cv.addEventListener('pointerdown',e=>{
+  e.preventDefault();
+  if(mode==='title'||mode==='over'||mode==='win'){ resetQ(); return; }
+  k.j=true;
+});
+['pointerup','pointerleave','pointercancel'].forEach(ev=>cv.addEventListener(ev,()=>{k.j=false;}));
+const aqStart=document.getElementById('aqStart'), aqPause=document.getElementById('aqPause');
+aqStart.addEventListener('click',()=>{ resetQ(); });
+aqPause.addEventListener('click',()=>{
+  if(mode==='play'){ mode='pause'; aqPause.textContent='▶ RESUME'; }
+  else if(mode==='pause'){ mode='play'; aqPause.textContent='❚❚ PAUSE'; }
+});
+
+/* ── physics helpers ── */
+function solidAt(x,y){
+  if(y<0) return false;
+  const c=(x/T)|0, r=(y/T)|0;
+  if(c<0||c>=COLS||r>=ROWS) return false;
+  return solid[r][c];
+}
+function stepPlayer(){
+  const acc=0.45, max=3.1, fric=0.75;
+  if(k.l){ P.vx-=acc; P.face=-1; }
+  if(k.r){ P.vx+=acc; P.face=1; }
+  if(!k.l&&!k.r) P.vx*=fric;
+  P.vx=Math.max(-max,Math.min(max,P.vx));
+  if(k.j&&!jHeld&&P.onG){ P.vy=-10.8; P.onG=false; }
+  if(!k.j&&P.vy<-4) P.vy=-4;             // variable jump height
+  jHeld=k.j;
+
+  P.x+=P.vx;
+  if(P.vx>0){
+    if(solidAt(P.x+P.w,P.y+2)||solidAt(P.x+P.w,P.y+P.h/2)||solidAt(P.x+P.w,P.y+P.h-2)){
+      P.x=(((P.x+P.w)/T)|0)*T-P.w-0.01; P.vx=0;
+    }
+  }else if(P.vx<0){
+    if(solidAt(P.x,P.y+2)||solidAt(P.x,P.y+P.h/2)||solidAt(P.x,P.y+P.h-2)){
+      P.x=(((P.x/T)|0)+1)*T+0.01; P.vx=0;
+    }
+  }
+  if(P.x<0)P.x=0;
+  P.vy+=0.55; if(P.vy>12)P.vy=12;
+  P.y+=P.vy; P.onG=false;
+  if(P.vy>0){
+    if(solidAt(P.x+2,P.y+P.h)||solidAt(P.x+P.w-2,P.y+P.h)){
+      P.y=(((P.y+P.h)/T)|0)*T-P.h-0.01; P.vy=0; P.onG=true;
+    }
+  }else if(P.vy<0){
+    if(solidAt(P.x+2,P.y)||solidAt(P.x+P.w-2,P.y)){
+      P.y=(((P.y/T)|0)+1)*T+0.01; P.vy=0;
+    }
+  }
+  if(P.inv>0)P.inv--;
+  if(P.y>ROWS*T+60){                      // fell in a pit
+    lives--;
+    if(lives<=0){ mode='over'; } else respawn();
+  }
+  if(P.x>CHECK_X) checkpoint=true;
+  if(P.x+P.w>GOAL_X+8){ mode='win'; }
+}
+function overlap(ax,ay,aw,ah,bx,by,bw,bh){
+  return ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by;
+}
+
+/* ── sprites ── */
+function qpx(x,y,w,h,c){ ctx.fillStyle=c; ctx.fillRect(Math.round(x),Math.round(y),w,h); }
+function drawHero(sx,sy){
+  if(P.inv>0 && ((frame>>2)&1)) return;   // flicker while invincible
+  ctx.save();
+  ctx.translate(sx+P.w/2,sy); ctx.scale(P.face,1); ctx.translate(-P.w/2,0);
+  const walk=P.onG && Math.abs(P.vx)>0.4 ? ((frame>>3)&1) : 0;
+  // plume + helmet
+  qpx(-1,-3,4,5,SCARLET); qpx(1,-5,4,4,SCARLET);
+  qpx(3,0,10,7,INK); qpx(10,2,3,2,CARD);
+  // torso + belt
+  qpx(3,7,10,9,SCARLET); qpx(3,15,10,2,INK);
+  // sword
+  ctx.strokeStyle=BRASS; ctx.lineWidth=2.5; ctx.beginPath();
+  ctx.moveTo(12,11); ctx.lineTo(21,6); ctx.stroke();
+  // legs + boots
+  if(!P.onG){ qpx(3,17,4,9,CARD); qpx(9,17,4,9,CARD); qpx(3,24,4,3,INK); qpx(9,24,4,3,INK); }
+  else if(walk){ qpx(3,17,4,11,CARD); qpx(9,19,4,9,CARD); qpx(3,25,4,3,INK); qpx(9,25,4,3,INK); }
+  else{ qpx(3,19,4,9,CARD); qpx(9,17,4,11,CARD); qpx(3,25,4,3,INK); qpx(9,25,4,3,INK); }
+  ctx.restore();
+}
+function drawFoe(f,sx){
+  const sy=f.y;
+  if(f.dead){ qpx(sx,sy+12,f.w,8,PUMPKIN); qpx(sx+4,sy+15,3,2,INK); qpx(sx+13,sy+15,3,2,INK); return; }
+  const bob=Math.sin(frame*0.15+f.x)*1.5;
+  qpx(sx+f.w/2-2,sy-4+bob,4,5,BRASS);                 // stem
+  qpx(sx,sy+bob,f.w,f.h,PUMPKIN);                      // body
+  qpx(sx+6,sy+bob,2,f.h,PUMPKIN_D); qpx(sx+12,sy+bob,2,f.h,PUMPKIN_D); // ridges
+  ctx.fillStyle=INK;                                   // angry eyes
+  ctx.beginPath(); ctx.moveTo(sx+3,sy+8+bob); ctx.lineTo(sx+8,sy+5+bob); ctx.lineTo(sx+8,sy+9+bob); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(sx+17,sy+8+bob); ctx.lineTo(sx+12,sy+5+bob); ctx.lineTo(sx+12,sy+9+bob); ctx.closePath(); ctx.fill();
+  qpx(sx+5,sy+13+bob,10,2,INK); qpx(sx+8,sy+12+bob,2,4,INK); // jagged grin
+  const step=((frame>>3)&1)?2:0;                       // little feet
+  qpx(sx+3+step,sy+f.h+bob,4,3,INK); qpx(sx+13-step,sy+f.h+bob,4,3,INK);
+}
+function drawBatQ(b,sx){
+  const flap=(frame>>3)&1, by=b.y;
+  qpx(sx+11,by-5,8,10,SCARLET);
+  qpx(sx+12,by-8,2,3,SCARLET); qpx(sx+16,by-8,2,3,SCARLET);
+  ctx.fillStyle=SCARLET;
+  ctx.beginPath();
+  if(flap){ ctx.moveTo(sx+11,by); ctx.lineTo(sx-2,by-9); ctx.lineTo(sx+7,by+2); }
+  else    { ctx.moveTo(sx+11,by); ctx.lineTo(sx-2,by+9); ctx.lineTo(sx+7,by-2); }
+  ctx.closePath(); ctx.fill();
+  ctx.beginPath();
+  if(flap){ ctx.moveTo(sx+19,by); ctx.lineTo(sx+32,by-9); ctx.lineTo(sx+23,by+2); }
+  else    { ctx.moveTo(sx+19,by); ctx.lineTo(sx+32,by+9); ctx.lineTo(sx+23,by-2); }
+  ctx.closePath(); ctx.fill();
+  qpx(sx+13,by-3,2,2,CARD); qpx(sx+16,by-3,2,2,CARD);
+}
+function drawPump(p,sx){
+  const bob=Math.sin(frame*0.08+p.x)*2;
+  const sy=p.y+bob;
+  qpx(sx-2,sy-9,4,4,BRASS);                            // stem
+  qpx(sx-8,sy-6,16,12,PUMPKIN);
+  qpx(sx-3,sy-6,2,12,PUMPKIN_D); qpx(sx+2,sy-6,2,12,PUMPKIN_D);
+  qpx(sx-5,sy-2,3,3,INK); qpx(sx+3,sy-2,3,3,INK);      // friendly face
+  qpx(sx-2,sy+3,5,2,INK);
+}
+
+/* ── ambient falling leaves inside the canvas ── */
+const fxLeaves=[];
+for(let i=0;i<16;i++) fxLeaves.push({x:Math.random()*W,y:Math.random()*H,vy:0.4+Math.random()*0.7,ph:Math.random()*6,c:[SCARLET,BRASS,PUMPKIN][i%3],s:3+Math.random()*3});
+
+/* ── main loop ── */
+function loopQ(){
+  requestAnimationFrame(loopQ);
+  if(!arcadeVisible()) return;
+  frame++;
+  const live = mode==='play';
+
+  /* jump key also starts / restarts from title, game-over, and win screens */
+  if(!live && mode!=='pause'){
+    if(k.j && !jHeld){ resetQ(); }
+    jHeld=k.j;
+  }
+
+  /* update */
+  if(live){
+    stepPlayer();
+    foes.forEach(f=>{
+      if(f.dead){ f.deadT--; return; }
+      f.x+=f.vx;
+      const ahead = f.vx>0 ? f.x+f.w+2 : f.x-2;
+      if(solidAt(ahead,f.y+f.h/2) || !solidAt(ahead,f.y+f.h+4)) f.vx*=-1;
+      if(overlap(P.x,P.y,P.w,P.h,f.x,f.y,f.w,f.h)){
+        if(P.vy>1.5 && (P.y+P.h)-f.y<14){ f.dead=true; f.deadT=40; P.vy=-7.2; score+=100; }
+        else hurt();
+      }
+    });
+    foes=foes.filter(f=>!f.dead||f.deadT>0);
+    bats.forEach(b=>{
+      b.y=b.cy+Math.sin(frame*0.045+b.ph)*b.amp;
+      if(overlap(P.x,P.y,P.w,P.h,b.x,b.y-8,30,16)) hurt();
+    });
+    pumps.forEach(p=>{
+      if(!p.got && overlap(P.x,P.y,P.w,P.h,p.x-8,p.y-9,16,18)){ p.got=true; pumpCount++; score+=50; }
+    });
+    if(mode==='win' && !winBurst){ winBurst=true; if(typeof leafBurst==='function') leafBurst(); }
+  }
+
+  const cam=Math.max(0,Math.min(P.x-280,COLS*T-W));
+
+  /* render */
+  const g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,DUSK_TOP); g.addColorStop(1,DUSK_BOT);
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  stars.forEach(s=>{ if(((frame+s.tw*10)>>5)&1) qpx(s.x,s.y,2,2,'rgba(245,237,223,0.5)'); });
+  ctx.fillStyle=PAPER; ctx.beginPath(); ctx.arc(W-90,56,20,0,7); ctx.fill();
+  ctx.fillStyle=DUSK_TOP; ctx.beginPath(); ctx.arc(W-81,51,17,0,7); ctx.fill();
+
+  // autumn trees (world space)
+  treeCols.forEach((c,i)=>{
+    const tx=c*T-cam;
+    if(tx<-60||tx>W+60) return;
+    qpx(tx,GROUND_TOP-38,6,38,INK);
+    const col=[PUMPKIN,'#B84A1F',BRASS][i%3];
+    qpx(tx-14,GROUND_TOP-58,34,22,col);
+    qpx(tx-8,GROUND_TOP-70,22,14,col);
+  });
+
+  // tiles
+  const c0=(cam/T)|0;
+  for(let c=c0;c<=c0+31&&c<COLS;c++){
+    for(let r=0;r<ROWS;r++){
+      if(!solid[r][c]) continue;
+      const sx=c*T-cam, sy=r*T;
+      if(r>=14){
+        qpx(sx,sy,T,T,SOIL);
+        if(r===14){ qpx(sx,sy,T,4,PUMPKIN_D); qpx(sx+4,sy,3,2,PUMPKIN); qpx(sx+14,sy,3,2,PUMPKIN); }
+      }else{
+        qpx(sx,sy,T,T,SCARLET_D);                    // Old Queens brick
+        qpx(sx,sy,T,3,SCARLET);
+        ctx.strokeStyle=INK; ctx.lineWidth=1;
+        ctx.strokeRect(sx+0.5,sy+0.5,T-1,T-1);
+        ctx.beginPath(); ctx.moveTo(sx,sy+12); ctx.lineTo(sx+T,sy+12);
+        ctx.moveTo(sx+12,sy); ctx.lineTo(sx+12,sy+12); ctx.moveTo(sx+6,sy+12); ctx.lineTo(sx+6,sy+T);
+        ctx.moveTo(sx+18,sy+12); ctx.lineTo(sx+18,sy+T); ctx.stroke();
+      }
+    }
+  }
+
+  // checkpoint flag
+  const cpx=CHECK_X-cam;
+  if(cpx>-30&&cpx<W+30){
+    qpx(cpx,GROUND_TOP-50,3,50,INK);
+    ctx.fillStyle=checkpoint?BRASS:SCARLET;
+    ctx.beginPath(); ctx.moveTo(cpx+3,GROUND_TOP-50); ctx.lineTo(cpx+24,GROUND_TOP-43); ctx.lineTo(cpx+3,GROUND_TOP-36);
+    ctx.closePath(); ctx.fill();
+  }
+
+  // goal: the Old Queens gate
+  const gx=GOAL_X-cam;
+  if(gx>-140&&gx<W+40){
+    qpx(gx,246,6,90,INK); qpx(gx+90,246,6,90,INK);
+    ctx.strokeStyle=INK; ctx.lineWidth=5;
+    ctx.beginPath(); ctx.arc(gx+48,250,48,Math.PI,0); ctx.stroke();
+    ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.arc(gx+48,250,38,Math.PI,0); ctx.stroke();
+    qpx(gx+46,202,4,14,INK);
+    ctx.fillStyle=BRASS; ctx.beginPath(); ctx.arc(gx+48,224,7,0,7); ctx.fill();
+    ctx.strokeStyle=INK; ctx.lineWidth=2; ctx.strokeRect(gx+42,217,12,15);
+    qpx(gx+8,300,80,16,PAPER);
+    ctx.fillStyle=INK; ctx.font='600 8px "IBM Plex Mono", monospace'; ctx.textAlign='center';
+    ctx.fillText('OLD QUEENS',gx+48,311);
+  }
+
+  pumps.forEach(p=>{ if(!p.got){ const sx=p.x-cam; if(sx>-20&&sx<W+20) drawPump(p,sx); } });
+  foes.forEach(f=>{ const sx=f.x-cam; if(sx>-30&&sx<W+30) drawFoe(f,sx); });
+  bats.forEach(b=>{ const sx=b.x-cam; if(sx>-40&&sx<W+40) drawBatQ(b,sx); });
+  drawHero(P.x-cam,P.y);
+
+  // ambient leaves (screen space)
+  fxLeaves.forEach(l=>{
+    if(live){ l.y+=l.vy; l.x+=Math.sin(frame*0.02+l.ph)*0.5; if(l.y>H+10){ l.y=-10; l.x=Math.random()*W; } }
+    ctx.save(); ctx.translate(l.x,l.y); ctx.rotate(frame*0.02+l.ph);
+    ctx.fillStyle=l.c; ctx.fillRect(-l.s/2,-l.s/2,l.s,l.s*0.7); ctx.restore();
+  });
+
+  /* HUD */
+  ctx.textAlign='left'; ctx.fillStyle=SCARLET_LT; ctx.font='16px serif';
+  for(let i=0;i<lives;i++) ctx.fillText('♥',14+i*18,26);
+  qpx(78,12,12,10,PUMPKIN); qpx(82,9,4,3,BRASS);
+  ctx.fillStyle=PAPER; ctx.font='600 13px "IBM Plex Mono", monospace';
+  ctx.fillText('×'+pumpCount,96,24);
+  ctx.textAlign='right';
+  ctx.fillText('SCORE '+String(Math.floor(score)).padStart(5,'0'),W-14,24);
+  ctx.textAlign='center';
+
+  /* overlays */
+  if(mode!=='play'){
+    ctx.fillStyle='rgba(18,10,6,0.72)'; ctx.fillRect(0,0,W,H);
+    if(mode==='title'){
+      ctx.fillStyle=PAPER; ctx.font='26px Graduate, serif';
+      ctx.fillText('SCARLET QUEST',W/2,H/2-46);
+      ctx.fillStyle=PUMPKIN; ctx.font='600 12px "IBM Plex Mono", monospace';
+      ctx.fillText('A RUTGERS HALLOWEEN PLATFORMER',W/2,H/2-20);
+      ctx.fillStyle='#C9B79E';
+      ctx.fillText('ARROWS / A·D MOVE · SPACE JUMP · ON MOBILE: BUTTONS BELOW',W/2,H/2+10);
+      ctx.fillStyle=PAPER;
+      ctx.fillText('PRESS ▶ START OR TAP TO PLAY',W/2,H/2+36);
+    }else if(mode==='pause'){
+      ctx.fillStyle=PAPER; ctx.font='22px Graduate, serif';
+      ctx.fillText('PAUSED',W/2,H/2-8);
+      ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
+      ctx.fillText('HIT RESUME TO KEEP QUESTING',W/2,H/2+20);
+    }else if(mode==='over'){
+      ctx.fillStyle=SCARLET_LT; ctx.font='24px Graduate, serif';
+      ctx.fillText('GAME OVER',W/2,H/2-14);
+      ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
+      ctx.fillText('SCORE '+Math.floor(score)+' · PRESS ▶ START TO TRY AGAIN',W/2,H/2+16);
+    }else if(mode==='win'){
+      ctx.fillStyle=BRASS; ctx.font='24px Graduate, serif';
+      ctx.fillText('YOU REACHED OLD QUEENS!',W/2,H/2-20);
+      ctx.fillStyle=PAPER; ctx.font='600 13px "IBM Plex Mono", monospace';
+      ctx.fillText('SCORE '+Math.floor(score)+' · PUMPKINS '+pumpCount+'/'+pumps.length,W/2,H/2+8);
+      ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
+      ctx.fillText('PRESS ▶ START TO QUEST AGAIN',W/2,H/2+34);
+    }
+  }
+}
+loopQ();
 })();
 </script>
 </body>

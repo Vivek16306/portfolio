@@ -4,96 +4,152 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Vivek Vinod Patel — IT Career Portfolio</title>
+<meta name="description" content="IT career portfolio of Vivek Vinod Patel, Information Technology &amp; Informatics student at Rutgers University."/>
+<meta name="theme-color" content="#1A100A"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Graduate&family=IBM+Plex+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F5EDDF;
-  --card:#FFFDF6;
-  --ink:#26190F;
-  --ink-soft:#5C4A38;
-  --ink-faint:#8A7660;
+  /* palette: near-black, espresso, taupe, tan (from the mood board) + Rutgers scarlet */
+  --night:#0B0705;
+  --espresso:#241308;
+  --page:#1A100A;
+  --taupe:#6E675B;
+  --tan:#B49C82;
+  --cream:#F3E8D6;
+  --cream-soft:#D2C1A8;
+  --lamp:#F6CF8A;
+  /* surfaces + ink used inside parchment cards */
+  --card:#EFE4D2;
+  --paper:#E5D6BF;
+  --ink:#241308;
+  --ink-soft:#56412F;
+  --ink-faint:#776350;
+  --rule:#CDB99C;
   --scarlet:#CC0033;
   --scarlet-dark:#8F0024;
-  --scarlet-wash:#F9E3E5;
+  --scarlet-wash:#F4D9D3;
   --brass:#B78A3C;
-  --rule:#D9CBB4;
-  --shadow:6px 6px 0 rgba(38,25,15,0.16);
-  --shadow-sm:4px 4px 0 rgba(38,25,15,0.16);
+  --shadow:6px 6px 0 rgba(0,0,0,0.5);
+  --shadow-sm:4px 4px 0 rgba(0,0,0,0.45);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
 body{
   font-family:'Lora',Georgia,serif;
-  background:var(--paper);
-  background-image:radial-gradient(rgba(204,0,51,0.055) 1px,transparent 1px);
-  background-size:22px 22px;
-  color:var(--ink);
+  background-color:var(--page);
+  background-image:
+    radial-gradient(ellipse 90% 50% at 50% 0%,rgba(246,207,138,0.06),transparent 70%),
+    repeating-linear-gradient(90deg,rgba(255,255,255,0.012) 0 2px,transparent 2px 9px);
+  color:var(--cream);
   line-height:1.6;
 }
 a{color:var(--scarlet);text-decoration:none;border-bottom:1px solid rgba(204,0,51,0.35)}
 a:hover{color:var(--scarlet-dark);border-bottom-color:var(--scarlet-dark)}
 button{font-family:inherit}
-:focus-visible{outline:3px solid var(--scarlet);outline-offset:3px;border-radius:2px}
-::selection{background:var(--scarlet);color:var(--card)}
+:focus-visible{outline:3px solid var(--lamp);outline-offset:3px;border-radius:2px}
+::selection{background:var(--scarlet);color:var(--cream)}
 
 .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
-.display{font-family:'Graduate',serif}
+.display{font-family:'Grenze Gotisch',serif;font-weight:600;letter-spacing:0.01em}
 
 /* ── NAV ─────────────────────────────── */
 nav{
-  background:var(--card);
-  border-bottom:3px double var(--ink);
+  background:rgba(13,8,5,0.94);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-bottom:3px solid var(--scarlet);
+  box-shadow:0 2px 0 rgba(183,138,60,0.55);
   position:sticky;top:0;z-index:100;
 }
-.nav-inner{max-width:1040px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:12px}
-.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;min-height:66px;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:12px;flex-shrink:0;cursor:pointer;background:none;border:none;color:inherit;padding:0}
 .avatar{
-  width:38px;height:38px;background:var(--scarlet);color:var(--card);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Graduate',serif;font-size:14px;
-  border:2px solid var(--ink);box-shadow:3px 3px 0 rgba(38,25,15,0.2);
+  width:38px;height:44px;background:var(--scarlet);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;padding-bottom:6px;
+  font-family:'Grenze Gotisch',serif;font-weight:700;font-size:19px;
+  clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%);
+  box-shadow:inset 0 0 0 2px rgba(243,232,214,0.45);
 }
-.nav-name{font-family:'Graduate',serif;font-size:14px;letter-spacing:0.06em;color:var(--ink);white-space:nowrap}
-.nav-links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.nav-name{font-family:'Grenze Gotisch',serif;font-weight:600;font-size:22px;letter-spacing:0.01em;color:var(--cream);white-space:nowrap}
+.nav-links{position:relative;display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end;align-self:stretch;align-items:flex-start}
 .nav-btn{
-  background:transparent;color:var(--ink-soft);border:2px solid transparent;
-  padding:6px 9px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
-  letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;white-space:nowrap;
+  background:transparent;color:var(--cream-soft);border:none;
+  padding:22px 9px 16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;position:relative;
+  transition:color .15s,background .2s;
 }
-.nav-btn:hover{color:var(--scarlet);border-color:var(--scarlet)}
-.nav-btn.active{background:var(--scarlet);color:var(--card);border-color:var(--ink);box-shadow:2px 2px 0 rgba(38,25,15,0.25)}
+.nav-btn::after{content:"";position:absolute;left:9px;right:9px;bottom:10px;height:2px;background:var(--lamp);transform:scaleX(0);transition:transform .2s}
+.nav-btn:hover{color:var(--lamp)}
+.nav-btn:hover::after{transform:scaleX(1)}
+/* the active page hangs like a little pennant */
+.nav-btn.active{
+  background:var(--scarlet);color:var(--cream);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);
+  padding-bottom:22px;
+}
+.nav-btn.active::after{display:none}
 
 main{max-width:1040px;margin:0 auto;padding:52px 20px 90px}
 .section{display:none}
-.section.visible{display:block;animation:fadein 0.35s ease}
-@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.section.visible{display:block}
+.section.enter-next{animation:slideNext .55s cubic-bezier(.2,.75,.25,1) both}
+.section.enter-prev{animation:slidePrev .55s cubic-bezier(.2,.75,.25,1) both}
+@keyframes slideNext{from{opacity:0;transform:translateX(64px)}to{opacity:1;transform:none}}
+@keyframes slidePrev{from{opacity:0;transform:translateX(-64px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
-  .section.visible{animation:none}
+  .section.enter-next,.section.enter-prev{animation:none}
   *{transition:none !important}
 }
 
-/* ── SPIRAL ORNAMENT (Old Queens gate) ── */
-.scroll-divider{display:block;width:250px;max-width:70%;height:auto;margin:0 auto 14px;color:var(--scarlet)}
-.scroll-divider .brass{color:var(--brass)}
+/* ── IRON SCROLL ORNAMENT ───────────── */
+.scroll-divider{display:block;width:230px;max-width:70%;height:auto;margin:0 auto 14px;color:var(--cream-soft)}
 
-/* ── SECTION HEADERS ─────────────────── */
-.sec-header{text-align:center;margin-bottom:40px}
-.sec-header h2{font-family:'Graduate',serif;font-size:30px;font-weight:400;letter-spacing:0.03em;color:var(--ink);margin-bottom:8px}
-.sec-header p{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);letter-spacing:0.04em}
+/* ── SECTION HEADERS: hanging scarlet banners ── */
+.sec-header{text-align:center;margin:0 auto 52px;max-width:640px;position:relative}
+.banner-rod{display:block;width:100%;height:auto;color:#0B0705;position:relative;z-index:2;
+  filter:drop-shadow(0 1px 0 rgba(210,193,168,0.5))}
+.banner-wrap{width:84%;margin:-3.6% auto 0;position:relative;transform-origin:50% 0;filter:drop-shadow(6px 7px 0 rgba(0,0,0,0.45))}
+.section.visible .banner-wrap{animation:unfurl .8s cubic-bezier(.2,.8,.2,1) both}
+.banner{
+  position:relative;padding:40px 30px 66px;color:var(--cream);
+  transform-origin:50% 0;animation:bannerSway 7s ease-in-out infinite alternate;
+}
+.banner-bg{position:absolute;inset:0;width:100%;height:100%;z-index:-1;overflow:visible}
+.banner h2{font-family:'Grenze Gotisch',serif;font-size:46px;font-weight:600;line-height:1.02;letter-spacing:0.01em;margin-bottom:10px;text-shadow:0 2px 0 rgba(80,0,18,0.45)}
+.banner p{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;color:#FFF3EC;letter-spacing:0.07em;line-height:1.6;max-width:440px;margin:0 auto}
+.banner-rings{position:absolute;left:0;right:0;top:-9px;height:16px;pointer-events:none}
+.banner-rings i{position:absolute;top:0;width:11px;height:16px;border:2.5px solid #0B0705;border-radius:50%}
+.banner-rings i:first-child{left:7%}
+.banner-rings i:last-child{right:7%}
+@keyframes unfurl{from{transform:scaleY(0.08);opacity:0}60%{opacity:1}to{transform:none;opacity:1}}
+@keyframes bannerSway{from{transform:rotate(-0.7deg)}to{transform:rotate(0.7deg)}}
+@media (prefers-reduced-motion:reduce){.banner,.section.visible .banner-wrap{animation:none}}
+
+/* ribbon heading used on the home page */
+.ribbon{
+  display:inline-block;position:relative;background:var(--scarlet);color:var(--cream);
+  font-family:'Grenze Gotisch',serif;font-weight:600;font-size:26px;line-height:1;
+  padding:11px 46px 13px;letter-spacing:0.01em;
+  clip-path:polygon(0 0,100% 0,calc(100% - 18px) 50%,100% 100%,0 100%,18px 50%);
+  box-shadow:inset 0 0 0 2px rgba(243,232,214,0.35);
+}
+.ribbon-wrap{text-align:center;margin-bottom:12px;filter:drop-shadow(4px 5px 0 rgba(0,0,0,0.45))}
+.ribbon-sub{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--cream-soft);text-transform:uppercase;margin-bottom:28px}
 
 /* ── CARDS ───────────────────────────── */
-.card{
-  background:var(--card);border:2px solid var(--ink);padding:24px;
+.card,.card-lg{
+  background:var(--card);color:var(--ink);border:2px solid var(--night);
   box-shadow:var(--shadow-sm);position:relative;
 }
-.card-lg{
-  background:var(--card);border:2px solid var(--ink);padding:36px;
-  box-shadow:var(--shadow);position:relative;
+.card{padding:24px}
+.card-lg{padding:36px;box-shadow:var(--shadow)}
+.card::before,.card-lg::before{ /* thin inner rule, like a printed border */
+  content:"";position:absolute;inset:5px;border:1px solid rgba(36,19,8,0.14);pointer-events:none;
 }
-.card-hover{transition:transform 0.15s,box-shadow 0.15s}
-.card-hover:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 rgba(38,25,15,0.16)}
+.card-hover{transition:transform 0.18s,box-shadow 0.18s}
+.card-hover:hover{transform:translate(-2px,-3px);box-shadow:8px 9px 0 rgba(0,0,0,0.5),0 0 28px rgba(246,207,138,0.16)}
 
 .corner-tab{
   position:absolute;top:-2px;right:-2px;width:0;height:0;
@@ -107,7 +163,7 @@ main{max-width:1040px;margin:0 auto;padding:52px 20px 90px}
 /* ── STAMPS & PILLS ──────────────────── */
 .pill{
   font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;
-  letter-spacing:0.1em;text-transform:uppercase;color:var(--scarlet);
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--scarlet-dark);
   border:1.5px solid var(--scarlet);padding:3px 10px;display:inline-block;margin-bottom:10px;
   background:var(--scarlet-wash);
 }
@@ -120,157 +176,162 @@ main{max-width:1040px;margin:0 auto;padding:52px 20px 90px}
 .btn-primary,.btn-outline,.page-nav-btn{
   font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:600;
   letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;
-  padding:12px 22px;transition:transform 0.12s,box-shadow 0.12s;
+  padding:12px 22px;transition:transform 0.12s,box-shadow 0.12s,background .15s;
 }
 .btn-primary{
-  background:var(--scarlet);color:var(--card);border:2px solid var(--ink);
-  box-shadow:4px 4px 0 var(--ink);
+  background:var(--scarlet);color:var(--cream);border:2px solid var(--night);
+  box-shadow:4px 4px 0 var(--night);
 }
-.btn-primary:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
-.btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn-primary:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--night),0 0 22px rgba(204,0,51,0.35)}
+.btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--night)}
 .btn-outline{
-  background:var(--card);color:var(--ink);border:2px solid var(--ink);
-  box-shadow:4px 4px 0 rgba(38,25,15,0.25);
+  background:transparent;color:var(--cream);border:2px solid var(--cream-soft);
+  box-shadow:4px 4px 0 rgba(0,0,0,0.5);
 }
-.btn-outline:hover{background:var(--scarlet-wash);color:var(--scarlet-dark);transform:translate(-1px,-1px)}
+.btn-outline:hover{background:rgba(246,207,138,0.1);color:var(--lamp);border-color:var(--lamp);transform:translate(-1px,-1px)}
 
-/* ── HERO ────────────────────────────── */
+/* ── HOME INTRO ──────────────────────── */
+#sec-Home{margin-top:-52px}
+.intro{gap:48px;align-items:center;margin:56px 0 72px}
 .hero-eyebrow{
   font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--scarlet);margin-bottom:16px;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--lamp);margin-bottom:14px;
   display:flex;align-items:center;gap:10px;
 }
 .hero-eyebrow::before{content:"";width:34px;height:2px;background:var(--scarlet)}
 h1.hero-name{
-  font-family:'Graduate',serif;font-weight:400;font-size:52px;line-height:1.08;
-  color:var(--ink);margin-bottom:6px;letter-spacing:0.01em;
+  font-family:'Grenze Gotisch',serif;font-weight:600;font-size:64px;line-height:0.98;
+  color:var(--cream);margin-bottom:10px;letter-spacing:0.005em;
 }
-h1.hero-name .accent{color:var(--scarlet)}
-.hero-sub{
-  font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-faint);
-  letter-spacing:0.06em;margin-bottom:20px;
-}
+h1.hero-name .accent{color:#E8314F}
+.hero-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream-soft);letter-spacing:0.06em;margin-bottom:20px}
 .hero-links{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;font-size:13px}
-.hero-links a{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);border-bottom:none}
-.hero-links a:hover{color:var(--scarlet)}
-.hero p.lead{font-size:15.5px;color:var(--ink-soft);line-height:1.85;margin-bottom:14px}
-.hero strong{color:var(--ink)}
-.hero .track{color:var(--scarlet);font-weight:600}
+.hero-links a{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream-soft);border-bottom:none}
+.hero-links a:hover{color:var(--lamp)}
+.hero p.lead{font-size:15.5px;color:#E2D4BF;line-height:1.85;margin-bottom:14px}
+.hero strong{color:var(--cream)}
+.hero .track{color:var(--lamp);font-weight:600}
 
 /* ticket-stub side cards */
 .stub{
-  background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow-sm);
-  padding:20px 20px 20px 26px;position:relative;
+  background:var(--card);color:var(--ink);border:2px solid var(--night);box-shadow:var(--shadow-sm);
+  padding:20px 20px 20px 28px;position:relative;
 }
-.stub::before{
-  content:"";position:absolute;left:8px;top:8px;bottom:8px;
-  border-left:2px dashed var(--rule);
-}
+.stub::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;border-left:2px dashed var(--rule)}
 .stub .pill{margin-bottom:6px}
 .stub-title{font-size:15px;font-weight:600;color:var(--ink)}
 .stub-meta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint);margin-top:4px;line-height:1.7}
 
 /* rotated stamp */
 .stamp{
-  position:absolute;top:-16px;right:-10px;transform:rotate(7deg);
-  font-family:'Graduate',serif;font-size:11px;letter-spacing:0.1em;color:var(--scarlet);
-  border:2.5px solid var(--scarlet);padding:7px 12px;background:var(--card);
-  box-shadow:3px 3px 0 rgba(38,25,15,0.15);
+  position:absolute;top:-18px;right:-10px;transform:rotate(7deg);z-index:2;
+  font-family:'Grenze Gotisch',serif;font-weight:600;font-size:17px;letter-spacing:0.02em;color:var(--scarlet);
+  border:2.5px solid var(--scarlet);padding:4px 12px 6px;background:var(--card);
+  box-shadow:3px 3px 0 rgba(0,0,0,0.4);
 }
+
+/* ── SKILLS IN USE NOW ───────────────── */
+.skills-now{margin-bottom:72px}
+.skill{display:flex;flex-direction:column;gap:10px;padding:22px 20px 20px}
+.skill-ico{
+  width:52px;height:52px;display:grid;place-items:center;flex-shrink:0;
+  background:var(--espresso);color:var(--lamp);border:2px solid var(--night);
+  box-shadow:inset 0 0 0 2px rgba(183,138,60,0.55);
+}
+.skill-ico svg{width:28px;height:28px}
+.skill h3{font-family:'Grenze Gotisch',serif;font-weight:600;font-size:24px;line-height:1.05;color:var(--ink)}
+.skill p{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
+.skill .chip{
+  align-self:flex-start;margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;padding:3px 8px;border:1.5px solid var(--ink);color:var(--ink);
+}
+.skill .chip.live{background:var(--scarlet);border-color:var(--scarlet);color:var(--cream)}
 
 /* quick links */
 .ql-card{
-  background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow-sm);
-  padding:18px;cursor:pointer;text-align:left;transition:transform 0.13s,box-shadow 0.13s;width:100%;
+  background:var(--card);color:var(--ink);border:2px solid var(--night);box-shadow:var(--shadow-sm);
+  padding:18px;cursor:pointer;text-align:left;transition:transform 0.15s,box-shadow 0.15s,background .15s;width:100%;position:relative;
 }
-.ql-card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 rgba(38,25,15,0.16);border-color:var(--scarlet)}
-.ql-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--scarlet);letter-spacing:0.1em;margin-bottom:6px}
-.ql-name{font-family:'Graduate',serif;font-size:13px;color:var(--ink)}
+.ql-card:hover{transform:translate(-2px,-3px);box-shadow:7px 8px 0 rgba(0,0,0,0.5),0 0 26px rgba(246,207,138,0.18);background:#F6EDDF}
+.ql-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--scarlet);letter-spacing:0.1em;margin-bottom:4px}
+.ql-name{font-family:'Grenze Gotisch',serif;font-weight:600;font-size:21px;line-height:1.05;color:var(--ink)}
 
 /* ── RESUME ──────────────────────────── */
 .resume-doc{
-  background:var(--card);border:2px solid var(--ink);box-shadow:var(--shadow);
-  padding:44px;max-width:740px;margin:0 auto;
+  background:var(--card);color:var(--ink);border:2px solid var(--night);box-shadow:var(--shadow);
+  padding:44px;max-width:760px;margin:0 auto;position:relative;
 }
+.resume-doc::before{content:"";position:absolute;inset:6px;border:1px solid rgba(36,19,8,0.14);pointer-events:none}
 .resume-head{text-align:center;margin-bottom:26px;padding-bottom:20px;border-bottom:3px double var(--ink)}
-.resume-head h2{font-family:'Graduate',serif;font-weight:400;font-size:26px;color:var(--ink);margin-bottom:8px}
+.resume-head h2{font-family:'Grenze Gotisch',serif;font-weight:600;font-size:38px;line-height:1;color:var(--ink);margin-bottom:10px}
 .resume-head p{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-faint)}
 .resume-sec-title{
-  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--scarlet);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--scarlet-dark);
   text-transform:uppercase;letter-spacing:0.14em;padding-bottom:6px;
   border-bottom:2px solid var(--scarlet);margin-bottom:14px;
 }
 .resume-doc ul{padding-left:18px;font-size:13.5px;color:var(--ink-soft);line-height:2}
 .resume-doc li::marker{color:var(--scarlet)}
+.resume-doc .new-skill{background:linear-gradient(transparent 62%,rgba(246,207,138,0.55) 62%)}
 
 /* ── STATS / REFERENCES / MISC ───────── */
 .stat-box{background:var(--paper);border:1.5px solid var(--rule);padding:16px 20px;text-align:center}
-.stat-num{font-family:'Graduate',serif;font-size:30px;color:var(--scarlet)}
+.stat-num{font-family:'Grenze Gotisch',serif;font-weight:700;font-size:40px;line-height:1;color:var(--scarlet)}
 .stat-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);margin-top:4px;letter-spacing:0.05em;text-transform:uppercase}
 .ref-av{
-  width:54px;height:54px;background:var(--scarlet);color:var(--card);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Graduate',serif;font-size:16px;flex-shrink:0;
-  border:2px solid var(--ink);box-shadow:3px 3px 0 rgba(38,25,15,0.2);
+  width:54px;height:62px;background:var(--scarlet);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;padding-bottom:8px;
+  font-family:'Grenze Gotisch',serif;font-weight:700;font-size:23px;flex-shrink:0;
+  clip-path:polygon(0 0,100% 0,100% 64%,50% 100%,0 64%);
 }
 .callout{
   background:var(--scarlet-wash);border:1.5px solid var(--scarlet);
   padding:16px 18px;font-size:14px;color:var(--scarlet-dark);
 }
-
-/* resource list */
 .res-num{
-  font-family:'Graduate',serif;font-size:24px;color:var(--scarlet);
-  min-width:44px;line-height:1;flex-shrink:0;border-right:2px solid var(--rule);padding-right:14px;
+  font-family:'Grenze Gotisch',serif;font-weight:700;font-size:32px;color:var(--scarlet);
+  min-width:48px;line-height:1;flex-shrink:0;border-right:2px solid var(--rule);padding-right:14px;
 }
 
 /* ── PAGE NAV ────────────────────────── */
-.page-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:52px;padding-top:26px;border-top:3px double var(--rule);flex-wrap:wrap}
-.page-nav-btn{background:var(--card);color:var(--scarlet-dark);border:2px solid var(--ink);box-shadow:3px 3px 0 rgba(38,25,15,0.2);padding:10px 16px;font-size:11.5px;white-space:nowrap}
-.page-nav-btn:hover{background:var(--scarlet-wash);transform:translate(-1px,-1px)}
-.page-nav-btn.home{background:var(--scarlet);color:var(--card)}
+.page-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:56px;padding-top:26px;border-top:1px solid rgba(180,156,130,0.35);flex-wrap:wrap}
+.page-nav-btn{background:var(--card);color:var(--scarlet-dark);border:2px solid var(--night);box-shadow:3px 3px 0 rgba(0,0,0,0.45);padding:10px 16px;font-size:11.5px;white-space:nowrap}
+.page-nav-btn:hover{background:#F8EFE2;transform:translate(-1px,-1px)}
+.page-nav-btn.home{background:var(--scarlet);color:var(--cream)}
 .page-nav-btn.home:hover{background:var(--scarlet-dark)}
 .page-nav-btn:disabled{opacity:0.3;cursor:default;pointer-events:none;transform:none}
 
 /* ── FOOTER ──────────────────────────── */
 footer{
-  background:var(--ink);color:#C9B79E;text-align:center;padding:36px 20px;font-size:13px;
-  border-top:5px solid var(--scarlet);
+  background:var(--night);color:var(--cream-soft);text-align:center;padding:40px 20px 44px;font-size:13px;
+  border-top:5px solid var(--scarlet);box-shadow:0 -2px 0 rgba(183,138,60,0.5);
 }
-footer .display{color:var(--card);font-size:15px;letter-spacing:0.05em;display:block;margin-bottom:6px}
+footer .display{color:var(--cream);font-size:28px;display:block;margin-bottom:6px}
 footer .mono{font-size:11px;letter-spacing:0.06em}
-footer a{color:#C9B79E;border-bottom:1px solid rgba(201,183,158,0.4)}
-footer a:hover{color:var(--card)}
-footer .scroll-divider{color:var(--scarlet);opacity:0.9;margin-bottom:18px}
+footer a{color:var(--cream-soft);border-bottom:1px solid rgba(210,193,168,0.4)}
+footer a:hover{color:var(--lamp);border-bottom-color:var(--lamp)}
+footer .scroll-divider{color:var(--cream-soft);margin-bottom:18px}
 
 /* ── SCREENPRINT GRAIN OVERLAY ───────── */
 body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.055;
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.06;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ── OLD QUEENS GATE ARCH ────────────── */
-.gate-arch{display:block;width:min(640px,100%);height:auto;margin:0 auto 10px;color:var(--ink)}
-.lantern-glow{animation:glowPulse 3.2s ease-in-out infinite}
-@keyframes glowPulse{0%,100%{opacity:0.55}50%{opacity:1}}
-@media (prefers-reduced-motion:reduce){.lantern-glow{animation:none;opacity:0.85}}
-
-/* ── SCARLET KNIGHT RUN (mini game) ──── */
-.game-frame{background:#1D130C;border:2px solid var(--ink);box-shadow:var(--shadow);margin:8px 0 60px;position:relative;overflow:hidden}
-.game-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:var(--scarlet);border-bottom:2px solid var(--ink);flex-wrap:wrap}
-.game-title{font-family:'Graduate',serif;color:var(--card);font-size:14px;letter-spacing:0.06em}
-.game-hint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#F5C6CF;text-transform:uppercase}
+/* ── GAMES ───────────────────────────── */
+.game-frame{background:#1D130C;border:2px solid var(--night);box-shadow:var(--shadow),0 0 0 1px rgba(183,138,60,0.35);margin:8px 0 72px;position:relative;overflow:hidden}
+.game-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;background:var(--scarlet);border-bottom:2px solid var(--night);flex-wrap:wrap}
+.game-title{font-family:'Grenze Gotisch',serif;font-weight:600;color:var(--cream);font-size:21px;line-height:1;letter-spacing:0.01em}
+.game-hint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#F8D3D9;text-transform:uppercase}
 #knightGame{display:block;width:100%;height:auto;touch-action:none;cursor:pointer}
 #questGame{display:block;width:100%;height:auto;touch-action:none}
-
-/* ── GAME BUTTONS & TOUCH CONTROLS ───── */
 .game-controls{display:flex;gap:8px;align-items:center}
 .game-btn{
   font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:0.08em;
-  background:var(--card);color:var(--scarlet-dark);border:2px solid var(--ink);
+  background:var(--card);color:var(--scarlet-dark);border:2px solid var(--night);
   padding:6px 12px;cursor:pointer;box-shadow:2px 2px 0 rgba(0,0,0,0.35);
 }
-.game-btn:hover{background:var(--scarlet-wash)}
+.game-btn:hover{background:#F8EFE2}
 .game-btn:active{transform:translate(1px,1px);box-shadow:1px 1px 0 rgba(0,0,0,0.35)}
 .touch-row{display:none;gap:10px;padding:12px;background:#1D130C;border-top:2px solid var(--scarlet)}
 .touch-btn{
@@ -279,68 +340,180 @@ body::after{
   box-shadow:0 3px 0 var(--scarlet);user-select:none;-webkit-user-select:none;touch-action:none;
 }
 .touch-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--scarlet)}
-.touch-jump{flex:1.4;background:var(--scarlet);color:var(--card);border-color:var(--ink);box-shadow:0 3px 0 var(--ink)}
+.touch-jump{flex:1.4;background:var(--scarlet);color:var(--cream);border-color:var(--night);box-shadow:0 3px 0 var(--night)}
 @media (pointer:coarse){.touch-row{display:flex}}
 
-/* ── FALLING LEAVES ON TAB CHANGE ────── */
-#leafLayer{position:fixed;inset:0;pointer-events:none;z-index:9998;overflow:hidden}
-.leaf{
-  position:fixed;top:-8vh;will-change:transform;
-  animation-name:leafFall;animation-timing-function:linear;animation-fill-mode:forwards;
+@media(max-width:860px){
+  .nav-name{display:none}
 }
-@keyframes leafFall{
-  0%{transform:translate3d(0,-8vh,0) rotate(0deg)}
-  25%{transform:translate3d(6vw,25vh,0) rotate(100deg)}
-  50%{transform:translate3d(-4vw,52vh,0) rotate(200deg)}
-  75%{transform:translate3d(5vw,78vh,0) rotate(310deg)}
-  100%{transform:translate3d(-2vw,112vh,0) rotate(430deg)}
-}
-@media (prefers-reduced-motion:reduce){.leaf{display:none}}
-
 @media(max-width:720px){
   .grid2,.grid3,.grid4{grid-template-columns:1fr}
-  /* give the games the full screen width on phones */
+  .grid4.ql-grid{grid-template-columns:1fr 1fr}
   .game-frame{margin-left:-20px;margin-right:-20px;border-left:none;border-right:none;box-shadow:none}
   .touch-row{display:flex}
   .touch-btn{padding:16px 0;font-size:15px}
   .game-head{padding:8px 12px}
-  .game-title{font-size:12px}
+  .game-title{font-size:18px}
   .game-hint{display:none}
-  h1.hero-name{font-size:34px}
-  .nav-name{display:none}
-  .nav-links{gap:2px}
-  .nav-btn{font-size:9.5px;padding:5px 6px}
-  .resume-doc{padding:26px 20px}
+  h1.hero-name{font-size:46px}
+  .intro{margin:40px 0 56px;gap:36px}
+  .nav-inner{padding:0 0 0 12px;min-height:56px;gap:8px}
+  .avatar{width:32px;height:38px;font-size:16px}
+  .nav-links{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:0;scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);padding-right:28px}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-btn{font-size:10px;padding:20px 9px 16px;flex-shrink:0}
+  .nav-btn.active{padding-bottom:20px}
+  .nav-btn::after{left:9px;right:9px;bottom:9px}
+  .resume-doc{padding:28px 20px}
+  .resume-head h2{font-size:32px}
   .card-lg{padding:24px 20px}
   .page-nav{flex-direction:column;align-items:stretch}
   .page-nav-btn{width:100%;text-align:center}
-  .stamp{position:static;display:inline-block;margin-bottom:12px;transform:rotate(-2deg)}
+  .stamp{position:static;display:inline-block;margin-bottom:6px;transform:rotate(-2deg);align-self:flex-start}
+  .banner{padding:34px 18px 58px}
+  .banner h2{font-size:36px}
+  .banner-wrap{width:92%}
+  .ribbon{font-size:22px;padding:10px 36px 12px}
+  .sec-header{margin-bottom:40px}
 }
+
+/* ── HERO SLIDESHOW ──────────────────── */
+.show{
+  position:relative;width:100vw;margin-left:calc(50% - 50vw);
+  height:clamp(420px,50vw,640px);
+  height:clamp(420px,min(50vw,100vh - 190px),640px);
+  height:clamp(420px,min(50vw,100svh - 190px),640px);
+  background:#070403;overflow:hidden;isolation:isolate;
+  border-bottom:5px solid var(--scarlet);
+  box-shadow:0 1px 0 var(--brass) inset;
+}
+.show::after{ /* thin brass rule under the scarlet band */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--brass);opacity:.65;z-index:6;pointer-events:none;
+}
+.slide{position:absolute;inset:0;visibility:hidden}
+.slide.is-active{visibility:visible;z-index:2}
+.slide.is-entering{visibility:visible;z-index:3}
+.scene{display:block;width:100%;height:100%;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.lantern{cursor:pointer;outline:none}
+.lantern:focus-visible .lantern-ring{opacity:1}
+.tree,.banner-flag,.campus-lamp{cursor:pointer}
+.lamp-invite{transform-box:fill-box;transform-origin:center;animation:invite 2.4s ease-out infinite;pointer-events:none}
+.lamp-invite.done{animation:none;opacity:0;transition:opacity .4s}
+@keyframes invite{0%{transform:scale(.7);opacity:.75}80%,100%{transform:scale(1.6);opacity:0}}
+.refl rect{animation:shimmer 2.4s ease-in-out infinite}
+@keyframes shimmer{0%,100%{opacity:.95}50%{opacity:.35}}
+.sway-night{transform-box:fill-box;transform-origin:50% 100%;animation:nightSway 7s ease-in-out infinite alternate}
+@keyframes nightSway{from{transform:rotate(-.6deg)}to{transform:rotate(.6deg)}}
+
+/* caption plate, bottom-left */
+.slide-cap{
+  position:absolute;left:clamp(16px,4vw,48px);bottom:clamp(54px,7vw,70px);z-index:4;max-width:min(440px,calc(100% - 32px));
+  color:#F3E8D6;pointer-events:none;
+  opacity:0;transform:translateY(10px);transition:opacity .6s .5s,transform .6s .5s;
+}
+.slide.is-active .slide-cap{opacity:1;transform:none}
+.slide-cap .cap-kicker{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:#F6CF8A;display:flex;align-items:center;gap:10px;margin-bottom:4px;
+}
+.slide-cap .cap-kicker::before{content:"";width:26px;height:2px;background:var(--scarlet)}
+.slide-cap .cap-title{
+  font-family:'Grenze Gotisch',serif;font-weight:600;font-size:clamp(30px,4.4vw,50px);line-height:1;letter-spacing:.01em;
+  text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 24px rgba(0,0,0,.6);
+}
+.slide-cap .cap-sub{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#E3D3BC;margin-top:8px;
+  text-shadow:0 1px 6px rgba(0,0,0,.9);
+}
+.slide-trees .slide-cap{color:#2B170D}
+.slide-trees .slide-cap .cap-title{text-shadow:0 2px 0 rgba(255,240,225,.55)}
+.slide-trees .slide-cap .cap-kicker{color:#8F0024}
+.slide-trees .slide-cap .cap-sub{color:#3A2214;text-shadow:0 1px 6px rgba(255,236,220,.9)}
+.slide-trees .slide-cap{
+  background:#F4E5D0;padding:12px 18px 14px;border-left:5px solid var(--scarlet);max-width:min(470px,calc(100% - 32px));
+  box-shadow:5px 5px 0 rgba(43,23,13,.28);
+}
+.slide-trees .slide-cap .cap-title{font-size:clamp(28px,3.6vw,42px)}
+
+/* controls */
+.show-ui{
+  position:absolute;right:clamp(12px,3vw,40px);bottom:clamp(14px,2.4vw,22px);z-index:5;
+  display:flex;align-items:center;gap:8px;
+}
+.show-btn{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:rgba(20,12,8,.62);color:#F3E8D6;border:1.5px solid rgba(243,232,214,.55);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);transition:background .15s,border-color .15s,transform .15s;
+}
+.show-btn:hover{background:var(--scarlet);border-color:var(--scarlet);transform:translateY(-1px)}
+.show-btn svg{width:16px;height:16px}
+.show-pause .i-play{display:none}
+.show-pause.paused .i-play{display:block}
+.show-pause.paused .i-pause{display:none}
+.show-dots{display:flex;gap:8px;padding:0 4px}
+.show-dot{
+  width:30px;height:30px;border:none;background:none;cursor:pointer;padding:0;display:grid;place-items:center;
+}
+.show-dot span{
+  width:11px;height:11px;border-radius:50%;border:1.5px solid #F3E8D6;background:rgba(20,12,8,.5);transition:all .25s;
+}
+.show-dot.on span{background:#F6CF8A;border-color:#F6CF8A;box-shadow:0 0 0 3px rgba(246,207,138,.25),0 0 14px #F6CF8A}
+.show-progress{position:absolute;left:0;bottom:0;height:3px;background:#F6CF8A;z-index:7;width:0;opacity:.85;pointer-events:none;box-shadow:0 0 8px #F6CF8A}
+@keyframes showProgress{from{width:0}to{width:100%}}
+.lantern-ring{opacity:0;transition:opacity .2s}
+@media (max-width:720px){
+  /* phones: the scene sits on top, the caption gets its own band underneath */
+  .show{--band:104px;height:calc(clamp(300px,96vw,430px) + var(--band))}
+  .slide{background:#0B0705}
+  .slide-trees{background:#F1E0C9}
+  .scene{height:calc(100% - var(--band))}
+  .slide-cap{left:16px;right:16px;bottom:16px;max-width:none}
+  .slide-cap .cap-title{font-size:30px}
+  .slide-cap .cap-sub{font-size:10.5px;margin-top:6px}
+  .slide-cap .cap-kicker{font-size:9.5px;margin-bottom:2px}
+  .slide-trees .slide-cap{background:none;padding:0;border:none;box-shadow:none}
+  .show-ui{bottom:calc(var(--band) + 10px);right:10px;gap:4px}
+  .show-btn{width:34px;height:34px}
+  .show-prev,.show-next{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .lamp-invite{display:none}
+  .refl rect,.sway-night{animation:none}
+  .slide-cap{transition:none}
+}
+
 </style>
 </head>
 <body>
 
-<div id="leafLayer" aria-hidden="true"></div>
-
-<!-- Reusable Old Queens gate spiral ornament -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <!-- one wrought-iron scroll: main curl spiralling inward + counter-curl beneath, like the Old Queens gate -->
-    <g id="iron-scroll">
-      <path d="M2,24 C2,9 13,3 28,3 C43,3 52,10 52,19 C52,27 46,32 39,32 C33,32 29,28 29,23 C29,19 32,16 36,16 C39,16 41,18 41,21"
-            fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      <path d="M8,25 C8,31 13,35 19,35 C23,35 26,33 26,30"
-            fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <linearGradient id="fabric" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".26"/><stop offset=".14" stop-color="#000" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#fff" stop-opacity=".07"/><stop offset=".86" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".26"/>
+    </linearGradient>
+    <!-- wrought-iron scroll ornament, inspired by the Old Queens gate -->
+    <g id="divider-orn">
+      <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M84 22L83.4 22L82.7 22L82.1 22L81.4 22L80.8 22L80.1 22L79.5 22L78.8 22L78.2 22L77.5 22L76.9 22L76.2 21.9L75.6 21.9L74.9 21.9L74.3 21.9L73.6 21.8L73 21.8L72.3 21.8L71.7 21.7L71 21.6L70.4 21.6L69.7 21.5L69.1 21.4L68.5 21.3L67.8 21.2L67.2 21.1L66.5 21L65.9 20.8L65.3 20.7L64.6 20.5L64 20.3L63.4 20.2L62.8 19.9L62.2 19.7L61.6 19.5L61 19.2L60.4 18.9L59.8 18.6L59.3 18.3L58.7 18L58.2 17.6L57.6 17.2L57.1 16.9L56.6 16.4L56.1 16L55.7 15.5L55.2 15.1L54.8 14.6L54.4 14L54.1 13.5L53.7 13L53.4 12.4L53.1 11.8L52.9 11.2L52.7 10.6L52.5 10L52.4 9.3L52.3 8.7L52.3 8L52.2 7.4L52.3 6.7L52.4 6.1L52.5 5.4L52.7 4.8L52.9 4.2L53.2 3.6L53.5 3.1L53.9 2.5L54.3 2L54.7 1.5L55.2 1.1L55.7 0.7L56.3 0.4L56.9 0.1L57.5 -0.1L58.1 -0.3L58.8 -0.4L59.4 -0.4L60 -0.4L60.7 -0.3L61.3 -0.1L61.9 0.2L62.5 0.5L63 0.8L63.5 1.3L63.9 1.8L64.3 2.3L64.6 2.9L64.8 3.5L65 4.1L65 4.8L65 5.4L64.9 6L64.7 6.7L64.4 7.2L64.1 7.8L63.6 8.3L63.1 8.7L62.6 9L62 9.2L61.3 9.4L60.7 9.4L60 9.4L59.4 9.2L58.8 9L58.3 8.6L57.8 8.2L57.4 7.6L57.1 7.1L56.9 6.4L56.8 5.8L56.9 5.2L57.1 4.5L57.3 3.9M166 22L166.6 22L167.3 22L167.9 22L168.6 22L169.2 22L169.9 22L170.5 22L171.2 22L171.8 22L172.5 22L173.1 22L173.8 21.9L174.4 21.9L175.1 21.9L175.7 21.9L176.4 21.8L177 21.8L177.7 21.8L178.3 21.7L179 21.6L179.6 21.6L180.3 21.5L180.9 21.4L181.5 21.3L182.2 21.2L182.8 21.1L183.5 21L184.1 20.8L184.7 20.7L185.4 20.5L186 20.3L186.6 20.2L187.2 19.9L187.8 19.7L188.4 19.5L189 19.2L189.6 18.9L190.2 18.6L190.7 18.3L191.3 18L191.8 17.6L192.4 17.2L192.9 16.9L193.4 16.4L193.9 16L194.3 15.5L194.8 15.1L195.2 14.6L195.6 14L195.9 13.5L196.3 13L196.6 12.4L196.9 11.8L197.1 11.2L197.3 10.6L197.5 10L197.6 9.3L197.7 8.7L197.7 8L197.8 7.4L197.7 6.7L197.6 6.1L197.5 5.4L197.3 4.8L197.1 4.2L196.8 3.6L196.5 3.1L196.1 2.5L195.7 2L195.3 1.5L194.8 1.1L194.3 0.7L193.7 0.4L193.1 0.1L192.5 -0.1L191.9 -0.3L191.2 -0.4L190.6 -0.4L190 -0.4L189.3 -0.3L188.7 -0.1L188.1 0.2L187.5 0.5L187 0.8L186.5 1.3L186.1 1.8L185.7 2.3L185.4 2.9L185.2 3.5L185 4.1L185 4.8L185 5.4L185.1 6L185.3 6.7L185.6 7.2L185.9 7.8L186.4 8.3L186.9 8.7L187.4 9L188 9.2L188.7 9.4L189.3 9.4L190 9.4L190.6 9.2L191.2 9L191.7 8.6L192.2 8.2L192.6 7.6L192.9 7.1L193.1 6.4L193.2 5.8L193.1 5.2L192.9 4.5L192.7 3.9M92 22L91.5 22.1L91 22.3L90.6 22.4L90.1 22.5L89.6 22.7L89.1 22.8L88.6 22.9L88.1 23.1L87.7 23.2L87.2 23.3L86.7 23.5L86.2 23.7L85.8 23.8L85.3 24L84.8 24.2L84.4 24.4L83.9 24.5L83.4 24.8L83 25L82.5 25.2L82.1 25.4L81.7 25.7L81.3 26L80.8 26.3L80.4 26.6L80.1 26.9L79.7 27.2L79.3 27.5L79 27.9L78.7 28.3L78.4 28.7L78.1 29.1L77.8 29.6L77.6 30L77.4 30.5L77.3 30.9L77.1 31.4L77.1 31.9L77 32.4L77 32.9L77 33.4L77.1 33.9L77.2 34.4L77.4 34.9L77.6 35.3L77.9 35.7L78.2 36.1L78.6 36.5L78.9 36.8L79.4 37.1L79.8 37.3L80.3 37.4L80.8 37.5L81.3 37.6L81.8 37.5L82.3 37.4L82.7 37.2L83.2 37L83.6 36.7L83.9 36.3L84.2 35.9L84.4 35.4L84.5 34.9L84.5 34.4L84.4 33.9L84.3 33.4L84 33L83.7 32.6L83.3 32.3L82.9 32.1L82.4 32L81.9 31.9L81.4 32L80.9 32.2L80.5 32.5L80.2 32.9L80 33.3L79.9 33.8L79.9 34.3L80 34.8M158 22L158.5 22.1L159 22.3L159.4 22.4L159.9 22.5L160.4 22.7L160.9 22.8L161.4 22.9L161.9 23.1L162.3 23.2L162.8 23.3L163.3 23.5L163.8 23.7L164.2 23.8L164.7 24L165.2 24.2L165.6 24.4L166.1 24.5L166.6 24.8L167 25L167.5 25.2L167.9 25.4L168.3 25.7L168.7 26L169.2 26.3L169.6 26.6L169.9 26.9L170.3 27.2L170.7 27.5L171 27.9L171.3 28.3L171.6 28.7L171.9 29.1L172.2 29.6L172.4 30L172.6 30.5L172.7 30.9L172.9 31.4L172.9 31.9L173 32.4L173 32.9L173 33.4L172.9 33.9L172.8 34.4L172.6 34.9L172.4 35.3L172.1 35.7L171.8 36.1L171.4 36.5L171.1 36.8L170.6 37.1L170.2 37.3L169.7 37.4L169.2 37.5L168.7 37.6L168.2 37.5L167.7 37.4L167.3 37.2L166.8 37L166.4 36.7L166.1 36.3L165.8 35.9L165.6 35.4L165.5 34.9L165.5 34.4L165.6 33.9L165.7 33.4L166 33L166.3 32.6L166.7 32.3L167.1 32.1L167.6 32L168.1 31.9L168.6 32L169.1 32.2L169.5 32.5L169.8 32.9L170 33.3L170.1 33.8L170.1 34.3L170 34.8"/><path d="M84 22H113M137 22H166"/></g>
+      <g fill="currentColor"><circle cx="57.3" cy="3.9" r="2.3"/><circle cx="192.7" cy="3.9" r="2.3"/><circle cx="80" cy="34.8" r="2.3"/><circle cx="170" cy="34.8" r="2.3"/></g>
+      <rect x="118" y="15" width="14" height="14" transform="rotate(45 125 22)" fill="none" stroke="#B78A3C" stroke-width="2.6"/>
+    </g>
+    <!-- banner rod: iron bar with curled finials -->
+    <g id="rod-orn">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M46 16L45.4 16L44.7 16L44.1 16L43.5 16L42.8 16L42.2 16L41.5 16L40.9 16L40.3 16L39.6 16L39 16L38.4 16.1L37.7 16.1L37.1 16.1L36.5 16.1L35.8 16.2L35.2 16.2L34.6 16.3L33.9 16.3L33.3 16.4L32.7 16.4L32 16.5L31.4 16.6L30.8 16.7L30.1 16.8L29.5 16.9L28.9 17.1L28.3 17.2L27.7 17.4L27 17.6L26.4 17.7L25.8 18L25.2 18.2L24.6 18.4L24.1 18.7L23.5 18.9L22.9 19.2L22.4 19.6L21.8 19.9L21.3 20.2L20.8 20.6L20.3 21L19.8 21.4L19.3 21.9L18.9 22.3L18.5 22.8L18.1 23.3L17.7 23.8L17.4 24.3L17 24.9L16.8 25.5L16.5 26L16.3 26.6L16.1 27.3L16 27.9L15.9 28.5L15.8 29.1L15.8 29.8L15.8 30.4L15.9 31L16 31.7L16.2 32.3L16.4 32.9L16.7 33.5L17 34L17.3 34.5L17.7 35L18.2 35.5L18.7 35.9L19.2 36.3L19.7 36.6L20.3 36.9L20.9 37.1L21.5 37.2L22.2 37.3L22.8 37.3L23.4 37.2L24.1 37.1L24.7 36.9L25.2 36.7L25.8 36.3L26.3 35.9L26.7 35.5L27.1 35L27.4 34.4L27.7 33.9L27.9 33.2L28 32.6L28 32L27.9 31.3L27.7 30.7L27.4 30.1L27.1 29.6L26.7 29.1L26.2 28.7L25.7 28.4L25.1 28.1L24.5 28L23.8 28L23.2 28L22.6 28.2L22 28.4L21.5 28.8L21 29.2L20.6 29.8L20.4 30.3L20.2 31L20.2 31.6L20.2 32.2L20.4 32.8M594 16L594.6 16L595.3 16L595.9 16L596.5 16L597.2 16L597.8 16L598.5 16L599.1 16L599.7 16L600.4 16L601 16L601.6 16.1L602.3 16.1L602.9 16.1L603.5 16.1L604.2 16.2L604.8 16.2L605.4 16.3L606.1 16.3L606.7 16.4L607.3 16.4L608 16.5L608.6 16.6L609.2 16.7L609.9 16.8L610.5 16.9L611.1 17.1L611.7 17.2L612.3 17.4L613 17.6L613.6 17.7L614.2 18L614.8 18.2L615.4 18.4L615.9 18.7L616.5 18.9L617.1 19.2L617.6 19.6L618.2 19.9L618.7 20.2L619.2 20.6L619.7 21L620.2 21.4L620.7 21.9L621.1 22.3L621.5 22.8L621.9 23.3L622.3 23.8L622.6 24.3L623 24.9L623.2 25.5L623.5 26L623.7 26.6L623.9 27.3L624 27.9L624.1 28.5L624.2 29.1L624.2 29.8L624.2 30.4L624.1 31L624 31.7L623.8 32.3L623.6 32.9L623.3 33.5L623 34L622.7 34.5L622.3 35L621.8 35.5L621.3 35.9L620.8 36.3L620.3 36.6L619.7 36.9L619.1 37.1L618.5 37.2L617.8 37.3L617.2 37.3L616.6 37.2L615.9 37.1L615.3 36.9L614.8 36.7L614.2 36.3L613.7 35.9L613.3 35.5L612.9 35L612.6 34.4L612.3 33.9L612.1 33.2L612 32.6L612 32L612.1 31.3L612.3 30.7L612.6 30.1L612.9 29.6L613.3 29.1L613.8 28.7L614.3 28.4L614.9 28.1L615.5 28L616.2 28L616.8 28L617.4 28.2L618 28.4L618.5 28.8L619 29.2L619.4 29.8L619.6 30.3L619.8 31L619.8 31.6L619.8 32.2L619.6 32.8" stroke-width="3.2"/><path d="M46 16H594" stroke-width="5"/></g>
+      <g fill="currentColor"><circle cx="20.4" cy="32.8" r="2.8"/><circle cx="619.6" cy="32.8" r="2.8"/></g>
+      <rect x="313" y="9" width="14" height="14" transform="rotate(45 320 16)" fill="#B78A3C" stroke="currentColor" stroke-width="2"/>
     </g>
   </defs>
 </svg>
 
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">
-      <div class="avatar">VP</div>
-      <span class="nav-name">VIVEK V. PATEL</span>
-    </div>
+    <button class="nav-logo" type="button" onclick="showSection('Home')" aria-label="Vivek V. Patel, back to home">
+      <span class="avatar" aria-hidden="true">VP</span>
+      <span class="nav-name">Vivek V. Patel</span>
+    </button>
     <div class="nav-links" id="navLinks"></div>
   </div>
 </nav>
@@ -349,46 +522,40 @@ body::after{
 
 <!-- ═══════════════════════════════ HOME ═══════════════════════════════ -->
 <div class="section visible" id="sec-Home">
-  <svg class="gate-arch" viewBox="0 0 660 178" role="img" aria-label="Wrought-iron arch with hanging lantern, inspired by the Old Queens gate at Rutgers">
-    <defs>
-      <radialGradient id="lampGlow" cx="50%" cy="45%" r="60%">
-        <stop offset="0%" stop-color="#F7D98C"/>
-        <stop offset="55%" stop-color="#B78A3C"/>
-        <stop offset="100%" stop-color="#B78A3C" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <!-- double arch bands -->
-    <path d="M14,174 A452,452 0 0 1 646,174" fill="none" stroke="currentColor" stroke-width="5"/>
-    <path d="M34,174 A430,430 0 0 1 626,174" fill="none" stroke="currentColor" stroke-width="2.5"/>
-    <!-- ironwork curls climbing the arch, mirrored -->
-    <use href="#iron-scroll" transform="translate(58,142) rotate(-55) scale(0.52)"/>
-    <use href="#iron-scroll" transform="translate(128,100) rotate(-36) scale(0.52)"/>
-    <use href="#iron-scroll" transform="translate(212,72) rotate(-17) scale(0.52)"/>
-    <use href="#iron-scroll" transform="translate(602,142) rotate(55) scale(-0.52,0.52)"/>
-    <use href="#iron-scroll" transform="translate(532,100) rotate(36) scale(-0.52,0.52)"/>
-    <use href="#iron-scroll" transform="translate(448,72) rotate(17) scale(-0.52,0.52)"/>
-    <!-- sunburst finial at the crown -->
-    <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-      <line x1="330" y1="36" x2="330" y2="20"/>
-      <line x1="318" y1="38" x2="308" y2="26"/>
-      <line x1="342" y1="38" x2="352" y2="26"/>
-      <line x1="312" y1="46" x2="298" y2="40"/>
-      <line x1="348" y1="46" x2="362" y2="40"/>
-    </g>
-    <!-- hanging lantern -->
-    <line x1="330" y1="44" x2="330" y2="70" stroke="currentColor" stroke-width="3"/>
-    <polygon points="322,70 338,70 333,62 327,62" fill="currentColor"/>
-    <circle cx="330" cy="96" r="17" fill="url(#lampGlow)" class="lantern-glow"/>
-    <path d="M319,72 L341,72 L346,112 L314,112 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-    <line x1="330" y1="72" x2="330" y2="112" stroke="currentColor" stroke-width="1.5"/>
-    <line x1="317" y1="92" x2="343" y2="92" stroke="currentColor" stroke-width="1.5"/>
-    <line x1="330" y1="112" x2="330" y2="120" stroke="currentColor" stroke-width="2.5"/>
-    <circle cx="330" cy="122" r="2.5" fill="currentColor"/>
-  </svg>
-  <div class="grid2" style="gap:44px;align-items:center;margin-bottom:60px">
+  <section class="show" id="heroShow" aria-roledescription="carousel" aria-label="Scenes from Rutgers">
+    <div class="slide slide-gate is-active" role="group" aria-roledescription="slide" aria-label="1 of 2: Old Queens gate at night">
+      <svg class="scene" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Night scene of the Old Queens gate: brownstone pillars, a wrought-iron arch with scrollwork, and a glowing lantern hanging in the middle"></svg>
+      <div class="slide-cap">
+        <div class="cap-kicker">Rutgers · New Brunswick</div>
+        <div class="cap-title">Old Queens Gate</div>
+        <div class="cap-sub">Tradition says: don't walk through until graduation. Tap the lantern.</div>
+      </div>
+    </div>
+    <div class="slide slide-trees" role="group" aria-roledescription="slide" aria-label="2 of 2: Autumn trees on campus" aria-hidden="true">
+      <svg class="scene" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Linocut-style autumn trees in gold, red and olive with a campus lamp post and scarlet banner"></svg>
+      <div class="slide-cap">
+        <div class="cap-kicker">Fall semester</div>
+        <div class="cap-title">Autumn on the Banks</div>
+        <div class="cap-sub">Tap a tree to shake loose some leaves.</div>
+      </div>
+    </div>
+    <div class="show-progress" aria-hidden="true"></div>
+    <div class="show-ui">
+      <button class="show-btn show-prev" type="button" aria-label="Previous scene"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></button>
+      <div class="show-dots">
+        <button class="show-dot on" type="button" aria-label="Scene 1: Old Queens gate"><span></span></button>
+        <button class="show-dot" type="button" aria-label="Scene 2: Autumn trees"><span></span></button>
+      </div>
+      <button class="show-btn show-pause" type="button" aria-pressed="false" aria-label="Pause slideshow"><svg class="i-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" fill="currentColor"><path d="M5 3l8 5-8 5z"/></svg></button>
+      <button class="show-btn show-next" type="button" aria-label="Next scene"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l5 5-5 5"/></svg></button>
+    </div>
+  </section>
+
+
+  <div class="grid2 intro">
     <div class="hero">
       <div class="hero-eyebrow">Rutgers University · IT Career Portfolio</div>
-      <h1 class="hero-name">VIVEK<br>VINOD <span class="accent">PATEL</span></h1>
+      <h1 class="hero-name">Vivek Vinod <span class="accent">Patel</span></h1>
       <div class="hero-sub">EST. NOV 2025 @ RUTGERS SSW IT · CLASS OF 2028</div>
       <div class="hero-links">
         <a href="https://github.com/Vivek16306" target="_blank" rel="noopener">
@@ -401,7 +568,7 @@ body::after{
         </a>
         <a href="mailto:vvp52@scarletmail.rutgers.edu">✉ vvp52@scarletmail.rutgers.edu</a>
       </div>
-      <p class="lead">Welcome to my professional portfolio. I'm an Information Technology &amp; Informatics student at Rutgers University with hands-on experience in enterprise IT support, networking, and technical documentation.</p>
+      <p class="lead">Welcome to my professional portfolio. I'm an Information Technology &amp; Informatics student at Rutgers University with hands-on enterprise IT support experience — imaging computers, enabling <strong>BitLocker</strong> drive encryption, and working in <strong>Rutgers Active Directory</strong> — plus a growing focus on <strong>Python</strong> and <strong>web design</strong>.</p>
       <p class="lead">I'm drawn to several directions in IT — <span class="track">networking</span>, <span class="track">cloud infrastructure</span>, and <span class="track">cybersecurity</span> — and I'm using my remaining time at Rutgers to build real skills across all three before narrowing in.</p>
       <p class="lead" style="margin-bottom:28px">I've been with the <strong>Rutgers School of Social Work</strong> IT Department since November 2025, and this summer I'm completing an internship there — a role I developed from my original part-time position. Explore this site to find my career goals, resume, work samples, and more.</p>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
@@ -410,7 +577,7 @@ body::after{
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:18px;position:relative">
-      <div class="stamp">SCARLET&nbsp;KNIGHT</div>
+      <div class="stamp">Scarlet Knight</div>
       <div class="stub">
         <div class="pill">Currently studying</div>
         <div class="stub-title">B.S. Information Technology &amp; Informatics</div>
@@ -428,9 +595,40 @@ body::after{
     </div>
   </div>
 
+  <div class="skills-now">
+    <div class="ribbon-wrap"><h2 class="ribbon">What I Can Do Now</h2></div>
+    <p class="ribbon-sub">Skills I use on the job and skills I'm building</p>
+    <div class="grid4">
+      <div class="card card-hover skill">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.6" r="1.3"/><path d="M12 17v1.8"/></svg></div>
+        <h3>BitLocker Encryption</h3>
+        <p>Enable BitLocker drive encryption on department Windows machines so data stays protected if a device is lost or stolen.</p>
+        <span class="chip live">At SSW IT</span>
+      </div>
+      <div class="card card-hover skill">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></svg></div>
+        <h3>Rutgers Active Directory</h3>
+        <p>Join newly imaged computers to the Rutgers domain and look up computers and user accounts in AD.</p>
+        <span class="chip live">At SSW IT</span>
+      </div>
+      <div class="card card-hover skill">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M7 10l3 2.5L7 15M12.5 15H17"/></svg></div>
+        <h3>Python</h3>
+        <p>Writing scripts and small programs, building toward automating the repetitive parts of IT work.</p>
+        <span class="chip">Building</span>
+      </div>
+      <div class="card card-hover skill">
+        <div class="skill-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 8.5h18"/><path d="M9.5 17.5l5-5 2 2-5 5H9.5z"/></svg></div>
+        <h3>Web Design</h3>
+        <p>HTML, CSS and JavaScript. I designed and coded this site, including the animated scenes at the top.</p>
+        <span class="chip">Building</span>
+      </div>
+    </div>
+  </div>
+
   <div class="game-frame">
     <div class="game-head">
-      <span class="game-title">⚔ THE SCARLET KNIGHT RUN</span>
+      <span class="game-title">⚔ The Scarlet Knight Run</span>
       <span style="display:flex;gap:8px;align-items:center">
         <span class="game-hint">Space / tap to jump</span>
         <button class="game-btn" id="bgStart">▶ START</button>
@@ -440,55 +638,48 @@ body::after{
     <canvas id="knightGame" width="720" height="230" aria-label="The Scarlet Knight Run: a mini jumping game featuring a knight on a white horse. Press space or tap to jump over obstacles."></canvas>
   </div>
 
-  <div style="text-align:center;margin-bottom:28px">
-    <svg class="scroll-divider" viewBox="0 0 250 40" role="img" aria-label="Decorative wrought-iron scroll inspired by the Old Queens gate">
-      <use href="#iron-scroll" x="0" y="3"/>
-      <use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2 class="display" style="font-size:20px;font-weight:400">QUICK LINKS</h2>
-    <p class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:4px">EIGHT STOPS ON THE TOUR</p>
-  </div>
-  <div class="grid4">
-    <button class="ql-card" onclick="showSection('Career Goals')"><div class="ql-num">№ 01</div><div class="ql-name">CAREER GOALS</div></button>
-    <button class="ql-card" onclick="showSection('Resume')"><div class="ql-num">№ 02</div><div class="ql-name">RESUME</div></button>
-    <button class="ql-card" onclick="showSection('Honors')"><div class="ql-num">№ 03</div><div class="ql-name">HONORS</div></button>
-    <button class="ql-card" onclick="showSection('Resources')"><div class="ql-num">№ 04</div><div class="ql-name">RESOURCES</div></button>
-    <button class="ql-card" onclick="showSection('Community')"><div class="ql-num">№ 05</div><div class="ql-name">COMMUNITY</div></button>
-    <button class="ql-card" onclick="showSection('Work Sample')"><div class="ql-num">№ 06</div><div class="ql-name">WORK SAMPLE</div></button>
-    <button class="ql-card" onclick="showSection('References')"><div class="ql-num">№ 07</div><div class="ql-name">REFERENCES</div></button>
-    <button class="ql-card" onclick="showSection('Arcade')"><div class="ql-num">№ 08</div><div class="ql-name">🎃 ARCADE</div></button>
+  <div class="quick-links">
+    <svg class="scroll-divider" viewBox="40 -4 170 46" role="img" aria-label="Decorative wrought-iron scroll inspired by the Old Queens gate"><use href="#divider-orn"/></svg>
+    <div class="ribbon-wrap"><h2 class="ribbon">Quick Links</h2></div>
+    <p class="ribbon-sub">Eight stops on the tour</p>
+    <div class="grid4 ql-grid">
+      <button class="ql-card" onclick="showSection('Career Goals')"><div class="ql-num">№ 01</div><div class="ql-name">Career Goals</div></button>
+      <button class="ql-card" onclick="showSection('Resume')"><div class="ql-num">№ 02</div><div class="ql-name">Resume</div></button>
+      <button class="ql-card" onclick="showSection('Honors')"><div class="ql-num">№ 03</div><div class="ql-name">Honors</div></button>
+      <button class="ql-card" onclick="showSection('Resources')"><div class="ql-num">№ 04</div><div class="ql-name">Resources</div></button>
+      <button class="ql-card" onclick="showSection('Community')"><div class="ql-num">№ 05</div><div class="ql-name">Community</div></button>
+      <button class="ql-card" onclick="showSection('Work Sample')"><div class="ql-num">№ 06</div><div class="ql-name">Work Sample</div></button>
+      <button class="ql-card" onclick="showSection('References')"><div class="ql-num">№ 07</div><div class="ql-name">References</div></button>
+      <button class="ql-card" onclick="showSection('Arcade')"><div class="ql-num">№ 08</div><div class="ql-name">🎃 Arcade</div></button>
+    </div>
   </div>
 </div>
 
 <!-- ═══════════════════════════════ CAREER GOALS ═══════════════════════════════ -->
 <div class="section" id="sec-Career Goals">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>CAREER GOALS</h2><p>MY ROADMAP TOWARD GRADUATION — THIS YEAR, NEXT YEAR, AND ENTERING THE MARKET</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Career Goals</h2><p>MY ROADMAP TOWARD GRADUATION — THIS YEAR, NEXT YEAR, AND ENTERING THE MARKET</p>
+    </div></div>
   </div>
   <div class="card-lg">
     <svg width="100%" viewBox="0 0 680 860" role="img" xmlns="http://www.w3.org/2000/svg">
       <title>Vivek Patel career path infographic</title>
       <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
       <rect x="40" y="18" width="600" height="56" fill="#CC0033" stroke="#26190F" stroke-width="2"/>
-      <text x="340" y="44" text-anchor="middle" font-family="Graduate, serif" font-size="15" fill="#FFFDF6">VIVEK VINOD PATEL</text>
+      <text x="340" y="47" text-anchor="middle" font-family="'Grenze Gotisch', serif" font-weight="600" font-size="24" fill="#F7F0E4">Vivek Vinod Patel</text>
       <text x="340" y="64" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" fill="#F5C6CF">B.S. ITI + Minor in DCIM · Rutgers University · 4+1 Master of Information</text>
       <text x="340" y="104" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="12" font-weight="600" fill="#CC0033">CAREER ROADMAP — CERTIFICATIONS, EDUCATION &amp; THE JOB MARKET</text>
       <line x1="340" y1="114" x2="340" y2="790" stroke="#D9CBB4" stroke-width="2" stroke-dasharray="6 4"/>
 
       <rect x="40" y="122" width="600" height="28" fill="#CC0033" opacity="0.12"/>
       <rect x="40" y="122" width="8" height="28" fill="#CC0033"/>
-      <text x="60" y="141" font-family="Graduate, serif" font-size="13" fill="#CC0033">THIS YEAR</text>
+      <text x="60" y="142" font-family="'Grenze Gotisch', serif" font-weight="600" font-size="19" fill="#CC0033">This Year</text>
 
-      <rect x="50" y="160" width="268" height="118" fill="#FFFDF6" stroke="#CC0033" stroke-width="1"/>
+      <rect x="50" y="160" width="268" height="118" fill="#F7F0E4" stroke="#CC0033" stroke-width="1"/>
       <rect x="50" y="160" width="268" height="28" fill="#CC0033" opacity="0.08"/>
       <text x="184" y="179" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600" fill="#CC0033">CERTIFICATION</text>
       <text x="66" y="204" font-family="Lora, serif" font-size="11" fill="#5C4A38">→  Finish Google Cybersecurity cert</text>
@@ -497,7 +688,7 @@ body::after{
       <text x="66" y="258" font-family="Lora, serif" font-size="11" fill="#8A7660">○  Explore Cisco NetAcad basics</text>
       <text x="66" y="276" font-family="Lora, serif" font-size="11" fill="#8A7660">○  Build out LinkedIn profile</text>
 
-      <rect x="362" y="160" width="268" height="118" fill="#FFFDF6" stroke="#CC0033" stroke-width="1"/>
+      <rect x="362" y="160" width="268" height="118" fill="#F7F0E4" stroke="#CC0033" stroke-width="1"/>
       <rect x="362" y="160" width="268" height="28" fill="#CC0033" opacity="0.08"/>
       <text x="496" y="179" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600" fill="#CC0033">ACADEMICS &amp; EXPERIENCE</text>
       <text x="378" y="204" font-family="Lora, serif" font-size="11" fill="#5C4A38">✓  IT internship — Rutgers SSW</text>
@@ -512,9 +703,9 @@ body::after{
 
       <rect x="40" y="342" width="600" height="28" fill="#26190F" opacity="0.08"/>
       <rect x="40" y="342" width="8" height="28" fill="#26190F"/>
-      <text x="60" y="361" font-family="Graduate, serif" font-size="13" fill="#26190F">NEXT YEAR</text>
+      <text x="60" y="362" font-family="'Grenze Gotisch', serif" font-weight="600" font-size="19" fill="#26190F">Next Year</text>
 
-      <rect x="50" y="380" width="268" height="118" fill="#F5EDDF" stroke="#5C4A38" stroke-width="1"/>
+      <rect x="50" y="380" width="268" height="118" fill="#E9DCC8" stroke="#5C4A38" stroke-width="1"/>
       <rect x="50" y="380" width="268" height="28" fill="#26190F" opacity="0.08"/>
       <text x="184" y="399" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600" fill="#26190F">CERTIFICATION</text>
       <text x="66" y="424" font-family="Lora, serif" font-size="11" fill="#5C4A38">→  2 focused weeks on AWS Cloud Practitioner</text>
@@ -522,7 +713,7 @@ body::after{
       <text x="66" y="461" font-family="Lora, serif" font-size="11" fill="#8A7660">○  Core AWS services &amp; cloud concepts</text>
       <text x="66" y="479" font-family="Lora, serif" font-size="11" fill="#8A7660">○  Shared responsibility model &amp; pricing</text>
 
-      <rect x="362" y="380" width="268" height="118" fill="#F5EDDF" stroke="#5C4A38" stroke-width="1"/>
+      <rect x="362" y="380" width="268" height="118" fill="#E9DCC8" stroke="#5C4A38" stroke-width="1"/>
       <rect x="362" y="380" width="268" height="28" fill="#26190F" opacity="0.08"/>
       <text x="496" y="399" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600" fill="#26190F">EDUCATION &amp; CAREER</text>
       <text x="378" y="424" font-family="Lora, serif" font-size="11" fill="#5C4A38">→  Begin 4+1 Master of Information</text>
@@ -532,39 +723,40 @@ body::after{
 
       <rect x="50" y="508" width="580" height="24" fill="#26190F" opacity="0.06" stroke="#5C4A38" stroke-width="0.5" stroke-dasharray="4 3"/>
       <text x="340" y="524" text-anchor="middle" font-family="Lora, serif" font-size="11" font-weight="600" fill="#5C4A38">🎓  2028 — Graduate with B.S. in Information Technology &amp; Informatics + Minor in DCIM</text>
-      <line x1="340" y1="532" x2="340" y2="554" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#arr)" opacity="0.5"/>
+      <line x1="340" y1="532" x2="340" y2="554" stroke="#A8782F" stroke-width="1.5" marker-end="url(#arr)" opacity="0.5"/>
 
-      <rect x="40" y="562" width="600" height="28" fill="#1D9E75" opacity="0.12"/>
-      <rect x="40" y="562" width="8" height="28" fill="#1D9E75"/>
-      <text x="60" y="581" font-family="Graduate, serif" font-size="13" fill="#0F6E56">ENTERING THE MARKET</text>
+      <rect x="40" y="562" width="600" height="28" fill="#A8782F" opacity="0.12"/>
+      <rect x="40" y="562" width="8" height="28" fill="#A8782F"/>
+      <text x="60" y="582" font-family="'Grenze Gotisch', serif" font-weight="600" font-size="19" fill="#6B4716">Entering the Market</text>
 
-      <rect x="50" y="600" width="580" height="92" fill="#F0FAF6" stroke="#1D9E75" stroke-width="1"/>
-      <rect x="50" y="600" width="580" height="28" fill="#1D9E75" opacity="0.1"/>
-      <text x="340" y="619" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600" fill="#0F6E56">WHAT I BRING TO THE TABLE</text>
+      <rect x="50" y="600" width="580" height="92" fill="#F3E7D2" stroke="#A8782F" stroke-width="1"/>
+      <rect x="50" y="600" width="580" height="28" fill="#A8782F" opacity="0.1"/>
+      <text x="340" y="619" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600" fill="#6B4716">WHAT I BRING TO THE TABLE</text>
       <text x="66" y="644" font-family="Lora, serif" font-size="11" fill="#5C4A38">✓  Bachelor's degree (in progress toward Master's)</text>
       <text x="362" y="644" font-family="Lora, serif" font-size="11" fill="#5C4A38">✓  Rutgers Help Desk / IT support experience</text>
       <text x="66" y="664" font-family="Lora, serif" font-size="11" fill="#5C4A38">✓  Google Cybersecurity Certificate</text>
       <text x="362" y="664" font-family="Lora, serif" font-size="11" fill="#5C4A38">✓  AWS Cloud Practitioner Certificate</text>
-      <text x="66" y="684" font-family="Lora, serif" font-size="11" fill="#8A7660">○  Documentation &amp; project portfolio (this site, the SSW binder)</text>
+      <text x="66" y="684" font-family="Lora, serif" font-size="11" fill="#5C4A38">✓  BitLocker, Active Directory, Python &amp; web design</text>
+      <text x="362" y="684" font-family="Lora, serif" font-size="11" fill="#8A7660">○  Docs &amp; portfolio: this site, SSW binder</text>
 
-      <rect x="50" y="706" width="580" height="22" fill="#1D9E75" opacity="0.07" stroke="#1D9E75" stroke-width="0.5" stroke-dasharray="4 3"/>
-      <text x="340" y="721" text-anchor="middle" font-family="Lora, serif" font-size="11" font-weight="600" fill="#0F6E56">🎓  2029 — Graduate with Master of Information · Rutgers SC&amp;I (apply after winter 2026)</text>
+      <rect x="50" y="706" width="580" height="22" fill="#A8782F" opacity="0.07" stroke="#A8782F" stroke-width="0.5" stroke-dasharray="4 3"/>
+      <text x="340" y="721" text-anchor="middle" font-family="Lora, serif" font-size="11" font-weight="600" fill="#6B4716">🎓  2029 — Graduate with Master of Information · Rutgers SC&amp;I (apply after winter 2026)</text>
 
       <text x="340" y="752" text-anchor="middle" font-family="Lora, serif" font-size="12" font-weight="600" fill="#26190F">Still exploring which of these fits best — staying open to all three:</text>
       <g>
-        <rect x="50" y="762" width="184" height="56" fill="#F5EDDF" stroke="#8A7660" stroke-width="1"/>
+        <rect x="50" y="762" width="184" height="56" fill="#E9DCC8" stroke="#8A7660" stroke-width="1"/>
         <text x="142" y="782" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="600" fill="#26190F">🌐 NETWORKING</text>
         <text x="142" y="800" text-anchor="middle" font-family="Lora, serif" font-size="10" fill="#8A7660">Network technician /</text>
         <text x="142" y="812" text-anchor="middle" font-family="Lora, serif" font-size="10" fill="#8A7660">infrastructure roles</text>
       </g>
       <g>
-        <rect x="248" y="762" width="184" height="56" fill="#F5EDDF" stroke="#8A7660" stroke-width="1"/>
+        <rect x="248" y="762" width="184" height="56" fill="#E9DCC8" stroke="#8A7660" stroke-width="1"/>
         <text x="340" y="782" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="600" fill="#26190F">☁️ CLOUD</text>
         <text x="340" y="800" text-anchor="middle" font-family="Lora, serif" font-size="10" fill="#8A7660">Cloud support /</text>
         <text x="340" y="812" text-anchor="middle" font-family="Lora, serif" font-size="10" fill="#8A7660">junior cloud roles</text>
       </g>
       <g>
-        <rect x="446" y="762" width="184" height="56" fill="#F5EDDF" stroke="#8A7660" stroke-width="1"/>
+        <rect x="446" y="762" width="184" height="56" fill="#E9DCC8" stroke="#8A7660" stroke-width="1"/>
         <text x="538" y="782" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10.5" font-weight="600" fill="#26190F">🔒 SECURITY / ANALYST</text>
         <text x="538" y="800" text-anchor="middle" font-family="Lora, serif" font-size="10" fill="#8A7660">Security or</text>
         <text x="538" y="812" text-anchor="middle" font-family="Lora, serif" font-size="10" fill="#8A7660">IT/business analyst</text>
@@ -579,29 +771,28 @@ body::after{
 <!-- ═══════════════════════════════ RESUME ═══════════════════════════════ -->
 <div class="section" id="sec-Resume">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>RESUME</h2><p>UPDATED TO REFLECT MY INTERNSHIP AT RUTGERS SCHOOL OF SOCIAL WORK</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Resume</h2><p>UPDATED TO REFLECT MY INTERNSHIP AT RUTGERS SCHOOL OF SOCIAL WORK</p>
+    </div></div>
   </div>
   <div class="resume-doc">
     <div class="resume-head">
-      <h2>VIVEK VINOD PATEL</h2>
+      <h2>Vivek Vinod Patel</h2>
       <p>NEW BRUNSWICK, NJ · VVP52@SCARLETMAIL.RUTGERS.EDU</p>
       <p style="margin-top:4px">LINKEDIN.COM/IN/VIVEK-PATEL-156539349 · GITHUB.COM/VIVEK16306</p>
     </div>
     <div style="margin-bottom:24px"><div class="resume-sec-title">Summary</div>
-      <p style="font-size:14px;color:var(--ink-soft);line-height:1.8">Information Technology &amp; Informatics student at Rutgers University with hands-on internship experience in enterprise IT support at the Rutgers School of Social Work. Skilled in diagnosing technical issues, computer imaging, documentation, and delivering end-user support in fast-paced environments. Completing the Google Cybersecurity Professional Certificate, with the AWS Cloud Practitioner certification planned next. Exploring networking, cloud infrastructure, and cybersecurity as I build toward a career at the intersection of these fields.</p>
+      <p style="font-size:14px;color:var(--ink-soft);line-height:1.8">Information Technology &amp; Informatics student at Rutgers University with hands-on internship experience in enterprise IT support at the Rutgers School of Social Work. Skilled in diagnosing technical issues, computer imaging, enabling BitLocker drive encryption, working in Rutgers Active Directory, documentation, and delivering end-user support in fast-paced environments. Building Python and web design skills on the side, including this site. Completing the Google Cybersecurity Professional Certificate, with the AWS Cloud Practitioner certification planned next. Exploring networking, cloud infrastructure, and cybersecurity as I build toward a career at the intersection of these fields.</p>
     </div>
     <div style="margin-bottom:24px"><div class="resume-sec-title">Technical Skills</div>
       <div class="grid2" style="gap:10px 24px;font-size:13.5px;color:var(--ink-soft)">
-        <div><strong style="color:var(--ink)">Systems &amp; Support:</strong> Windows &amp; macOS, WDS/MDT imaging, Active Directory domain joins, hardware repair, printer config, ticketing systems</div>
-        <div><strong style="color:var(--ink)">Tools &amp; Languages:</strong> Excel (advanced), HTML, Java, Python, Weebly</div>
-        <div><strong style="color:var(--ink)">Security &amp; IT:</strong> Cybersecurity fundamentals (in progress), Linux, Git</div>
-        <div><strong style="color:var(--ink)">Design:</strong> Adobe Illustrator, Photoshop, Animate, Canva</div>
+        <div><strong style="color:var(--ink)">Systems &amp; Support:</strong> Windows &amp; macOS, WDS/MDT imaging, BitLocker drive encryption, Rutgers Active Directory (domain joins, computer &amp; account lookups), hardware repair, printer config, ticketing systems</div>
+        <div><strong style="color:var(--ink)">Programming &amp; Web:</strong> Python (actively building), HTML, CSS &amp; JavaScript, Java, Git &amp; GitHub Pages, Weebly</div>
+        <div><strong style="color:var(--ink)">Security &amp; IT:</strong> Cybersecurity fundamentals (in progress), endpoint encryption (BitLocker), Linux</div>
+        <div><strong style="color:var(--ink)">Design &amp; Office:</strong> Adobe Illustrator, Photoshop, Animate, Canva, Excel (advanced)</div>
       </div>
     </div>
     <div style="margin-bottom:24px"><div class="resume-sec-title">Education</div>
@@ -624,7 +815,8 @@ body::after{
       <ul>
         <li>Diagnosed and resolved hardware, software, and OS-level issues across Windows and macOS systems for faculty, staff, and students</li>
         <li>Performed computer imaging using WDS/MDT to deploy standardized OS configurations across department desktops and laptops</li>
-        <li>Joined newly imaged computers to the university's Active Directory domain, ensuring proper policy, security, and network access</li>
+        <li>Joined newly imaged computers to the Rutgers Active Directory domain and used AD to look up computers and user accounts, ensuring proper policy, security, and network access</li>
+        <li>Enabled BitLocker drive encryption on department Windows devices so data stays protected if a machine is lost or stolen</li>
         <li>Performed complete workstation swaps and post-imaging setup — downloading and installing required programs, signing users into their accounts, and configuring each PC so staff could get straight back to work</li>
         <li>Provided hands-on hardware support to staff — diagnosing failing components, swapping peripherals, and resolving connectivity issues at the desk</li>
         <li>Replaced batteries in APC UPS (uninterruptible power supply) units to keep critical workstations protected from power loss</li>
@@ -637,7 +829,7 @@ body::after{
     </div>
     <div><div class="resume-sec-title">Projects &amp; Independent Work</div>
       <div style="font-size:13.5px;color:var(--ink-soft);line-height:1.9">
-        <p style="margin-bottom:8px"><strong style="color:var(--ink)">This Portfolio Website</strong> — Designed, built, and deployed this site using HTML, CSS, and JavaScript; published via GitHub Pages with version control through Git.</p>
+        <p style="margin-bottom:8px"><strong style="color:var(--ink)">This Portfolio Website</strong> — Designed, built, and deployed this site using HTML, CSS, and JavaScript, including hand-coded animated SVG scenes and two canvas mini-games; published via GitHub Pages with version control through Git.</p>
         <p style="margin-bottom:8px"><strong style="color:var(--ink)">SSW IT Student Worker Binder</strong> — Designed and produced a professional internal IT reference binder covering 13 services, used by all incoming SSW IT student workers.</p>
         <p style="margin-bottom:8px"><strong style="color:var(--ink)">Client Website — Small Business</strong> — Built a website for a family-owned business from requirements through delivery, handling layout, content, and visual design.</p>
         <p><strong style="color:var(--ink)">Digital Menu Design</strong> — Designed professional digital menus using Canva, Adobe Illustrator, and Photoshop through multiple rounds of client revisions.</p>
@@ -649,13 +841,12 @@ body::after{
 <!-- ═══════════════════════════════ HONORS ═══════════════════════════════ -->
 <div class="section" id="sec-Honors">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>HONORS &amp; ACCOMPLISHMENTS</h2><p>RECOGNITION EARNED IN SCHOOL, AT WORK, AND IN LIFE</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Honors &amp; Accomplishments</h2><p>RECOGNITION EARNED IN SCHOOL, AT WORK, AND IN LIFE</p>
+    </div></div>
   </div>
   <div class="grid3" style="margin-bottom:24px">
     <div class="card card-hover"><div class="corner-tab"></div><div style="font-size:28px;margin-bottom:10px">🏆</div><div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px">Dean's List</div><div style="font-size:13.5px;color:var(--ink-soft);line-height:1.7">Achieved Dean's List at Texas A&amp;M University – Corpus Christi for Spring 2024 (GPA 3.7), demonstrating sustained academic excellence.</div></div>
@@ -664,7 +855,7 @@ body::after{
     <div class="card card-hover"><div class="corner-tab"></div><div style="font-size:28px;margin-bottom:10px">☁️</div><div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px">AWS Cloud Practitioner — planned</div><div style="font-size:13.5px;color:var(--ink-soft);line-height:1.7">Following completion of my Google Cybersecurity Certificate, I plan to spend a focused two weeks earning the AWS Cloud Practitioner (CLF-C02) certification.</div></div>
     <div class="card card-hover"><div class="corner-tab"></div><div style="font-size:28px;margin-bottom:10px">🔐</div><div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px">Google Cybersecurity Certificate</div><div style="font-size:13.5px;color:var(--ink-soft);line-height:1.7">Completing the Google Cybersecurity Professional Certificate this year to build foundational security skills alongside my IT support experience.</div></div>
   </div>
-  <div class="card-lg"><h3 class="display" style="font-size:16px;font-weight:400;margin-bottom:18px;color:var(--ink)">PERSONAL INTERESTS</h3>
+  <div class="card-lg"><h3 class="display" style="font-size:28px;line-height:1;margin-bottom:20px;color:var(--ink)">Personal Interests</h3>
     <div class="grid3">
       <div style="display:flex;align-items:flex-start;gap:12px"><span style="font-size:22px">🌐</span><div><div style="font-weight:600;font-size:14px;color:var(--ink)">Networking &amp; IT infrastructure</div><div style="font-size:13px;color:var(--ink-soft);line-height:1.6;margin-top:4px">Passionate about how networks are built, managed, and secured — the backbone of every connected organization.</div></div></div>
       <div style="display:flex;align-items:flex-start;gap:12px"><span style="font-size:22px">🔒</span><div><div style="font-weight:600;font-size:14px;color:var(--ink)">Cybersecurity</div><div style="font-size:13px;color:var(--ink-soft);line-height:1.6;margin-top:4px">Interested in how organizations protect their systems and data — building foundational skills through the Google Cybersecurity cert.</div></div></div>
@@ -676,13 +867,12 @@ body::after{
 <!-- ═══════════════════════════════ RESOURCES ═══════════════════════════════ -->
 <div class="section" id="sec-Resources">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>OUTSIDE TECHNICAL RESOURCES</h2><p>BOOKS, WEBSITES &amp; TOOLS I FIND VALUABLE AS AN IT PROFESSIONAL — APA 7TH ED.</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Outside Technical Resources</h2><p>BOOKS, WEBSITES &amp; TOOLS I FIND VALUABLE AS AN IT PROFESSIONAL — APA 7TH ED.</p>
+    </div></div>
   </div>
   <div style="display:flex;flex-direction:column;gap:18px">
     <div class="card card-hover" style="display:flex;gap:18px;align-items:flex-start"><div class="res-num">01</div><div><div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px">AWS Certified Cloud Practitioner Exam Guide (CLF-C02)</div><div class="mono" style="font-size:11px;color:var(--ink-faint);margin-bottom:8px;line-height:1.7">Amazon Web Services. (2024). <em>AWS Certified Cloud Practitioner (CLF-C02) exam guide</em>. AWS. https://docs.aws.amazon.com/aws-certification/latest/examguides/cloud-practitioner-02.html</div><div style="font-size:14px;color:var(--ink-soft);line-height:1.7">The official source for what's actually tested on the AWS Cloud Practitioner exam — my planned roadmap for next year as I move into cloud fundamentals.</div></div></div>
@@ -696,24 +886,23 @@ body::after{
 <!-- ═══════════════════════════════ COMMUNITY ═══════════════════════════════ -->
 <div class="section" id="sec-Community">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>TECHNICAL COMMUNITY OF PRACTICE</h2><p>ENGAGING WITH THE IT &amp; TECH COMMUNITY AT RUTGERS AND BEYOND</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Technical Community of Practice</h2><p>ENGAGING WITH THE IT &amp; TECH COMMUNITY AT RUTGERS AND BEYOND</p>
+    </div></div>
   </div>
   <div class="card-lg" style="margin-bottom:20px">
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
       <div style="width:54px;height:54px;background:var(--scarlet);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;border:2px solid var(--ink);box-shadow:3px 3px 0 rgba(38,25,15,0.2)">🤝</div>
-      <div><div class="display" style="font-size:17px;color:var(--ink)">RUTGERS BITS</div><div class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:2px">BUSINESS AND INFORMATION TECHNOLOGY SOCIETY · RUTGERS UNIVERSITY</div></div>
+      <div><div class="display" style="font-size:28px;line-height:1;color:var(--ink)">Rutgers BITS</div><div class="mono" style="font-size:11px;color:var(--ink-faint);margin-top:2px">BUSINESS AND INFORMATION TECHNOLOGY SOCIETY · RUTGERS UNIVERSITY</div></div>
     </div>
     <p style="font-size:15px;color:var(--ink-soft);line-height:1.8;margin-bottom:14px">I have begun connecting with the Rutgers BITS (Business and Information Technology Society) student organization, which serves as a community of practice for students interested in IT, technology careers, and business-technology intersections. I reached out to the BITS president to learn more about the organization and explore membership opportunities.</p>
     <p style="font-size:15px;color:var(--ink-soft);line-height:1.8;margin-bottom:20px">BITS hosts events, networking sessions, and discussions relevant to IT students and professionals, making it a valuable community for students like myself pursuing careers in networking and IT support. I am in the process of becoming an active member and plan to attend upcoming meetings and events during the semester.</p>
     <div class="callout"><strong>Why this community matters to me:</strong> Connecting with peers and professionals who share similar interests helps me stay current, build my network, and discover opportunities I wouldn't find on my own.</div>
   </div>
-  <div class="card"><div class="display" style="font-size:14px;color:var(--ink);margin-bottom:14px">OTHER COMMUNITIES I FOLLOW</div>
+  <div class="card"><div class="display" style="font-size:24px;line-height:1;color:var(--ink);margin-bottom:16px">Other Communities I Follow</div>
     <div class="grid2" style="gap:10px">
       <div class="tag">🔒 <strong>r/cybersecurity</strong> — keeping up with security news and trends</div>
       <div class="tag">🌐 <strong>Cisco NetAcad community</strong> — networking learners and practitioners</div>
@@ -726,19 +915,18 @@ body::after{
 <!-- ═══════════════════════════════ WORK SAMPLE ═══════════════════════════════ -->
 <div class="section" id="sec-Work Sample">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>WORK SAMPLE</h2><p>SSW IT STUDENT WORKER BINDER — RUTGERS SCHOOL OF SOCIAL WORK IT DEPARTMENT</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Work Sample</h2><p>SSW IT STUDENT WORKER BINDER — RUTGERS SCHOOL OF SOCIAL WORK IT DEPARTMENT</p>
+    </div></div>
   </div>
   <div class="card-lg" style="margin-bottom:20px">
     <div class="pill">Internship work sample</div>
-    <h3 class="display" style="font-size:21px;font-weight:400;color:var(--ink);margin-bottom:18px">SSW IT STUDENT WORKER BINDER</h3>
+    <h3 class="display" style="font-size:34px;line-height:1;color:var(--ink);margin-bottom:18px">SSW IT Student Worker Binder</h3>
     <p style="font-size:15px;color:var(--ink-soft);line-height:1.8;margin-bottom:14px">I've worked in IT Support at the Rutgers School of Social Work since November 2025, and this summer that role is being formalized as an internship for my degree. My responsibilities are both hands-on and service-oriented, giving me exposure to a wide range of real-world IT tasks.</p>
-    <p style="font-size:15px;color:var(--ink-soft);line-height:1.8;margin-bottom:14px">One of my primary duties is <strong style="color:var(--ink)">computer imaging</strong> — deploying a standardized operating system and software configuration across department desktops and laptops using WDS/MDT, then <strong style="color:var(--ink)">joining each machine to the university's Active Directory domain</strong>. After imaging, I handle <strong style="color:var(--ink)">workstation swaps and full user setup</strong> — installing required programs, getting each user signed in, and configuring their PC so they can get straight back to work. I also support staff with hardware issues at the desk, replace batteries in APC UPS battery-backup units, maintain an accurate IT inventory, and provide <strong style="color:var(--ink)">remote troubleshooting</strong> for staff using remote desktop tools.</p>
+    <p style="font-size:15px;color:var(--ink-soft);line-height:1.8;margin-bottom:14px">One of my primary duties is <strong style="color:var(--ink)">computer imaging</strong> — deploying a standardized operating system and software configuration across department desktops and laptops using WDS/MDT, enabling <strong style="color:var(--ink)">BitLocker drive encryption</strong>, then <strong style="color:var(--ink)">joining each machine to the Rutgers Active Directory domain</strong>. After imaging, I handle <strong style="color:var(--ink)">workstation swaps and full user setup</strong> — installing required programs, getting each user signed in, and configuring their PC so they can get straight back to work. I also support staff with hardware issues at the desk, replace batteries in APC UPS battery-backup units, maintain an accurate IT inventory, and provide <strong style="color:var(--ink)">remote troubleshooting</strong> for staff using remote desktop tools.</p>
     <p style="font-size:15px;color:var(--ink-soft);line-height:1.8;margin-bottom:26px">My most impactful project so far has been creating the <strong style="color:var(--ink)">SSW IT Student Worker Binder</strong> — a comprehensive 20-page documentation resource covering 13 IT services with step-by-step procedures, escalation protocols, and onboarding checklists. I developed this proactively so any student worker could reference it when senior staff were unavailable — demonstrating my ability to think beyond day-to-day tasks and contribute to long-term operational efficiency.</p>
     <div class="grid3" style="margin-bottom:26px">
       <div class="stat-box"><div class="stat-num">13</div><div class="stat-label">Services documented</div></div>
@@ -746,7 +934,7 @@ body::after{
       <div class="stat-box"><div class="stat-num">1</div><div class="stat-label">Author (me!)</div></div>
     </div>
     <div style="border-top:2px solid var(--rule);padding-top:20px">
-      <div class="display" style="font-size:13px;color:var(--ink);margin-bottom:14px">WHAT THE BINDER COVERS</div>
+      <div class="display" style="font-size:24px;line-height:1;color:var(--ink);margin-bottom:16px">What the Binder Covers</div>
       <div class="grid3" style="gap:8px">
         <div class="tag">✓ Laptop issuance checklist</div>
         <div class="tag">✓ Computer imaging (WDS/MDT)</div>
@@ -769,13 +957,12 @@ body::after{
 <!-- ═══════════════════════════════ REFERENCES ═══════════════════════════════ -->
 <div class="section" id="sec-References">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>PROFESSIONAL REFERENCES</h2><p>PEOPLE WHO HAVE AGREED TO SERVE AS A REFERENCE FOR ME</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>Professional References</h2><p>PEOPLE WHO HAVE AGREED TO SERVE AS A REFERENCE FOR ME</p>
+    </div></div>
   </div>
   <div style="display:flex;flex-direction:column;gap:20px">
     <div class="card-lg card-hover" style="display:flex;gap:20px;align-items:flex-start">
@@ -796,18 +983,17 @@ body::after{
 <!-- ═══════════════════════════════ ARCADE ═══════════════════════════════ -->
 <div class="section" id="sec-Arcade">
   <div class="sec-header">
-    <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-      <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-      <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-      <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-    </svg>
-    <h2>THE ARCADE</h2><p>SCARLET QUEST — AN ORIGINAL RUTGERS HALLOWEEN PLATFORMER · BUILT WITH HTML CANVAS + JS</p>
+    <svg class="banner-rod" viewBox="0 4 640 40" aria-hidden="true"><use href="#rod-orn"/></svg>
+    <div class="banner-wrap"><div class="banner">
+      <svg class="banner-bg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V100L50 87L0 100Z" fill="#CC0033"/><path d="M0 0H100V100L50 87L0 100Z" fill="url(#fabric)"/><path d="M3 4.5H97V92.5L50 80.8L3 92.5Z" fill="none" stroke="#F3E8D6" stroke-opacity=".6" stroke-width="1.3" vector-effect="non-scaling-stroke"/></svg>
+      <div class="banner-rings" aria-hidden="true"><i></i><i></i></div>
+      <h2>The Arcade</h2><p>SCARLET QUEST — AN ORIGINAL RUTGERS HALLOWEEN PLATFORMER · BUILT WITH HTML CANVAS + JS</p>
+    </div></div>
   </div>
 
   <div class="game-frame">
     <div class="game-head">
-      <span class="game-title">🎃 SCARLET QUEST</span>
+      <span class="game-title">🎃 Scarlet Quest</span>
       <span class="game-controls">
         <button class="game-btn" id="aqStart">▶ START</button>
         <button class="game-btn" id="aqPause">❚❚ PAUSE</button>
@@ -822,7 +1008,7 @@ body::after{
   </div>
 
   <div class="card" style="margin-top:20px">
-    <div class="display" style="font-size:14px;color:var(--ink);margin-bottom:14px">HOW TO PLAY</div>
+    <div class="display" style="font-size:24px;line-height:1;color:var(--ink);margin-bottom:16px">How to Play</div>
     <div class="grid3" style="gap:8px">
       <div class="tag">⌨️ Move — arrow keys or A / D</div>
       <div class="tag">⤒ Jump — space, W, or ↑</div>
@@ -838,13 +1024,8 @@ body::after{
 </main>
 
 <footer>
-  <svg class="scroll-divider" viewBox="0 0 250 40" aria-hidden="true">
-    <use href="#iron-scroll" x="0" y="3"/><use href="#iron-scroll" x="-250" y="3" transform="scale(-1,1)"/>
-    <line x1="58" y1="20" x2="108" y2="20" stroke="currentColor" stroke-width="2.5"/>
-    <line x1="142" y1="20" x2="192" y2="20" stroke="currentColor" stroke-width="2.5"/>
-    <rect x="118" y="13" width="14" height="14" transform="rotate(45 125 20)" fill="none" stroke="#B78A3C" stroke-width="2.5"/>
-  </svg>
-  <span class="display">VIVEK VINOD PATEL</span>
+  <svg class="scroll-divider" viewBox="40 -4 170 46" aria-hidden="true"><use href="#divider-orn"/></svg>
+  <span class="display">Vivek Vinod Patel</span>
   <span class="mono">B.S. INFORMATION TECHNOLOGY &amp; INFORMATICS · RUTGERS UNIVERSITY · VVP52@SCARLETMAIL.RUTGERS.EDU</span>
   <div style="margin-top:12px"><a href="https://github.com/Vivek16306" target="_blank" rel="noopener" style="margin-right:16px">GitHub</a><a href="https://www.linkedin.com/in/vivek-patel-156539349/" target="_blank" rel="noopener">LinkedIn</a></div>
 </footer>
@@ -853,34 +1034,28 @@ body::after{
 const pages = ["Home","Career Goals","Resume","Honors","Resources","Community","Work Sample","References","Arcade"];
 const navLabels = {"References":"References","Arcade":"🎃 Arcade"};
 const nav = document.getElementById("navLinks");
+let currentPage = "Home";
 
-/* falling leaves burst on tab change */
-function leafBurst(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const layer=document.getElementById('leafLayer');
-  if(!layer) return;
-  const glyphs=['🍂','🍁','🍃'];
-  for(let i=0;i<14;i++){
-    const s=document.createElement('span');
-    s.className='leaf';
-    s.textContent=glyphs[(Math.random()*glyphs.length)|0];
-    s.style.left=(Math.random()*96)+'vw';
-    s.style.fontSize=(14+Math.random()*18)+'px';
-    s.style.animationDuration=(3+Math.random()*3)+'s';
-    s.style.animationDelay=(Math.random()*0.6)+'s';
-    s.addEventListener('animationend',()=>s.remove());
-    layer.appendChild(s);
-  }
-}
-
+/* pages slide in like a slideshow: forward from the right, back from the left */
 function showSection(name) {
-  document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
-  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  const from = pages.indexOf(currentPage), to = pages.indexOf(name);
   const s = document.getElementById("sec-" + name);
-  if(s) s.classList.add("visible");
-  document.querySelectorAll(".nav-btn").forEach(b => { if(b.dataset.name === name) b.classList.add("active"); });
-  window.scrollTo(0,0);
-  leafBurst();
+  if(!s) return;
+  document.querySelectorAll(".section").forEach(x => x.classList.remove("visible", "enter-next", "enter-prev"));
+  document.querySelectorAll(".nav-btn").forEach(b => {
+    const on = b.dataset.name === name;
+    b.classList.toggle("active", on);
+    if(on) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
+  });
+  s.classList.add("visible");
+  const act = nav.querySelector(".nav-btn.active");   /* keep the active pennant in view on phones */
+  if(act && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = act.offsetLeft - nav.clientWidth / 2 + act.offsetWidth / 2;
+  if(name !== currentPage){
+    void s.offsetWidth;
+    s.classList.add(to >= from ? "enter-next" : "enter-prev");
+  }
+  currentPage = name;
+  try { window.scrollTo({top: 0, behavior: "instant"}); } catch(e) { window.scrollTo(0, 0); }
 }
 
 function buildButton(name, container) {
@@ -888,6 +1063,7 @@ function buildButton(name, container) {
   b.className = "nav-btn" + (name === "Home" ? " active" : "");
   b.textContent = navLabels[name] || name;
   b.dataset.name = name;
+  if(name === "Home") b.setAttribute("aria-current", "page");
   b.onclick = () => showSection(name);
   container.appendChild(b);
 }
@@ -1143,18 +1319,18 @@ function loop(){
   ctx.fillText('SCORE '+String(Math.floor(score)).padStart(4,'0')+'   BEST '+String(Math.floor(best)).padStart(4,'0'),14,24);
   ctx.textAlign='center';
   if(!started){
-    ctx.fillStyle=PAPER; ctx.font='18px Graduate, serif';
-    ctx.fillText('THE SCARLET KNIGHT RUN', W/2, H/2-26);
+    ctx.fillStyle=PAPER; ctx.font='600 30px "Grenze Gotisch", serif';
+    ctx.fillText('The Scarlet Knight Run', W/2, H/2-26);
     ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
     ctx.fillText('PRESS SPACE OR TAP TO RIDE', W/2, H/2);
   }else if(over){
-    ctx.fillStyle=SCARLET_LT; ctx.font='18px Graduate, serif';
-    ctx.fillText('UNHORSED!', W/2, H/2-26);
+    ctx.fillStyle=SCARLET_LT; ctx.font='600 30px "Grenze Gotisch", serif';
+    ctx.fillText('Unhorsed!', W/2, H/2-26);
     ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
     ctx.fillText('TAP OR PRESS SPACE TO RIDE AGAIN', W/2, H/2);
   }else if(paused){
-    ctx.fillStyle=PAPER; ctx.font='18px Graduate, serif';
-    ctx.fillText('PAUSED', W/2, H/2-26);
+    ctx.fillStyle=PAPER; ctx.font='600 30px "Grenze Gotisch", serif';
+    ctx.fillText('Paused', W/2, H/2-26);
     ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
     ctx.fillText('HIT RESUME TO KEEP RIDING', W/2, H/2);
   }
@@ -1415,7 +1591,6 @@ function loopQ(){
     pumps.forEach(p=>{
       if(!p.got && overlap(P.x,P.y,P.w,P.h,p.x-8,p.y-9,16,18)){ p.got=true; pumpCount++; score+=50; }
     });
-    if(mode==='win' && !winBurst){ winBurst=true; if(typeof leafBurst==='function') leafBurst(); }
   }
 
   const cam=Math.max(0,Math.min(P.x-280,COLS*T-W));
@@ -1510,8 +1685,8 @@ function loopQ(){
   if(mode!=='play'){
     ctx.fillStyle='rgba(18,10,6,0.72)'; ctx.fillRect(0,0,W,H);
     if(mode==='title'){
-      ctx.fillStyle=PAPER; ctx.font='26px Graduate, serif';
-      ctx.fillText('SCARLET QUEST',W/2,H/2-46);
+      ctx.fillStyle=PAPER; ctx.font='600 40px "Grenze Gotisch", serif';
+      ctx.fillText('Scarlet Quest',W/2,H/2-46);
       ctx.fillStyle=PUMPKIN; ctx.font='600 12px "IBM Plex Mono", monospace';
       ctx.fillText('A RUTGERS HALLOWEEN PLATFORMER',W/2,H/2-20);
       ctx.fillStyle='#C9B79E';
@@ -1519,18 +1694,18 @@ function loopQ(){
       ctx.fillStyle=PAPER;
       ctx.fillText('PRESS ▶ START OR TAP TO PLAY',W/2,H/2+36);
     }else if(mode==='pause'){
-      ctx.fillStyle=PAPER; ctx.font='22px Graduate, serif';
-      ctx.fillText('PAUSED',W/2,H/2-8);
+      ctx.fillStyle=PAPER; ctx.font='600 34px "Grenze Gotisch", serif';
+      ctx.fillText('Paused',W/2,H/2-8);
       ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
       ctx.fillText('HIT RESUME TO KEEP QUESTING',W/2,H/2+20);
     }else if(mode==='over'){
-      ctx.fillStyle=SCARLET_LT; ctx.font='24px Graduate, serif';
-      ctx.fillText('GAME OVER',W/2,H/2-14);
+      ctx.fillStyle=SCARLET_LT; ctx.font='600 36px "Grenze Gotisch", serif';
+      ctx.fillText('Game Over',W/2,H/2-14);
       ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
       ctx.fillText('SCORE '+Math.floor(score)+' · PRESS ▶ START TO TRY AGAIN',W/2,H/2+16);
     }else if(mode==='win'){
-      ctx.fillStyle=BRASS; ctx.font='24px Graduate, serif';
-      ctx.fillText('YOU REACHED OLD QUEENS!',W/2,H/2-20);
+      ctx.fillStyle=BRASS; ctx.font='600 36px "Grenze Gotisch", serif';
+      ctx.fillText('You Reached Old Queens!',W/2,H/2-20);
       ctx.fillStyle=PAPER; ctx.font='600 13px "IBM Plex Mono", monospace';
       ctx.fillText('SCORE '+Math.floor(score)+' · PUMPKINS '+pumpCount+'/'+pumps.length,W/2,H/2+8);
       ctx.fillStyle='#C9B79E'; ctx.font='600 12px "IBM Plex Mono", monospace';
@@ -1539,6 +1714,862 @@ function loopQ(){
   }
 }
 loopQ();
+})();
+</script>
+
+<script>
+/* ═══ HERO SLIDESHOW — Old Queens gate at night → autumn trees ═══
+   Everything here is drawn with SVG at load time (seeded, so it looks the same every visit).
+   Slide 1: the lantern is lit, flickers, and swings when you click / tap / press Enter on it.
+   Slide 2: linocut-style fall trees sway, drop leaves, and shake when tapped.
+   To show the official Rutgers logo on the lamp-post banner, put the file next to index.html
+   and keep this name (or change the path):                                                   */
+const RUTGERS_LOGO_SRC = 'rutgers-logo.png';
+
+(function(){
+'use strict';
+const NS = 'http://www.w3.org/2000/svg';
+const show = document.getElementById('heroShow');
+if(!show) return;
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── small helpers ─────────────────────────────────────────── */
+function el(tag, attrs, parent){
+  const e = document.createElementNS(NS, tag);
+  for(const k in attrs) e.setAttribute(k, attrs[k]);
+  if(parent) parent.appendChild(e);
+  return e;
+}
+function seeded(seed){            // mulberry32
+  return function(){
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const r1 = n => Math.round(n * 10) / 10;
+const pt = p => r1(p[0]) + ' ' + r1(p[1]);
+const pd = (P, close) => 'M' + P.map(pt).join('L') + (close ? 'Z' : '');
+const lerp = (a, b, t) => a + (b - a) * t;
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+/* ── wrought-iron scroll geometry ─────────────────────────────
+   A scroll is drawn by walking along a curve whose curvature grows toward
+   the curl, which gives the smooth tightening spiral of hand-forged iron. */
+function integrate(L, k, th0, n){
+  const ds = L / n; let x = 0, y = 0, th = th0; const P = [[0, 0]];
+  for(let i = 0; i < n; i++){
+    th += k((i + 0.5) / n) * ds;
+    x += Math.cos(th) * ds; y += Math.sin(th) * ds;
+    P.push([x, y]);
+  }
+  return P;
+}
+/* single curl: start at (x,y) heading ang°, curl clockwise (dir 1) or counter-clockwise (dir -1) */
+function vol(x, y, ang, L, turns, p, dir){
+  const K = turns * 2 * Math.PI * (p + 1) / L;
+  return integrate(L, u => dir * K * Math.pow(u, p), ang * Math.PI / 180, 2 * Math.round(L / 2) + 40)
+    .map(q => [q[0] + x, q[1] + y]);
+}
+function placeMid(P, x, y, ang){
+  const m = P[P.length >> 1], a = ang * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+  return P.map(([u, v]) => { u -= m[0]; v -= m[1]; return [x + u * c - v * s, y + u * s + v * c]; });
+}
+/* C-scroll (both ends curl the same way) and S-scroll (ends curl opposite ways), placed by their middle */
+function cscr(x, y, ang, L, turns, p, dir, k0){
+  k0 = k0 || 0;
+  const K = 4 * Math.PI * turns * (p + 1) / L, tot = K * L / (p + 1) + k0 * L;
+  return placeMid(integrate(L, u => dir * (K * Math.pow(Math.abs(2 * u - 1), p) + k0), -dir * tot / 2, 120), x, y, ang);
+}
+function sscr(x, y, ang, L, turns, p, dir){
+  const K = 4 * Math.PI * turns * (p + 1) / L;
+  return placeMid(integrate(L, u => dir * K * Math.sign(2 * u - 1) * Math.pow(Math.abs(2 * u - 1), p), dir * K * L / (2 * (p + 1)), 120), x, y, ang);
+}
+const mirror = (P, cx) => P.map(([u, v]) => [2 * cx - u, v]);
+
+/* ── shared drawing bits ───────────────────────────────────── */
+function scallop(cx, cy, r, R){
+  const n = 7 + Math.floor(R() * 4), a0 = R() * Math.PI * 2, P = [];
+  for(let i = 0; i < n; i++){
+    const a = a0 + i / n * Math.PI * 2 + (R() - 0.5) * 0.35, rr = r * (0.84 + R() * 0.22);
+    P.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]);
+  }
+  let d = 'M' + pt(P[0]);
+  for(let i = 0; i < n; i++){
+    const p = P[i], q = P[(i + 1) % n], ar = Math.hypot(q[0] - p[0], q[1] - p[1]) * 0.56;
+    d += 'A' + r1(ar) + ' ' + r1(ar) + ' 0 0 1 ' + pt(q);
+  }
+  return d + 'Z';
+}
+function crescent(x, y, s, a){
+  const c = Math.cos(a), sn = Math.sin(a), T = (u, v) => [x + u * c - v * sn, y + u * sn + v * c];
+  return 'M' + pt(T(-s, 0)) + 'Q' + pt(T(0, s * 0.95)) + ' ' + pt(T(s, 0)) + 'Q' + pt(T(0, s * 0.38)) + ' ' + pt(T(-s, 0)) + 'Z';
+}
+/* thin tapered chisel stroke, like a linocut gouge mark */
+function gouge(x, y, len, th, a, bow){
+  const c = Math.cos(a), s = Math.sin(a), T = (u, v) => [x + u * c - v * s, y + u * s + v * c];
+  return 'M' + pt(T(0, 0)) + 'Q' + pt(T(len / 2, -th - bow)) + ' ' + pt(T(len, 0)) + 'Q' + pt(T(len / 2, th - bow)) + ' ' + pt(T(0, 0)) + 'Z';
+}
+function limb(x0, y0, x1, y1, w0, w1, bend){
+  const dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L;
+  const mx = (x0 + x1) / 2 + nx * bend, my = (y0 + y1) / 2 + ny * bend, wm = (w0 + w1) / 4;
+  return 'M' + pt([x0 + nx * w0 / 2, y0 + ny * w0 / 2]) + 'Q' + pt([mx + nx * wm, my + ny * wm]) + ' ' + pt([x1 + nx * w1 / 2, y1 + ny * w1 / 2]) +
+         'L' + pt([x1 - nx * w1 / 2, y1 - ny * w1 / 2]) + 'Q' + pt([mx - nx * wm, my - ny * wm]) + ' ' + pt([x0 - nx * w0 / 2, y0 - ny * w0 / 2]) + 'Z';
+}
+/* a canopy = flat linocut colour blocks: shadow silhouette → mid tone → sunlit tone (clipped to the
+   silhouette so it reads as light falling on the upper-left of each clump), plus carved crescents */
+let clipN = 0;
+function canopy(g, clusters, pal, R, soft){
+  let lo = '', mid = '', hi = '', cutLo = '', cutHi = '';
+  clusters.forEach(([cx, cy, r]) => { lo += scallop(cx, cy, r, R); });
+  clusters.forEach(([cx, cy, r]) => { mid += scallop(cx - r * 0.07, cy - r * 0.1, r * 0.84, R); });
+  clusters.forEach(([cx, cy, r]) => { if(r > 24) hi += scallop(cx - r * 0.34, cy - r * 0.4, r * (soft ? 0.42 : 0.6), R); });
+  clusters.forEach(([cx, cy, r]) => {
+    const n = Math.round(r / (soft ? 9 : 6));
+    for(let i = 0; i < n; i++){
+      const a = R() * Math.PI * 2, d = Math.sqrt(R()) * r * 0.8, x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d;
+      const s = 2.2 + R() * 3, rot = Math.atan2(y - cy, x - cx) - Math.PI / 2 + (R() - 0.5) * 0.7;
+      if(y < cy - r * 0.2 && x < cx + r * 0.05) cutHi += crescent(x, y, s, rot); else cutLo += crescent(x, y, s, rot);
+    }
+  });
+  const id = 'cpy' + (++clipN);
+  const cp = el('clipPath', {id}, g);
+  el('path', {d: mid}, cp);
+  el('path', {d: lo, fill: pal.lo}, g);
+  el('path', {d: mid, fill: pal.mid}, g);
+  if(hi) el('path', {d: hi, fill: pal.hi, 'clip-path': `url(#${id})`}, g);
+  el('path', {d: cutLo, fill: pal.lo, opacity: soft ? 0.6 : 0.9}, g);
+  if(cutHi) el('path', {d: cutHi, fill: pal.mid, opacity: 0.95}, g);
+}
+const LEAF_D = 'M0 -7C2 -6 1.6 -3.4 3.6 -4.2C3.8 -2.2 6.8 -2.6 6.2 -0.6C5 0.4 5.2 1.6 3.2 1.6C3.6 3 2.6 4 1.6 3.6L0.5 7L-0.5 7L-1.6 3.6C-2.6 4 -3.6 3 -3.2 1.6C-5.2 1.6 -5 0.4 -6.2 -0.6C-6.8 -2.6 -3.8 -2.2 -3.6 -4.2C-1.6 -3.4 -2 -6 0 -7Z';
+const ELM_D = 'M0 -7C4 -4 4 3 0 7C-4 3 -4 -4 0 -7Z';
+
+/* ═════════════════════════ SCENE 1 — OLD QUEENS GATE ═════════════════════════ */
+function buildGate(svg){
+  const R = seeded(1766);
+  const CX = 600, GROUND = 600, HOR = 500;
+  const defs = el('defs', {}, svg);
+  defs.innerHTML = `
+    <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#070403"/><stop offset=".55" stop-color="#140C07"/><stop offset="1" stop-color="#2E1B10"/>
+    </linearGradient>
+    <radialGradient id="gHalo"><stop offset="0" stop-color="#FFE2A2" stop-opacity=".66"/><stop offset=".1" stop-color="#FFC977" stop-opacity=".46"/>
+      <stop offset=".3" stop-color="#E9963F" stop-opacity=".2"/><stop offset=".62" stop-color="#B8662A" stop-opacity=".08"/><stop offset="1" stop-color="#8A4A1E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gBloom"><stop offset="0" stop-color="#FFF9E8" stop-opacity=".95"/><stop offset=".35" stop-color="#FFE3A6" stop-opacity=".45"/><stop offset="1" stop-color="#FFC46E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gGlass" cx=".5" cy=".55" r=".62"><stop offset="0" stop-color="#FFFDF2"/><stop offset=".35" stop-color="#FFE6A8"/><stop offset=".75" stop-color="#F7B657"/><stop offset="1" stop-color="#D98A35"/></radialGradient>
+    <radialGradient id="gFlame" cx=".5" cy=".7" r=".6"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#FFF1C4"/><stop offset="1" stop-color="#FFD27A"/></radialGradient>
+    <linearGradient id="gCone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD48A" stop-opacity=".2"/><stop offset=".7" stop-color="#F0A957" stop-opacity=".06"/><stop offset="1" stop-color="#E09A4A" stop-opacity="0"/></linearGradient>
+    <radialGradient id="gPool"><stop offset="0" stop-color="#F3B566" stop-opacity=".55"/><stop offset=".45" stop-color="#C98340" stop-opacity=".22"/><stop offset="1" stop-color="#8A4F22" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gMaskDot"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#777"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <radialGradient id="gSmallGlow"><stop offset="0" stop-color="#FFD891" stop-opacity=".9"/><stop offset="1" stop-color="#FFB24E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gMoonHalo"><stop offset=".35" stop-color="#E9DCC3" stop-opacity=".16"/><stop offset="1" stop-color="#E9DCC3" stop-opacity="0"/></radialGradient>
+    <linearGradient id="gPillarLitL" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#C98A4E" stop-opacity=".6"/><stop offset=".55" stop-color="#8A5530" stop-opacity=".18"/><stop offset="1" stop-color="#8A5530" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gPillarLitR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C98A4E" stop-opacity=".6"/><stop offset=".55" stop-color="#8A5530" stop-opacity=".18"/><stop offset="1" stop-color="#8A5530" stop-opacity="0"/></linearGradient>
+    <radialGradient id="gVig" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></radialGradient>
+    <mask id="mLamp" maskUnits="userSpaceOnUse" x="-600" y="0" width="2400" height="700">
+      <rect x="-600" y="0" width="2400" height="700" fill="#000"/><circle id="mLampDot" cx="600" cy="316" r="250" fill="url(#gMaskDot)"/>
+    </mask>
+    <mask id="mWarm" maskUnits="userSpaceOnUse" x="-600" y="0" width="2400" height="700">
+      <rect x="-600" y="0" width="2400" height="700" fill="#000"/><ellipse id="mWarmDot" cx="600" cy="660" rx="150" ry="120" fill="url(#gMaskDot)"/>
+    </mask>`;
+
+  /* sky */
+  el('rect', {x: -700, y: 0, width: 2600, height: 640, fill: 'url(#gSky)'}, svg);
+  let carve = '';
+  for(let i = 0; i < 70; i++){
+    const y = 14 + Math.pow(R(), 1.6) * 330, x = -650 + R() * 2500, len = 40 + R() * 150;
+    carve += gouge(x, y, len, 0.8 + R() * 1.8, (R() - 0.5) * 0.06, (R() - 0.5) * 3);
+  }
+  el('path', {d: carve, fill: '#2A1A10', opacity: 0.75}, svg);
+  const stars = el('g', {fill: '#EADFC8'}, svg);
+  const starEls = [];
+  for(let i = 0; i < 46; i++){
+    const s = el('circle', {cx: r1(-650 + R() * 2500), cy: r1(12 + R() * 270), r: r1(0.6 + R() * 1.1), opacity: r1(0.25 + R() * 0.6)}, stars);
+    starEls.push({e: s, base: +s.getAttribute('opacity'), ph: R() * 6.3, sp: 0.6 + R() * 1.6});
+  }
+  /* moon with carved shading + drifting cloud wisps */
+  const moon = el('g', {}, svg);
+  el('circle', {cx: 842, cy: 108, r: 120, fill: 'url(#gMoonHalo)'}, moon);
+  el('circle', {cx: 842, cy: 108, r: 38, fill: '#E9DCC3'}, moon);
+  el('path', {d: 'M830 72A38 38 0 0 1 830 144A30 38 0 0 0 830 72Z', fill: '#B49C82', opacity: 0.55}, moon);
+  let mcut = '';
+  [[826, 92, 9], [851, 118, 7], [834, 126, 5], [858, 90, 4]].forEach(([x, y, s]) => { mcut += crescent(x, y, s, 0.3); });
+  el('path', {d: mcut, fill: '#B49C82', opacity: 0.7}, moon);
+  const clouds = el('g', {}, svg);
+  let cl = '', clRim = '';
+  [[700, 128, 260], [905, 150, 200], [560, 96, 170], [1010, 84, 150], [300, 140, 220], [120, 70, 170]].forEach(([x, y, w]) => {
+    cl += gouge(x, y, w, 5 + R() * 3, 0, -1.5);
+    clRim += gouge(x + w * 0.12, y - 4.5, w * 0.62, 1.1, 0, -1);
+  });
+  el('path', {d: cl, fill: '#1B110A'}, clouds);
+  el('path', {d: clRim, fill: '#6E675B', opacity: 0.8}, clouds);
+
+  /* far campus: Old Queens-style hall with cupola, lit windows, and lamps along the walk */
+  const far = el('g', {}, svg);
+  const BLD = '#0E0806';
+  el('rect', {x: 214, y: 466, width: 772, height: 58, fill: BLD}, far);
+  el('path', {d: 'M200 468L230 452L970 452L1000 468Z', fill: BLD}, far);
+  el('path', {d: 'M532 454L600 428L668 454Z', fill: BLD}, far);
+  el('rect', {x: 584, y: 412, width: 32, height: 20, fill: BLD}, far);
+  el('rect', {x: 588, y: 394, width: 24, height: 20, fill: BLD}, far);
+  el('path', {d: 'M587 395Q600 374 613 395Z', fill: BLD}, far);
+  el('rect', {x: 599, y: 362, width: 2, height: 16, fill: BLD}, far);
+  let litW = '', darkW = '';
+  for(let row = 0; row < 2; row++){
+    for(let x = 232; x < 970; x += 25){
+      if(x > 576 && x < 624) continue;
+      const w = `M${x} ${474 + row * 24}h9v13h-9Z`;
+      if(R() < 0.34) litW += w; else darkW += w;
+    }
+  }
+  el('path', {d: darkW, fill: '#231509'}, far);
+  el('path', {d: litW, fill: '#E3A253', opacity: 0.85}, far);
+  el('path', {d: 'M592 524V500Q600 490 608 500V524Z', fill: '#E3A253', opacity: 0.9}, far);
+
+  /* lawn + the walk receding toward the hall */
+  el('rect', {x: -700, y: 518, width: 2600, height: 90, fill: '#100A06'}, svg);
+  let grass = '';
+  for(let i = 0; i < 90; i++){ grass += gouge(-650 + R() * 2500, 526 + R() * 70, 14 + R() * 30, 0.6 + R() * 0.6, (R() - 0.5) * 0.1, 0); }
+  el('path', {d: grass, fill: '#22160D', opacity: 0.9}, svg);
+  el('path', {d: 'M592 523L608 523L790 604L410 604Z', fill: '#2A1B11'}, svg);
+  let walkLines = '';
+  [528, 535, 544, 556, 571, 589].forEach(y => { const s = (y - 518) / 86; walkLines += `M${r1(600 - 8 - 182 * s)} ${y}H${r1(600 + 8 + 182 * s)}`; });
+  el('path', {d: walkLines, stroke: '#1A100A', 'stroke-width': 1.4, fill: 'none'}, svg);
+  /* little lamps along the walk */
+  const farLamps = el('g', {}, svg);
+  [[0.62, 1], [0.34, 0.6]].forEach(([s, o]) => {
+    const y = 518 + 86 * s;
+    [-1, 1].forEach(side => {
+      const x = 600 + side * (40 + 160 * s);
+      el('circle', {cx: r1(x), cy: r1(y - 52 * s), r: r1(26 * s), fill: 'url(#gSmallGlow)', opacity: o}, farLamps);
+      el('rect', {x: r1(x - 1.2 * s), y: r1(y - 50 * s), width: r1(2.4 * s + 0.6), height: r1(50 * s), fill: '#0B0705'}, farLamps);
+      el('circle', {cx: r1(x), cy: r1(y - 52 * s), r: r1(3.6 * s + 0.6), fill: '#FFE3A3'}, farLamps);
+    });
+  });
+
+  /* side trees, dark with a few leaves catching the lamplight */
+  function nightTree(bx, clusters, seed){
+    const Rt = seeded(seed), g = el('g', {}, svg);
+    el('path', {d: limb(bx, 606, bx + (Rt() - 0.5) * 30, 300, 30, 12, 8), fill: '#0A0604'}, g);
+    clusters.forEach(([cx, cy]) => { el('path', {d: limb(bx, 380 + Rt() * 60, cx, cy, 10, 3, (Rt() - 0.5) * 30), fill: '#0A0604'}, g); });
+    canopy(g, clusters, {lo: '#0C0705', mid: '#160D08', hi: '#20140C'}, Rt, true);
+    return g;
+  }
+  const treeL = nightTree(150, [[60, 210, 88], [170, 150, 96], [255, 230, 70], [20, 320, 74], [140, 300, 86], [-60, 240, 80], [-150, 170, 90], [-230, 300, 80], [270, 330, 46]], 11);
+  const treeR = nightTree(1050, [[1140, 210, 88], [1030, 150, 96], [945, 230, 70], [1180, 320, 74], [1060, 300, 86], [1260, 240, 80], [1350, 170, 90], [1430, 300, 80], [930, 330, 46]], 12);
+  [treeL, treeR].forEach(t => t.classList.add('sway-night'));
+  let warmLeaves = '';
+  for(let i = 0; i < 34; i++){
+    const left = i % 2 === 0, x = left ? 220 + R() * 90 : 890 + R() * 90, y = 180 + R() * 200;
+    warmLeaves += crescent(x, y, 2.6 + R() * 2.4, R() * 6.3);
+  }
+  el('path', {d: warmLeaves, fill: '#7A3F1C', opacity: 0.85}, svg);
+
+  /* the lamp's light: halo + carved rays + cone + pool (all follow the lantern when it swings) */
+  const light = el('g', {}, svg);
+  const halo = el('circle', {cx: 600, cy: 316, r: 290, fill: 'url(#gHalo)'}, light);
+  let rays = '';
+  for(let i = 0; i < 64; i++){
+    const a = i / 64 * Math.PI * 2 + (R() - 0.5) * 0.05, r0 = 82 + R() * 26, len = 34 + R() * 120;
+    rays += gouge(600 + Math.cos(a) * r0, 316 + Math.sin(a) * r0, len, 0.7 + R() * 1.2, a, 0);
+  }
+  const rayG = el('g', {}, light);
+  el('path', {d: rays, fill: '#F2B866', opacity: 0.24}, rayG);
+  const coneG = el('g', {}, light);
+  el('path', {d: 'M576 350L624 350L800 604L400 604Z', fill: 'url(#gCone)'}, coneG);
+  const pool = el('ellipse', {cx: 600, cy: 600, rx: 270, ry: 62, fill: 'url(#gPool)'}, svg);
+
+  /* low iron fence running off both sides of the gate */
+  let fenceBars = '', fenceTips = '';
+  for(let x = -640; x < 1840; x += 17){
+    if(x > 318 && x < 882) continue;
+    fenceBars += `M${x} 590V490`;
+    fenceTips += `M${x - 3} 492L${x} 480L${x + 3} 492Z`;
+  }
+  const fence = el('g', {}, svg);
+  el('path', {d: fenceBars, stroke: '#090504', 'stroke-width': 2.6, fill: 'none'}, fence);
+  el('path', {d: fenceTips, fill: '#090504'}, fence);
+  el('path', {d: 'M-640 500H326M874 500H1840M-640 580H326M874 580H1840', stroke: '#090504', 'stroke-width': 3.4}, fence);
+
+  /* brownstone pillars */
+  function pillar(x0, side){
+    const g = el('g', {}, svg), w = 74;
+    el('rect', {x: x0 - 6, y: 572, width: w + 12, height: 32, fill: '#2C1D13'}, g);
+    el('rect', {x: x0, y: 286, width: w, height: 288, fill: '#3A271A'}, g);
+    let joints = '';
+    for(let y = 286 + 34, k = 0; y < 572; y += 34, k++){
+      joints += `M${x0} ${y}h${w}`;
+      const jx = x0 + (k % 2 ? w * 0.36 : w * 0.68);
+      joints += `M${r1(jx)} ${y}v34`;
+    }
+    el('path', {d: joints, stroke: '#1E130C', 'stroke-width': 2.2, fill: 'none'}, g);
+    let tex = '';
+    for(let i = 0; i < 26; i++){ tex += gouge(x0 + 6 + R() * (w - 26), 294 + R() * 270, 8 + R() * 14, 0.6 + R() * 0.5, 0, 0); }
+    el('path', {d: tex, fill: '#5B3D28', opacity: 0.7}, g);
+    el('rect', {x: x0, y: 286, width: w, height: 288, fill: side < 0 ? 'url(#gPillarLitL)' : 'url(#gPillarLitR)'}, g);
+    el('rect', {x: x0 - 9, y: 262, width: w + 18, height: 26, fill: '#45301F'}, g);
+    el('rect', {x: x0 - 9, y: 284, width: w + 18, height: 4, fill: '#1E130C'}, g);
+    el('rect', {x: x0 - 4, y: 254, width: w + 8, height: 9, fill: '#3A271A'}, g);
+    el('path', {d: `M${x0 - 2} 254L${x0 + w / 2} 236L${x0 + w + 2} 254Z`, fill: '#2C1D13'}, g);
+    el('circle', {cx: x0 + w / 2, cy: 226, r: 11, fill: '#3A271A'}, g);
+    el('path', {d: `M${x0 + w / 2 - 11} 226A11 11 0 0 0 ${x0 + w / 2 + 11} 226Z`, fill: '#24170E'}, g);
+    /* warm wash on the side facing the lamp */
+    const fx = side < 0 ? x0 + w - 18 : x0;
+    el('rect', {x: fx, y: 262, width: 18, height: 26, fill: '#C98A4E', opacity: 0.35}, g);
+    return g;
+  }
+  pillar(326, -1); pillar(800, 1);
+
+  /* ── ironwork: arch bands, rings, crest scrolls, pendants ── */
+  const iron = [];
+  const P = (pts, w) => iron.push({d: pd(pts), w: w || 3.2});
+  const both = (pts, w) => { P(pts, w); P(mirror(pts, CX), w); };
+  const ball = (x, y, r, sym) => { iron.push({c: [x, y, r]}); if(sym) iron.push({c: [2 * CX - x, y, r]}); };
+  const ends = (pts, sym, r) => { const q = pts[pts.length - 1]; ball(q[0], q[1], r || 2.7, sym); };
+  const AC = [600, 389], RO = 219, RI = 203, RE = 263;
+  const arc = (Rr, a0, a1) => { const out = []; for(let i = 0; i <= 90; i++){ const a = (a0 + (a1 - a0) * i / 90) * Math.PI / 180; out.push([AC[0] + Rr * Math.sin(a), AC[1] - Rr * Math.cos(a)]); } return out; };
+  const onArc = (Rr, aDeg) => [AC[0] + Rr * Math.sin(aDeg * Math.PI / 180), AC[1] - Rr * Math.cos(aDeg * Math.PI / 180)];
+  const aO = Math.asin(200 / RO) * 180 / Math.PI, aI = Math.asin(200 / RI) * 180 / Math.PI;
+  P(arc(RO, -aO, aO), 7); P(arc(RI, -aI, aI), 4.4);
+  for(let k = -7; k <= 7; k++){ const q = onArc((RO + RI) / 2, k * 8.2); iron.push({ring: [q[0], q[1], 4.2], w: 2.2}); }
+  /* upper band of the crest, ending in big curls that drop back onto the arch */
+  const EA = 37;
+  P(arc(RE, -EA, EA), 4);
+  const e0 = onArc(RE, -EA);
+  const endCurl = vol(e0[0], e0[1], 180 - EA, 128, 1.32, 1.6, -1); both(endCurl, 4); ends(endCurl, true, 3.6);
+  /* running scrolls between the two bands, all curling toward the crown */
+  [[-31, 84], [-21, 80], [-11.5, 74]].forEach(([a, len]) => {
+    const q = onArc(RO + 3.5, a);
+    const v = vol(q[0], q[1], a - 38, len, 1.3, 1.6, 1); both(v, 3.2); ends(v, true, 2.9);
+  });
+  /* sunburst at the crown */
+  iron.push({sun: [600, AC[1] - RO - 3]});
+  /* finial with a pair of fleur curls */
+  P([[600, AC[1] - RE], [600, 72]], 3.6);
+  iron.push({spear: [600, 74]});
+  const fl = vol(600, 106, -162, 40, 1.2, 1.6, -1); both(fl, 2.8); ends(fl, true, 2.5);
+  const fl2 = vol(600, 120, -150, 26, 1.15, 1.6, -1); both(fl2, 2.3); ends(fl2, true, 2.1);
+  /* tendrils hanging under the arch, curling in toward the lantern */
+  const pa = onArc(RI - 2.5, -42);
+  const pend = vol(pa[0], pa[1], 96, 112, 1.3, 1.6, -1); both(pend, 3); ends(pend, true, 2.8);
+  const pb = onArc(RI - 2.5, -55);
+  const pend2 = vol(pb[0], pb[1], 100, 70, 1.25, 1.6, -1); both(pend2, 2.6); ends(pend2, true, 2.4);
+  /* hanger at the apex */
+  P([[600, 186], [600, 206]], 4.2);
+  const hk = vol(600, 193, 168, 28, 1.15, 1.6, -1); both(hk, 2.4); ends(hk, true, 2);
+
+  function drawIron(parent, color, scale, extra){
+    const g = el('g', Object.assign({stroke: color, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round'}, extra || {}), parent);
+    iron.forEach(it => {
+      if(it.d) el('path', {d: it.d, 'stroke-width': r1(it.w * scale)}, g);
+      else if(it.c) el('circle', {cx: r1(it.c[0]), cy: r1(it.c[1]), r: r1(it.c[2] * (scale < 1 ? 0.45 : 1)), fill: color, stroke: 'none'}, g);
+      else if(it.ring) el('circle', {cx: r1(it.ring[0]), cy: r1(it.ring[1]), r: it.ring[2], 'stroke-width': r1(it.w * scale)}, g);
+      else if(it.sun){
+        const [x, y] = it.sun;
+        el('path', {d: `M${x - 10} ${y}A10 10 0 0 1 ${x + 10} ${y}Z`, fill: color, stroke: 'none'}, g);
+        let rays = '';
+        [-90, -66, -42, -114, -138].forEach((a, i) => { const r0 = 14, r2 = i === 0 ? 37 : (i % 2 ? 31 : 27), ar = a * Math.PI / 180; rays += `M${r1(x + Math.cos(ar) * r0)} ${r1(y + Math.sin(ar) * r0)}L${r1(x + Math.cos(ar) * r2)} ${r1(y + Math.sin(ar) * r2)}`; });
+        el('path', {d: rays, 'stroke-width': r1(2.6 * scale)}, g);
+      }
+      else if(it.spear){ const [x, y] = it.spear; el('path', {d: `M${x - 6} ${y + 2}L${x} ${y - 14}L${x + 6} ${y + 2}Q${x} ${y - 2} ${x - 6} ${y + 2}Z`, fill: color, stroke: 'none'}, g); }
+    });
+    return g;
+  }
+  drawIron(svg, '#0A0605', 1);
+  drawIron(svg, '#7C6A57', 0.3, {opacity: 0.55});
+  drawIron(svg, '#FFC774', 0.34, {mask: 'url(#mLamp)'});
+
+  /* pulse ring that invites a click (fades after the first interaction) */
+  const invite = el('circle', {cx: 600, cy: 316, r: 78, fill: 'none', stroke: '#F6CF8A', 'stroke-width': 1.6, class: 'lamp-invite'}, svg);
+
+  /* ── the lantern (local origin = chain anchor at 600,206) ── */
+  const lantern = el('g', {class: 'lantern', tabindex: '0', role: 'button', 'aria-label': 'Old Queens lantern — press to swing it'}, svg);
+  const swingG = el('g', {}, lantern);
+  const L = el('g', {transform: 'translate(600 206) scale(1.2)'}, swingG);
+  el('circle', {cx: 0, cy: 92, r: 74, fill: 'transparent'}, L);           /* big, easy tap target */
+  el('circle', {cx: 0, cy: 92, r: 80, fill: 'none', stroke: '#F6CF8A', 'stroke-width': 2, 'stroke-dasharray': '6 5', class: 'lantern-ring'}, L);
+  const IRON = '#0A0605';
+  el('ellipse', {cx: 0, cy: 5, rx: 3, ry: 5.2, fill: 'none', stroke: IRON, 'stroke-width': 2}, L);
+  el('rect', {x: -0.9, y: 9, width: 1.8, height: 8, fill: IRON}, L);
+  el('ellipse', {cx: 0, cy: 19.5, rx: 3, ry: 5.2, fill: 'none', stroke: IRON, 'stroke-width': 2}, L);
+  el('circle', {cx: 0, cy: 27, r: 3.4, fill: 'none', stroke: IRON, 'stroke-width': 2}, L);
+  el('circle', {cx: 0, cy: 92, r: 30, fill: 'url(#gBloom)', opacity: 0.55}, L);
+  el('path', {d: 'M-27 64L27 64L20 120L-20 120Z', fill: 'url(#gGlass)'}, L);
+  const flame = el('g', {transform: 'translate(0 106)'}, L);
+  const flameShape = el('path', {d: 'M0 -26C6 -15 9 -6 6 0C3 4 -3 4 -6 0C-9 -6 -6 -15 0 -26Z', fill: 'url(#gFlame)'}, flame);
+  el('ellipse', {cx: 0, cy: 2, rx: 7, ry: 2.4, fill: '#B5702E', opacity: 0.8}, flame);
+  el('path', {d: 'M-27 64L-20 120M-13 64L-10 120M13 64L10 120M27 64L20 120', stroke: IRON, 'stroke-width': 3, 'stroke-linecap': 'round'}, L);
+  el('path', {d: 'M-25.5 75H25.5', stroke: IRON, 'stroke-width': 1.6}, L);
+  el('path', {d: 'M-4 31Q-9 49 -33 54L33 54Q9 49 4 31Z', fill: IRON}, L);
+  el('circle', {cx: 0, cy: 31, r: 3.6, fill: IRON}, L);
+  el('rect', {x: -37, y: 53, width: 74, height: 6.5, rx: 2, fill: IRON}, L);
+  el('rect', {x: -28, y: 59, width: 56, height: 5.5, fill: IRON}, L);
+  el('path', {d: 'M-34 56.2H34', stroke: '#F2B866', 'stroke-width': 1, opacity: 0.55}, L);
+  el('rect', {x: -24, y: 119, width: 48, height: 6.5, rx: 1.5, fill: IRON}, L);
+  el('path', {d: 'M-19 125Q0 150 19 125Z', fill: IRON}, L);
+  el('path', {d: 'M0 140V154', stroke: IRON, 'stroke-width': 2.4}, L);
+  el('circle', {cx: 0, cy: 158, r: 4.2, fill: IRON}, L);
+  el('path', {d: 'M-14 128Q0 140 14 128', stroke: '#F2B866', 'stroke-width': 1.1, fill: 'none', opacity: 0.6}, L);
+
+  /* halation over the frame — this is what makes the lamp read as "on" */
+  const bloom = el('circle', {cx: 600, cy: 316, r: 100, fill: 'url(#gBloom)', opacity: 0.8, 'pointer-events': 'none'}, svg);
+  const flare = el('circle', {cx: 600, cy: 316, r: 80, fill: 'none', stroke: '#FFE1A3', 'stroke-width': 2.4, opacity: 0, 'pointer-events': 'none'}, svg);
+
+  /* ── wet flagstones in front, with the lamp's reflection ── */
+  const path = el('g', {}, svg);
+  el('rect', {x: -700, y: 600, width: 2600, height: 110, fill: '#110A06'}, path);
+  const rows = [600, 608, 618, 630, 645, 663, 684, 708];
+  let stones = '', sheen = '', sheenWarm = '';
+  const sAt = y => (y - HOR) / (GROUND - HOR);
+  for(let r = 0; r < rows.length - 1; r++){
+    const ya = rows[r] + 1.2, yb = rows[r + 1] - 1.2, sa = sAt(ya), sb = sAt(yb);
+    let u = -2200 + (r % 2) * 40 + R() * 30;
+    while(u < 3400){
+      const w = 64 + R() * 46, u0 = u + 2.5, u1 = u + w - 2.5;
+      const xa0 = CX + (u0 - CX) * sa, xa1 = CX + (u1 - CX) * sa, xb0 = CX + (u0 - CX) * sb, xb1 = CX + (u1 - CX) * sb;
+      if(xb1 > -700 && xb0 < 1900){
+        const rr = 2.2 * sb;
+        stones += `M${r1(xa0 + rr)} ${r1(ya)}L${r1(xa1 - rr)} ${r1(ya)}Q${r1(xa1)} ${r1(ya)} ${r1(xa1 + (xb1 - xa1) * 0.12)} ${r1(ya + (yb - ya) * 0.12)}L${r1(xb1)} ${r1(yb - rr)}Q${r1(xb1)} ${r1(yb)} ${r1(xb1 - rr)} ${r1(yb)}L${r1(xb0 + rr)} ${r1(yb)}Q${r1(xb0)} ${r1(yb)} ${r1(xb0)} ${r1(yb - rr)}L${r1(xa0)} ${r1(ya + rr)}Q${r1(xa0)} ${r1(ya)} ${r1(xa0 + rr)} ${r1(ya)}Z`;
+        if(R() < 0.75){
+          const t0 = 0.12 + R() * 0.3, t1 = t0 + 0.25 + R() * 0.3, h = (yb - ya);
+          const sx0 = lerp(xa0, xa1, t0), sx1 = lerp(xa0, xa1, Math.min(0.92, t1)), sy = ya + h * 0.18, sy2 = ya + h * (0.45 + R() * 0.25);
+          const blob = `M${r1(sx0)} ${r1(sy)}L${r1(sx1)} ${r1(sy)}Q${r1(sx1 + 3)} ${r1((sy + sy2) / 2)} ${r1(sx1 - 2)} ${r1(sy2)}L${r1(sx0 + 4)} ${r1(sy2)}Q${r1(sx0 - 3)} ${r1((sy + sy2) / 2)} ${r1(sx0)} ${r1(sy)}Z`;
+          sheen += blob; sheenWarm += blob;
+        }
+      }
+      u += w;
+    }
+  }
+  el('path', {d: stones, fill: '#22160E'}, path);
+  el('path', {d: sheen, fill: '#3E2D21', opacity: 0.9}, path);
+  el('path', {d: sheenWarm, fill: '#E6A85C', mask: 'url(#mWarm)'}, path);
+  const refl = el('g', {class: 'refl'}, path);
+  el('ellipse', {cx: 600, cy: 650, rx: 34, ry: 56, fill: 'url(#gSmallGlow)', opacity: 0.55}, refl);
+  for(let i = 0; i < 30; i++){
+    const y = 603 + Math.pow(i / 30, 1.2) * 99, s = sAt(y), w = (3 + R() * 13) * (0.55 + s * 0.4);
+    const x = 600 + (R() - 0.5) * 16 * s - w / 2;
+    el('rect', {x: r1(x), y: r1(y), width: r1(w), height: r1(1.6 + R() * 3.4 * s), rx: 1, fill: i % 3 ? '#FFD994' : '#F3A852', style: `animation-delay:${r1(-R() * 2.4)}s`}, refl);
+  }
+
+  /* leaves drifting through the light + moths circling the lamp */
+  const leafG = el('g', {}, svg);
+  const leaves = [];
+  for(let i = 0; i < 9; i++){
+    const e = el('path', {d: i % 3 ? LEAF_D : ELM_D, fill: '#6B3A1C'}, leafG);
+    const lf = {e, x: -300 + R() * 1800, y: R() * 600, vx: 0.18 + R() * 0.3, vy: 0.22 + R() * 0.25, rot: R() * 360, vr: (R() - 0.5) * 1.4, ph: R() * 6.3, s: 0.9 + R() * 0.6};
+    e.setAttribute('transform', `translate(${r1(lf.x)} ${r1(lf.y)}) rotate(${Math.round(lf.rot)}) scale(${r1(lf.s)})`);
+    leaves.push(lf);
+  }
+  const moths = [];
+  for(let i = 0; i < 6; i++){
+    const e = el('circle', {r: r1(1.1 + R() * 0.9), cx: 600, cy: 316, fill: '#FFF2D2', opacity: 0}, svg);
+    if(reduceMotion) e.style.display = 'none';
+    moths.push({e, a: R() * 6.3, rx: 34 + R() * 46, ry: 22 + R() * 34, sp: 0.9 + R() * 1.4, ph: R() * 6.3, kick: 0});
+  }
+  el('rect', {x: -700, y: 0, width: 2600, height: 700, fill: 'url(#gVig)', 'pointer-events': 'none'}, svg);
+
+  /* ── behaviour ── */
+  const mLampDot = svg.querySelector('#mLampDot'), mWarmDot = svg.querySelector('#mWarmDot');
+  let th = 0, om = 0, boost = 0, flareT = 1, touched = false, hover = false;
+  function swing(dir){
+    om += (dir || (Math.random() < 0.5 ? -1 : 1)) * (reduceMotion ? 0 : 1.55);
+    flareT = reduceMotion ? 1 : 0; boost = 1;
+    moths.forEach(m => { m.kick = 1; });
+    if(!touched){ touched = true; invite.classList.add('done'); }
+  }
+  lantern.addEventListener('pointerdown', e => {
+    e.preventDefault();
+    const b = lantern.getBoundingClientRect();
+    swing(e.clientX < b.left + b.width / 2 ? 1 : -1);
+  });
+  lantern.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); swing(); } });
+  lantern.addEventListener('pointerenter', () => { hover = true; });
+  lantern.addEventListener('pointerleave', () => { hover = false; });
+
+  function tick(dt, t){
+    /* pendulum */
+    const a = -15.4 * Math.sin(th) - 0.95 * om;
+    om += a * dt; th += om * dt; th = clamp(th, -0.55, 0.55);
+    swingG.setAttribute('transform', `rotate(${r1(th * 57.2958 * 10) / 10} 600 206)`);
+    coneG.setAttribute('transform', `rotate(${r1(th * 57.2958 * 10) / 10} 600 206)`);
+    const gx = 600 - 110.4 * Math.sin(th), gy = 206 + 110.4 * Math.cos(th);
+    /* flicker (a gas flame never sits perfectly still) */
+    const fl = reduceMotion ? 1 : 1 + 0.035 * Math.sin(t * 7.3) + 0.022 * Math.sin(t * 13.7 + 1.3) + 0.015 * Math.sin(t * 23.1 + 0.4);
+    boost = Math.max(hover ? 0.45 : 0, boost - dt * 0.7);
+    const k = fl * (1 + boost * 0.35);
+    halo.setAttribute('cx', r1(gx)); halo.setAttribute('cy', r1(gy)); halo.setAttribute('r', r1(290 * (0.97 + 0.03 * fl) * (1 + boost * 0.12)));
+    halo.setAttribute('opacity', r1(clamp(0.92 * k, 0, 1) * 100) / 100);
+    bloom.setAttribute('cx', r1(gx)); bloom.setAttribute('cy', r1(gy)); bloom.setAttribute('opacity', r1(clamp(0.72 * k, 0, 1) * 100) / 100);
+    rayG.setAttribute('transform', `translate(${r1(gx - 600)} ${r1(gy - 316)})`);
+    rayG.setAttribute('opacity', r1((0.85 + 0.15 * Math.sin(t * 0.8)) * (1 + boost * 0.5) * 100) / 100);
+    mLampDot.setAttribute('cx', r1(gx)); mLampDot.setAttribute('cy', r1(gy));
+    pool.setAttribute('cx', r1(600 + (gx - 600) * 1.9)); pool.setAttribute('opacity', r1(clamp(0.95 * k, 0, 1) * 100) / 100);
+    mWarmDot.setAttribute('cx', r1(600 + (gx - 600) * 1.4));
+    refl.setAttribute('transform', `translate(${r1((gx - 600) * 1.4)} 0)`);
+    flameShape.setAttribute('transform', `scale(${r1((0.94 + 0.06 * fl) * 100) / 100} ${r1((0.9 + 0.12 * fl + boost * 0.1) * 100) / 100})`);
+    if(flareT < 1){
+      flareT = Math.min(1, flareT + dt * 1.3);
+      flare.setAttribute('cx', r1(gx)); flare.setAttribute('cy', r1(gy));
+      flare.setAttribute('r', r1(60 + flareT * 170)); flare.setAttribute('opacity', r1((1 - flareT) * 0.8 * 100) / 100);
+    }
+    if(!reduceMotion){
+      starEls.forEach(s => { s.e.setAttribute('opacity', r1(s.base * (0.65 + 0.35 * Math.sin(t * s.sp + s.ph)) * 100) / 100); });
+      leaves.forEach(l => {
+        l.x += (l.vx + Math.sin(t * 0.7 + l.ph) * 0.25) * dt * 60; l.y += l.vy * dt * 60; l.rot += l.vr * dt * 60;
+        if(l.y > 640 || l.x > 1900){ l.y = -20; l.x = -400 + Math.random() * 1500; }
+        const d = Math.hypot(l.x - gx, l.y - gy), lit = clamp(1 - d / 240, 0, 1);
+        const c = [Math.round(lerp(0x4A, 0xF0, lit)), Math.round(lerp(0x28, 0xA4, lit)), Math.round(lerp(0x14, 0x48, lit))];
+        l.e.setAttribute('fill', `rgb(${c})`);
+        l.e.setAttribute('transform', `translate(${r1(l.x)} ${r1(l.y)}) rotate(${Math.round(l.rot)}) scale(${r1(l.s * Math.cos(t * 1.7 + l.ph) * 100) / 100} ${l.s})`);
+      });
+      moths.forEach(m => {
+        m.kick = Math.max(0, m.kick - dt * 0.8);
+        const spread = 1 + m.kick * 1.8, a2 = t * m.sp + m.ph;
+        m.e.setAttribute('cx', r1(gx + Math.cos(a2) * m.rx * spread + Math.sin(t * 3.1 + m.ph) * 6));
+        m.e.setAttribute('cy', r1(gy - 6 + Math.sin(a2 * 1.3) * m.ry * spread + Math.cos(t * 2.3 + m.ph) * 5));
+        m.e.setAttribute('opacity', r1((0.55 + 0.45 * Math.sin(t * 9 + m.ph)) * 100) / 100);
+      });
+    }
+  }
+  return {
+    tick,
+    light: () => bloom,
+    caption: 0
+  };
+}
+
+/* ═════════════════════════ SCENE 2 — AUTUMN TREES ═════════════════════════ */
+function buildTrees(svg){
+  const R = seeded(2028);
+  const defs = el('defs', {}, svg);
+  defs.innerHTML = `
+    <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DE927F"/><stop offset=".5" stop-color="#EDB09A"/><stop offset="1" stop-color="#F5CDB2"/></linearGradient>
+    <radialGradient id="tGlow"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".85"/><stop offset=".4" stop-color="#FFD089" stop-opacity=".3"/><stop offset="1" stop-color="#FFB660" stop-opacity="0"/></radialGradient>
+    <radialGradient id="tVig" cx=".5" cy=".42" r=".78"><stop offset=".6" stop-color="#2B160C" stop-opacity="0"/><stop offset="1" stop-color="#2B160C" stop-opacity=".42"/></radialGradient>`;
+  el('rect', {x: -700, y: 0, width: 2600, height: 700, fill: 'url(#tSky)'}, svg);
+  let sc1 = '', sc2 = '';
+  for(let i = 0; i < 60; i++){
+    const y = 10 + R() * 360, x = -650 + R() * 2500, len = 50 + R() * 170;
+    if(i % 3) sc1 += gouge(x, y, len, 0.8 + R() * 1.6, 0, (R() - 0.5) * 3); else sc2 += gouge(x, y, len * 0.7, 0.7 + R(), 0, 0);
+  }
+  el('path', {d: sc1, fill: '#F7D5BF', opacity: 0.7}, svg);
+  el('path', {d: sc2, fill: '#CF8172', opacity: 0.45}, svg);
+  /* a few birds heading south */
+  const birds = [];
+  for(let i = 0; i < 5; i++){
+    const e = el('path', {d: 'M-6 0Q-3 -3 0 0Q3 -3 6 0', fill: 'none', stroke: '#6B3B2E', 'stroke-width': 1.4, 'stroke-linecap': 'round'}, svg);
+    const bd = {e, x: (reduceMotion ? 260 : -200) - i * 46 - R() * 30, y: 70 + (i % 2) * 14 + i * 6, sp: 26 + R() * 6, ph: R() * 6};
+    e.setAttribute('transform', `translate(${r1(bd.x)} ${r1(bd.y)})`);
+    birds.push(bd);
+  }
+
+  /* house on the right: clapboard siding, dark roof, a window */
+  const house = el('g', {}, svg);
+  el('path', {d: 'M948 372L1900 372L1900 720L948 720Z', fill: '#EDE5D6'}, house);
+  let siding = '';
+  for(let y = 384; y < 720; y += 12) siding += `M948 ${y}H1900`;
+  el('path', {d: siding, stroke: '#CDBFA9', 'stroke-width': 1.6}, house);
+  el('path', {d: 'M948 372V720', stroke: '#F8F2E7', 'stroke-width': 9}, house);
+  el('path', {d: 'M918 380L1260 120L1900 120L1900 160L1270 160L960 388Z', fill: '#4A3427'}, house);
+  let shingles = '';
+  for(let i = 0; i < 22; i++){ const t = i / 22; shingles += `M${r1(930 + t * 330)} ${r1(374 - t * 252)}l${r1(30 + R() * 30)} ${r1(-4)}`; }
+  el('path', {d: shingles, stroke: '#2E2018', 'stroke-width': 1.6}, house);
+  el('path', {d: 'M940 560H1900V572H940Z', fill: '#5B4334'}, house);
+  [[1000, 420, 52, 100], [1000, 598, 52, 102]].forEach(([x, y, w, h]) => {
+    el('rect', {x: x - 6, y: y - 6, width: w + 12, height: h + 12, fill: '#5B3A2A'}, house);
+    el('rect', {x, y, width: w, height: h, fill: '#3B2B26'}, house);
+    el('path', {d: `M${x} ${y + h / 2}H${x + w}M${x + w / 2} ${y}V${y + h}`, stroke: '#5B3A2A', 'stroke-width': 3}, house);
+    el('path', {d: `M${x + 6} ${y + 8}l14 0l-14 22Z`, fill: '#F2C9AE', opacity: 0.55}, house);
+  });
+
+  /* trees: each sways from its trunk base; tap one to shake it */
+  const TREES = [
+    {id: 'olive', base: [700, 640], trunk: [[700, 640, 690, 330, 34, 14, 10]],
+     limbs: [[694, 420, 560, 170, 12, 4, -20], [692, 380, 840, 150, 12, 4, 18], [690, 340, 700, 70, 10, 3, 6], [694, 460, 930, 300, 9, 3, 14]],
+     clusters: [[560, 150, 80], [660, 90, 92], [780, 110, 88], [880, 170, 74], [960, 250, 66], [500, 230, 60], [720, 210, 70], [840, 260, 60], [1040, 200, 70], [1120, 120, 76], [430, 120, 64], [600, 40, 70], [760, 30, 76], [910, 60, 70]],
+     pal: {lo: '#666D31', mid: '#899043', hi: '#ABAE5C'}, leaf: ['#9AA047', '#B7B25C', '#C9B65A']},
+    {id: 'gold', base: [320, 660], trunk: [[320, 660, 335, 330, 40, 16, -8]],
+     limbs: [[330, 450, 160, 250, 14, 4, 20], [334, 400, 470, 210, 13, 4, -16], [336, 360, 300, 130, 12, 4, 10], [330, 480, 520, 380, 11, 3, -10], [328, 500, 120, 420, 10, 3, 12]],
+     clusters: [[160, 240, 84], [270, 160, 92], [400, 150, 84], [500, 230, 74], [110, 360, 80], [230, 300, 78], [370, 280, 80], [480, 350, 66], [60, 250, 70], [200, 440, 70], [330, 410, 66], [-20, 320, 76], [-100, 220, 80], [-160, 380, 84], [30, 140, 70], [-240, 280, 80], [-330, 360, 88], [550, 160, 56]],
+     pal: {lo: '#968238', mid: '#BFAA52', hi: '#DDC56E'}, leaf: ['#C9B65A', '#D9C66E', '#B9A44A']},
+    {id: 'red', base: [740, 660], trunk: [[740, 660, 735, 420, 26, 11, 6]],
+     limbs: [[736, 470, 630, 330, 10, 3, -12], [738, 450, 850, 320, 10, 3, 12], [736, 430, 740, 250, 9, 3, 4]],
+     clusters: [[640, 330, 62], [730, 270, 74], [830, 300, 66], [880, 380, 56], [600, 420, 54], [690, 380, 70], [790, 400, 64], [660, 480, 50], [760, 480, 56], [850, 460, 46], [700, 210, 50]],
+     pal: {lo: '#7C1C29', mid: '#AE2E37', hi: '#D24F4B'}, leaf: ['#C0363C', '#D24F4B', '#9E2632']},
+    {id: 'yellow', base: [520, 690], trunk: [[520, 690, 516, 560, 20, 9, 4]],
+     limbs: [[518, 600, 450, 520, 7, 2, -8], [518, 590, 590, 510, 7, 2, 8]],
+     clusters: [[450, 520, 54], [530, 470, 62], [600, 520, 50], [410, 590, 44], [490, 570, 56], [570, 590, 46], [530, 420, 40], [640, 580, 36]],
+     pal: {lo: '#B9861C', mid: '#E0AE2C', hi: '#F3D35A'}, leaf: ['#E8B92E', '#F3D35A', '#C98F1E']}
+  ];
+  const treeObjs = [];
+  TREES.forEach((T, i) => {
+    const Rt = seeded(40 + i), g = el('g', {class: 'tree', 'data-tree': T.id}, svg);
+    const body = el('g', {}, g);
+    T.limbs.forEach(l => el('path', {d: limb(...l), fill: '#3A2516'}, body));
+    T.trunk.forEach(l => el('path', {d: limb(...l), fill: '#3A2516'}, body));
+    el('path', {d: limb(T.trunk[0][0] + 6, T.trunk[0][1], T.trunk[0][2] + 4, T.trunk[0][3] + 40, 6, 2, T.trunk[0][6]), fill: '#5A3D26', opacity: 0.8}, body);
+    canopy(body, T.clusters, T.pal, Rt);
+    treeObjs.push({T, g, body, th: 0, om: 0, ph: Rt() * 6.3, amp: 0.55 + Rt() * 0.4});
+  });
+  /* draw order: olive (back) → gold → red → house in front of red's right edge stays behind? keep house behind the red tree */
+  svg.insertBefore(house, treeObjs[0].g);
+
+  /* ground: grass band and a tan footpath covered in fallen leaves */
+  const ground = el('g', {}, svg);
+  el('path', {d: 'M-700 606Q300 590 1900 612L1900 720L-700 720Z', fill: '#4F5328'}, ground);
+  let blades = '';
+  for(let i = 0; i < 120; i++) blades += gouge(-650 + R() * 2500, 612 + R() * 20, 10 + R() * 22, 0.7 + R() * 0.6, -0.08 + (R() - 0.5) * 0.1, 0);
+  el('path', {d: blades, fill: '#6B6E36', opacity: 0.9}, ground);
+  el('path', {d: 'M-700 650Q400 634 1900 652L1900 720L-700 720Z', fill: '#B49C82'}, ground);
+  let pathCuts = '';
+  for(let i = 0; i < 70; i++) pathCuts += gouge(-650 + R() * 2500, 660 + R() * 36, 18 + R() * 50, 0.8 + R() * 0.8, (R() - 0.5) * 0.05, 0);
+  el('path', {d: pathCuts, fill: '#9A8268', opacity: 0.8}, ground);
+  const fallenCols = ['#C9B65A', '#E8B92E', '#C0363C', '#D9822E', '#9AA047', '#B9861C'];
+  fallenCols.forEach((c, ci) => {
+    let d = '';
+    for(let i = 0; i < 26; i++){
+      const x = -650 + R() * 2500, y = 640 + R() * 60, s = 0.7 + R() * 0.5, a = R() * 6.3;
+      d += crescent(x, y, 3.2 * s + 1.2, a);
+    }
+    el('path', {d, fill: c, opacity: 0.92}, ground);
+  });
+
+  /* campus lamp post with a scarlet banner (Rutgers logo slot) */
+  const lamp = el('g', {class: 'campus-lamp'}, svg);
+  const LX = 430;
+  el('circle', {cx: LX, cy: 192, r: 120, fill: 'url(#tGlow)', class: 'lamp-dusk-glow'}, lamp);
+  el('path', {d: `M${LX - 9} 720L${LX - 6} 600L${LX - 4.5} 230L${LX + 4.5} 230L${LX + 6} 600L${LX + 9} 720Z`, fill: '#16100C'}, lamp);
+  el('path', {d: `M${LX - 13} 700Q${LX} 690 ${LX + 13} 700L${LX + 11} 640Q${LX} 632 ${LX - 11} 640Z`, fill: '#16100C'}, lamp);
+  el('path', {d: `M${LX + 2} 600L${LX + 3} 250`, stroke: '#4A3A30', 'stroke-width': 1.4}, lamp);
+  el('rect', {x: LX - 8, y: 226, width: 16, height: 8, fill: '#16100C'}, lamp);
+  el('path', {d: `M${LX - 15} 182L${LX + 15} 182L${LX + 10} 222L${LX - 10} 222Z`, fill: '#FFE7AE'}, lamp);
+  el('path', {d: `M${LX - 15} 182L${LX - 10} 222M${LX + 15} 182L${LX + 10} 222M${LX} 182V222`, stroke: '#16100C', 'stroke-width': 2.2}, lamp);
+  el('path', {d: `M${LX - 19} 182L${LX} 164L${LX + 19} 182Z`, fill: '#16100C'}, lamp);
+  el('circle', {cx: LX, cy: 160, r: 3.4, fill: '#16100C'}, lamp);
+  el('rect', {x: LX - 12, y: 220, width: 24, height: 5, fill: '#16100C'}, lamp);
+  /* banner on two brackets */
+  const banner = el('g', {class: 'banner-flag'}, lamp);
+  el('path', {d: `M${LX + 4} 282H${LX + 66}M${LX + 4} 408H${LX + 66}`, stroke: '#16100C', 'stroke-width': 3.4, 'stroke-linecap': 'round'}, banner);
+  el('circle', {cx: LX + 66, cy: 282, r: 3.2, fill: '#16100C'}, banner);
+  el('circle', {cx: LX + 66, cy: 408, r: 3.2, fill: '#16100C'}, banner);
+  const cloth = el('g', {class: 'banner-cloth'}, banner);
+  el('rect', {x: LX + 9, y: 284, width: 54, height: 122, fill: '#CC0033'}, cloth);
+  el('rect', {x: LX + 9, y: 284, width: 54, height: 122, fill: 'none', stroke: '#8F0024', 'stroke-width': 1.5}, cloth);
+  el('path', {d: `M${LX + 13} 288H${LX + 59}V402H${LX + 13}Z`, fill: 'none', stroke: '#F3D9C8', 'stroke-width': 1, opacity: 0.7}, cloth);
+  el('path', {d: `M${LX + 9} 284h18v122h-18Z`, fill: '#000', opacity: 0.08}, cloth);
+  const plate = el('g', {class: 'logo-plate'}, cloth);
+  el('rect', {x: LX + 15, y: 300, width: 42, height: 46, rx: 3, fill: '#F6EEE2'}, plate);
+  const logo = el('image', {x: LX + 17, y: 302, width: 38, height: 42, preserveAspectRatio: 'xMidYMid meet'}, plate);
+  const fallback = el('g', {class: 'logo-fallback'}, cloth);
+  const fbt = el('text', {x: LX + 36, y: 333, 'text-anchor': 'middle', 'font-family': "'Grenze Gotisch', serif", 'font-size': 15, 'font-weight': 600, fill: '#F6EEE2'}, fallback);
+  fbt.textContent = 'Rutgers';
+  el('path', {d: `M${LX + 20} 342H${LX + 52}`, stroke: '#F6EEE2', 'stroke-width': 1, opacity: 0.8}, fallback);
+  const sub = el('text', {x: LX + 36, y: 386, 'text-anchor': 'middle', 'font-family': "'IBM Plex Mono', monospace", 'font-size': 5, 'letter-spacing': 0.4, fill: '#F6EEE2', opacity: 0.9}, cloth);
+  sub.textContent = 'NEW BRUNSWICK';
+  plate.style.display = 'none';
+  const probe = new Image();
+  probe.onload = () => {
+    logo.setAttribute('href', RUTGERS_LOGO_SRC);
+    logo.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', RUTGERS_LOGO_SRC);
+    plate.style.display = ''; fallback.style.display = 'none';
+  };
+  probe.src = RUTGERS_LOGO_SRC;
+
+  /* falling leaves */
+  const leafG = el('g', {'pointer-events': 'none'}, svg);
+  const leaves = [];
+  function spawnLeaf(x, y, col, burst){
+    let l = leaves.find(q => !q.alive);
+    if(!l){
+      if(leaves.length > 70) return;
+      l = {e: el('path', {d: LEAF_D}, leafG)}; leaves.push(l);
+    }
+    Object.assign(l, {alive: true, x, y, vx: (Math.random() - 0.5) * (burst ? 2.4 : 0.6), vy: burst ? -0.6 - Math.random() * 1.2 : 0.3 + Math.random() * 0.4,
+      rot: Math.random() * 360, vr: (Math.random() - 0.5) * 3, ph: Math.random() * 6.3, s: 0.9 + Math.random() * 0.7, life: 0, rest: 0});
+    l.e.setAttribute('d', Math.random() < 0.7 ? LEAF_D : ELM_D);
+    l.e.setAttribute('fill', col);
+    l.e.style.display = '';
+  }
+  function ambientLeaf(){
+    const t = treeObjs[Math.floor(Math.random() * treeObjs.length)], c = t.T.clusters[Math.floor(Math.random() * t.T.clusters.length)];
+    spawnLeaf(c[0] + (Math.random() - 0.5) * c[2], c[1] + (Math.random() - 0.2) * c[2] * 0.6, t.T.leaf[Math.floor(Math.random() * 3)], false);
+  }
+  if(!reduceMotion) for(let i = 0; i < 18; i++){ ambientLeaf(); const l = leaves[leaves.length - 1]; if(l) l.y += Math.random() * 300; }
+
+  el('rect', {x: -700, y: 0, width: 2600, height: 700, fill: 'url(#tVig)', 'pointer-events': 'none'}, svg);
+
+  /* interaction */
+  let wind = 0, gustIn = 6;
+  treeObjs.forEach(o => {
+    o.g.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      o.om += (Math.random() < 0.5 ? -1 : 1) * 2.4;
+      const p = svgPoint(svg, e.clientX, e.clientY);
+      if(!reduceMotion) for(let i = 0; i < 12; i++) spawnLeaf(p.x + (Math.random() - 0.5) * 60, p.y + (Math.random() - 0.5) * 40, o.T.leaf[i % 3], true);
+    });
+  });
+  let flutter = 0;
+  banner.addEventListener('pointerdown', e => { e.preventDefault(); e.stopPropagation(); flutter = 1; });
+  const duskGlow = lamp.querySelector('.lamp-dusk-glow');
+  let lampPulse = 0;
+  lamp.addEventListener('pointerdown', () => { lampPulse = 1; });
+  let spawnAcc = 0;
+
+  function tick(dt, t){
+    if(reduceMotion) return;
+    gustIn -= dt;
+    if(gustIn <= 0){ wind = 1; gustIn = 9 + Math.random() * 6; for(let i = 0; i < 8; i++) ambientLeaf(); }
+    wind = Math.max(0, wind - dt * 0.28);
+    treeObjs.forEach(o => {
+      const a = -9 * o.th - 2.2 * o.om;
+      o.om += a * dt; o.th += o.om * dt;
+      const ang = Math.sin(t * 0.55 + o.ph) * o.amp * (1 + wind * 1.6) + Math.sin(t * 1.3 + o.ph * 2) * 0.18 + o.th * 3;
+      o.body.setAttribute('transform', `rotate(${r1(ang * 10) / 10} ${o.T.base[0]} ${o.T.base[1]})`);
+    });
+    flutter = Math.max(0, flutter - dt * 0.6);
+    const fl = Math.sin(t * 2.2) * 1.2 * (0.4 + wind) + Math.sin(t * 7) * 3 * flutter;
+    cloth.setAttribute('transform', `translate(${LX + 9} 284) skewY(${r1(fl * 10) / 10}) translate(${-LX - 9} -284)`);
+    lampPulse = Math.max(0, lampPulse - dt * 0.8);
+    duskGlow.setAttribute('r', r1(120 * (1 + lampPulse * 0.5 + 0.03 * Math.sin(t * 5))));
+    spawnAcc += dt * (1.1 + wind * 4);
+    while(spawnAcc > 1){ spawnAcc -= 1; ambientLeaf(); }
+    leaves.forEach(l => {
+      if(!l.alive) return;
+      if(l.rest > 0){
+        l.rest -= dt;
+        l.e.setAttribute('opacity', r1(clamp(l.rest, 0, 1) * 100) / 100);
+        if(l.rest <= 0){ l.alive = false; l.e.style.display = 'none'; l.e.setAttribute('opacity', 1); }
+        return;
+      }
+      l.vy = Math.min(l.vy + 0.02 * dt * 60, 0.9);
+      l.vx += ((0.15 + wind * 1.2) - l.vx) * 0.02;
+      l.x += (l.vx + Math.sin(t * 1.4 + l.ph) * 0.6) * dt * 60; l.y += l.vy * dt * 60; l.rot += l.vr * dt * 60;
+      if(l.y > 652 + (l.ph * 7) % 44){ l.rest = 1.6; }
+      if(l.x > 1900){ l.alive = false; l.e.style.display = 'none'; return; }
+      l.e.setAttribute('transform', `translate(${r1(l.x)} ${r1(l.y)}) rotate(${Math.round(l.rot)}) scale(${r1(l.s * Math.cos(t * 2.1 + l.ph) * 100) / 100} ${r1(l.s * 100) / 100})`);
+    });
+    birds.forEach(b => {
+      b.x += b.sp * dt;
+      if(b.x > 1900) b.x = -400 - Math.random() * 300;
+      const f = Math.sin(t * 8 + b.ph);
+      b.e.setAttribute('transform', `translate(${r1(b.x)} ${r1(b.y + Math.sin(t * 0.8 + b.ph) * 4)}) scale(1 ${r1((0.6 + 0.4 * f) * 100) / 100})`);
+    });
+  }
+  return {tick, light: () => duskGlow};
+}
+
+function svgPoint(svg, x, y){
+  const p = svg.createSVGPoint(); p.x = x; p.y = y;
+  return p.matrixTransform(svg.getScreenCTM().inverse());
+}
+
+/* ═════════════════════════ SLIDESHOW CONTROLLER ═════════════════════════ */
+const slides = [...show.querySelectorAll('.slide')];
+const svgs = slides.map(s => s.querySelector('svg.scene'));
+const scenes = [buildGate(svgs[0]), buildTrees(svgs[1])];
+const dots = [...show.querySelectorAll('.show-dot')];
+const pauseBtn = show.querySelector('.show-pause');
+let cur = 0, busy = false, timer = 0, userPaused = reduceMotion, hovering = false, inView = true;
+const SLIDE_MS = 9000;
+
+function fit(){
+  svgs.forEach(svg => {
+    const r = svg.getBoundingClientRect();
+    if(!r.width || !r.height) return;
+    const w = Math.min(2300, 700 * r.width / r.height);
+    svg.setAttribute('viewBox', `${r1(600 - w / 2)} 0 ${r1(w)} 700`);
+  });
+}
+fit();
+if('ResizeObserver' in window) new ResizeObserver(fit).observe(show); else window.addEventListener('resize', fit);
+
+function setActive(n){
+  slides.forEach((s, i) => {
+    s.classList.toggle('is-active', i === n);
+    s.setAttribute('aria-hidden', i === n ? 'false' : 'true');
+    s.inert = i !== n;
+  });
+  dots.forEach((d, i) => { d.classList.toggle('on', i === n); d.setAttribute('aria-current', i === n ? 'true' : 'false'); });
+  show.dataset.slide = n;
+}
+function go(n){
+  n = (n + slides.length) % slides.length;
+  if(n === cur || busy) return;
+  const from = slides[cur], to = slides[n];
+  const sb = show.getBoundingClientRect(), lb = scenes[cur].light().getBoundingClientRect();
+  const x = lb.left + lb.width / 2 - sb.left, y = lb.top + lb.height / 2 - sb.top;
+  const rad = Math.hypot(Math.max(x, sb.width - x), Math.max(y, sb.height - y)) + 40;
+  cur = n;
+  if(reduceMotion || !to.animate){ setActive(n); restartTimer(); return; }
+  busy = true;
+  to.classList.add('is-entering');
+  show.classList.add('blooming');
+  const anim = to.animate([
+    {clipPath: `circle(0px at ${r1(x)}px ${r1(y)}px)`, filter: 'brightness(1.6)'},
+    {clipPath: `circle(${r1(rad * 0.35)}px at ${r1(x)}px ${r1(y)}px)`, filter: 'brightness(1.25)', offset: 0.35},
+    {clipPath: `circle(${r1(rad)}px at ${r1(x)}px ${r1(y)}px)`, filter: 'brightness(1)'}
+  ], {duration: 1300, easing: 'cubic-bezier(.55,0,.3,1)'});
+  anim.onfinish = anim.oncancel = () => {
+    to.classList.remove('is-entering'); show.classList.remove('blooming');
+    setActive(n); busy = false; restartTimer();
+  };
+  void from;
+}
+const progress = show.querySelector('.show-progress');
+function restartTimer(){
+  clearTimeout(timer);
+  if(progress){ progress.style.animation = 'none'; progress.style.width = '0'; }
+  if(userPaused || hovering || !inView) return;
+  timer = setTimeout(() => go(cur + 1), SLIDE_MS);
+  if(progress){ void progress.offsetWidth; progress.style.animation = `showProgress ${SLIDE_MS}ms linear forwards`; }
+}
+show.querySelector('.show-prev').addEventListener('click', () => go(cur - 1));
+show.querySelector('.show-next').addEventListener('click', () => go(cur + 1));
+dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+pauseBtn.addEventListener('click', () => {
+  userPaused = !userPaused;
+  pauseBtn.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+  pauseBtn.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
+  pauseBtn.classList.toggle('paused', userPaused);
+  restartTimer();
+});
+if(reduceMotion){ pauseBtn.classList.add('paused'); pauseBtn.setAttribute('aria-pressed', 'true'); pauseBtn.setAttribute('aria-label', 'Play slideshow'); }
+show.addEventListener('pointerenter', e => { if(e.pointerType === 'mouse'){ hovering = true; clearTimeout(timer); } });
+show.addEventListener('pointerleave', e => { if(e.pointerType === 'mouse'){ hovering = false; restartTimer(); } });
+show.addEventListener('focusin', e => { if(e.target.matches && e.target.matches(':focus-visible')){ hovering = true; clearTimeout(timer); } });
+show.addEventListener('focusout', () => { hovering = false; restartTimer(); });
+show.addEventListener('keydown', e => {
+  if(e.target.closest('.lantern')) return;
+  if(e.key === 'ArrowRight'){ e.preventDefault(); go(cur + 1); }
+  if(e.key === 'ArrowLeft'){ e.preventDefault(); go(cur - 1); }
+});
+/* swipe on phones */
+let sx = null, sy = null;
+show.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive: true});
+show.addEventListener('touchend', e => {
+  if(sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) go(cur + (dx < 0 ? 1 : -1));
+  sx = null;
+});
+if('IntersectionObserver' in window){
+  new IntersectionObserver(es => { inView = es[0].isIntersecting; restartTimer(); }, {threshold: 0.25}).observe(show);
+}
+setActive(0);
+restartTimer();
+
+/* one animation loop drives whichever slide(s) are on screen */
+let last = performance.now();
+function loop(now){
+  requestAnimationFrame(loop);
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  if(document.hidden || !inView || !show.offsetParent) return;
+  const t = now / 1000;
+  slides.forEach((s, i) => { if(s.classList.contains('is-active') || s.classList.contains('is-entering')) scenes[i].tick(dt, t); });
+}
+scenes.forEach(s => s.tick(0.016, 0));
+requestAnimationFrame(loop);
 })();
 </script>
 </body>
